@@ -1,0 +1,8 @@
+#!/sbin/sh
+# Cleanup for CSC Installation
+
+rm -rf /system/csc
+rm -rf /system/media/audio/notifications
+rm -rf /system/media/audio/ringtones
+rm -rf /system/CSCVersion.txt
+rm -rf /system/SW_Configuration.xml

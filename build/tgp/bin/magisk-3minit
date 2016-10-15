@@ -1,0 +1,6 @@
+#!/sbin/sh
+# Magisk Zip Script by djb77
+
+name=magisk-3minit
+cd /tmp/installers/$name/import
+/tmp/bin/zip -r /tmp/installers/$name/$name.zip *
