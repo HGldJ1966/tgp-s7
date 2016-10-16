@@ -1,0 +1,91 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<SamsungMobileFeature>
+
+<Country></Country>
+<CountryISO></CountryISO>
+<SalesCode></SalesCode>
+<FeatureSet>
+
+<!-- AppFW -->
+
+<!-- BT -->
+
+<!-- Camera -->
+<CscFeature_Camera_EnableCameraDuringCall>true</CscFeature_Camera_EnableCameraDuringCall>
+<CscFeature_Camera_ShutterSoundMenu>true</CscFeature_Camera_ShutterSoundMenu>=
+
+<!-- Calendar -->
+
+<!-- Call -->
+<CscFeature_VoiceCall_ConfigRecording>RecordingAllowed</CscFeature_VoiceCall_ConfigRecording>
+
+<!-- Clock -->
+
+<!-- Contacts -->
+
+<!-- Common -->
+<CscFeature_Common_EnableAirMessage>TRUE</CscFeature_Common_EnableAirMessage>
+ 
+<!-- Dialer -->
+
+<!-- Email -->
+
+<!-- Gallery -->  
+
+<!-- GMS -->
+
+<!-- IMS -->
+
+<!-- KIES -->     
+
+<!-- KOR -->
+
+<!-- Launcher -->
+
+<!-- Log -->
+
+<!-- Message -->
+<CscFeature_Message_DisplayMmsTimeAs>server</CscFeature_Message_DisplayMmsTimeAs>
+<CscFeature_Message_DisplaySmsTimeAs>server</CscFeature_Message_DisplaySmsTimeAs>
+<CscFeature_Message_EnableSaveRestoreSDCard>true</CscFeature_Message_EnableSaveRestoreSDCard>
+
+<!-- Mini Diary -->
+
+<!-- MMApp -->
+
+<!-- MMFW -->
+
+<!-- Music -->
+
+<!-- MyFiles -->
+
+<!-- NFC -->
+
+<!-- RIL -->
+
+<!-- SEC FMRadio -->
+
+<!-- SEC Framework -->
+
+<!-- SEC Launcher -->
+
+<!-- SEC LiveWallpaper -->
+
+<!-- Settings -->
+<CscFeature_Setting_DisableMenuSoftwareUpdate>true</CscFeature_Setting_DisableMenuSoftwareUpdate>
+<CscFeature_Setting_EnableMenuBlockCallMsg>true</CscFeature_Setting_EnableMenuBlockCallMsg>
+
+<!-- SIP -->
+
+<!-- Streaming -->
+
+<!-- SystemUI -->
+
+<!-- Voice Talk -->
+
+<!-- Web -->
+
+<!-- Wifi -->
+
+</FeatureSet>
+</SamsungMobileFeature>
