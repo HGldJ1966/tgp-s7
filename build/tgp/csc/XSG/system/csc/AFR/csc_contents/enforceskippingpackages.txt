@@ -1,0 +1,9 @@
+8
+NaverTvCast.apk
+AxelSpringer.apk
+SamsungPayStub.apk
+CnnPanel.apk
+AndroidPay_erasable_Hero.apk
+MSSkype_stub.apk
+SamsungUpdates.apk
+OMCAgent.apk
