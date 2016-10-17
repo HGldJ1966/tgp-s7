@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="updateOnlyOnWifi" value="false" />
+    <boolean name="debugEnabled" value="false" />
+    <boolean name="updateCheck" value="true" />
+    <string name="redirectionIP">127.0.0.1</string>
+    <boolean name="webserverOnBoot" value="false" />
+    <boolean name="neverReboot" value="false" />
+    <string name="applyMethod">writeToData</string>
+    <boolean name="webserverEnabled" value="false" />
+    <boolean name="enableIpv6" value="false" />
+    <boolean name="automaticUpdateDaily" value="false" />
+    <boolean name="updateCheckDaily" value="false" />
+    <boolean name="whitelistRules" value="true" />
+    <boolean name="redirectionRules" value="false" />
+    <string name="customTarget">/data/etc/hosts</string>
+</map>
