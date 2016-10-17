@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.40
+# TGP AROMA INSTALLER v6.50
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -126,306 +126,383 @@ then
 endif;
 if file_getprop("/tmp/aroma/csc.prop","install") == "104"
 then
+	ui_print(" Installing BOG CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/BOG/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "105"
+then
 	ui_print(" Installing BRI CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/BRI/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "105"
+if file_getprop("/tmp/aroma/csc.prop","install") == "106"
 then
 	ui_print(" Installing BTU CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/BTU/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "106"
+if file_getprop("/tmp/aroma/csc.prop","install") == "107"
+then
+	ui_print(" Installing COS CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/COS/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "108"
 then
 	ui_print(" Installing CTI CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/CTI/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "107"
+if file_getprop("/tmp/aroma/csc.prop","install") == "109"
 then
 	ui_print(" Installing DBT CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/DBT/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "108"
+if file_getprop("/tmp/aroma/csc.prop","install") == "110"
 then
 	ui_print(" Installing DDE CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/DDE/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "109"
+if file_getprop("/tmp/aroma/csc.prop","install") == "111"
 then
 	ui_print(" Installing ETL CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/ETL/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "110"
+if file_getprop("/tmp/aroma/csc.prop","install") == "112"
 then
 	ui_print(" Installing EUR CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/EUR/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "111"
+if file_getprop("/tmp/aroma/csc.prop","install") == "113"
+then
+	ui_print(" Installing EVR CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/EVR/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "114"
+then
+	ui_print(" Installing FTM CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/FTM/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "115"
 then
 	ui_print(" Installing GBL CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/GBL/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "112"
+if file_getprop("/tmp/aroma/csc.prop","install") == "116"
 then
 	ui_print(" Installing HTS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/HTS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "113"
+if file_getprop("/tmp/aroma/csc.prop","install") == "117"
 then
 	ui_print(" Installing ILO CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/ILO/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "114"
+if file_getprop("/tmp/aroma/csc.prop","install") == "118"
 then
 	ui_print(" Installing INS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/INS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "115"
+if file_getprop("/tmp/aroma/csc.prop","install") == "119"
 then
 	ui_print(" Installing ITV CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/ITV/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "116"
+if file_getprop("/tmp/aroma/csc.prop","install") == "120"
 then
 	ui_print(" Installing IUS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/IUS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "117"
+if file_getprop("/tmp/aroma/csc.prop","install") == "121"
 then
 	ui_print(" Installing KTC CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/KTC/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "118"
+if file_getprop("/tmp/aroma/csc.prop","install") == "122"
 then
 	ui_print(" Installing LUX CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/LUX/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "119"
+if file_getprop("/tmp/aroma/csc.prop","install") == "123"
+then
+	ui_print(" Installing MEO CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/MEO/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "124"
 then
 	ui_print(" Installing MOT CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/MOT/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "120"
+if file_getprop("/tmp/aroma/csc.prop","install") == "125"
 then
 	ui_print(" Installing NEE CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/NEE/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "121"
+if file_getprop("/tmp/aroma/csc.prop","install") == "126"
 then
 	ui_print(" Installing NZC CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/NZC/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "122"
+if file_getprop("/tmp/aroma/csc.prop","install") == "127"
 then
 	ui_print(" Installing OPS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/OPS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "123"
+if file_getprop("/tmp/aroma/csc.prop","install") == "128"
+then
+	ui_print(" Installing ORO CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/ORO/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "129"
 then
 	ui_print(" Installing PHE CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/PHE/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "124"
+if file_getprop("/tmp/aroma/csc.prop","install") == "130"
 then
 	ui_print(" Installing PHN CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/PHN/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "125"
+if file_getprop("/tmp/aroma/csc.prop","install") == "131"
 then
 	ui_print(" Installing SER CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/SER/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "126"
+if file_getprop("/tmp/aroma/csc.prop","install") == "132"
+then
+	ui_print(" Installing SFR CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/SFR/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "133"
 then
 	ui_print(" Installing SKC CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/SKC/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "127"
+if file_getprop("/tmp/aroma/csc.prop","install") == "134"
 then
 	ui_print(" Installing TCE CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TCE/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "128"
+if file_getprop("/tmp/aroma/csc.prop","install") == "135"
 then
 	ui_print(" Installing TEL CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TEL/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "129"
+if file_getprop("/tmp/aroma/csc.prop","install") == "136"
+then
+	ui_print(" Installing TEN CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/TEN/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "137"
 then
 	ui_print(" Installing TGY CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TGY/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "130"
+if file_getprop("/tmp/aroma/csc.prop","install") == "138"
 then
 	ui_print(" Installing THL CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/THL/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "131"
+if file_getprop("/tmp/aroma/csc.prop","install") == "139"
+then
+	ui_print(" Installing TMB CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/TMB/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "140"
 then
 	ui_print(" Installing TMS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TMS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "132"
+if file_getprop("/tmp/aroma/csc.prop","install") == "141"
+then
+	ui_print(" Installing TMZ CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/TMZ/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "142"
 then
 	ui_print(" Installing TPA CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TPA/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "133"
+if file_getprop("/tmp/aroma/csc.prop","install") == "143"
 then
 	ui_print(" Installing TSI CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TSI/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "134"
+if file_getprop("/tmp/aroma/csc.prop","install") == "144"
 then
 	ui_print(" Installing TUR CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/TUR/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "135"
+if file_getprop("/tmp/aroma/csc.prop","install") == "145"
 then
 	ui_print(" Installing VAU CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VAU/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "136"
+if file_getprop("/tmp/aroma/csc.prop","install") == "146"
 then
 	ui_print(" Installing VD2 CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VD2/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "137"
+if file_getprop("/tmp/aroma/csc.prop","install") == "147"
 then
 	ui_print(" Installing VDS CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VDS/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "138"
+if file_getprop("/tmp/aroma/csc.prop","install") == "148"
 then
 	ui_print(" Installing VIA CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VIA/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "139"
+if file_getprop("/tmp/aroma/csc.prop","install") == "149"
 then
 	ui_print(" Installing VVT CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VVT/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "140"
+if file_getprop("/tmp/aroma/csc.prop","install") == "150"
 then
 	ui_print(" Installing VZW CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/VZW/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "141"
+if file_getprop("/tmp/aroma/csc.prop","install") == "151"
 then
 	ui_print(" Installing XAC CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XAC/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "142"
+if file_getprop("/tmp/aroma/csc.prop","install") == "152"
+then
+	ui_print(" Installing XAS CSC...");
+  run_program("/tmp/bin/csc");
+  package_extract_dir("tgp/csc/_/system", "/system");
+	package_extract_dir("tgp/csc/XAS/system", "/system");
+endif;
+if file_getprop("/tmp/aroma/csc.prop","install") == "153"
 then
 	ui_print(" Installing XEF CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XEF/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "143"
+if file_getprop("/tmp/aroma/csc.prop","install") == "154"
 then
 	ui_print(" Installing XEO CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XEO/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "144"
+if file_getprop("/tmp/aroma/csc.prop","install") == "155"
 then
 	ui_print(" Installing XID CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XID/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "145"
+if file_getprop("/tmp/aroma/csc.prop","install") == "156"
 then
 	ui_print(" Installing XSA CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XSA/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "146"
+if file_getprop("/tmp/aroma/csc.prop","install") == "157"
 then
 	ui_print(" Installing XSG CSC...");
   run_program("/tmp/bin/csc");
   package_extract_dir("tgp/csc/_/system", "/system");
 	package_extract_dir("tgp/csc/XSG/system", "/system");
 endif;
-if file_getprop("/tmp/aroma/csc.prop","install") == "147"
+if file_getprop("/tmp/aroma/csc.prop","install") == "158"
 then
 	ui_print(" Installing ZTO CSC...");
   run_program("/tmp/bin/csc");

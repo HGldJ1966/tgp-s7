@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.40
+# TGP AROMA INSTALLER v6.50
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -13,10 +13,10 @@
 # --------
 ini_set("force_colorspace","rgba");
 ini_set("rom_name", "The Galaxy Project");
-ini_set("rom_version", "5.00 XXU1BPIF");
+ini_set("rom_version", "5.20 XXU1BPIF");
 ini_set("rom_author", "djb77");
 ini_set("rom_device", "SM-G930F");
-ini_set("rom_date", "October 16th 2016");
+ini_set("rom_date", "October 17th 2016");
 
 # SETUP
 # -----
@@ -475,200 +475,244 @@ endif;
 # CSC
 # ---
 selectbox(
-    "THE GALAXY PROJECT G93xx",
-    "Please select a CSC to install",
-    "@default",
-    "csc-g930f.prop",
-    "Skip", "", 1,
-    "ATO",	"Austria Open unbranded",	0,
-    "ATT",	"USA AT&T branded",	0,
-    "AUT",	"Switzerland unbranded", 0,
-    "BRI",	"Taiwan unbranded",	0,
-    "BTU",	"United Kingdom unbranded", 0,
-    "CTI",	"Argentina Multi-CSC contains: CDR, CHL, COM, CPA, CRC, CTI, CTP, CTU, ECO, PCT, PET, PGU",	0,
-    "DBT",	"Germany unbranded", 0,
-    "DDE",	"Germany Multi-CSC contains: DCO, DDE, DTM", 0,
-    "ETL",	"Czech Republic unbranded", 0,
-    "EUR",	"Greece unbranded",	0,
-    "GBL",	"Bulgaria unbranded",	0,
-    "HTS",	"Sweden Mitt3 branded",	0,
-    "ILO",	"Israel Multi-CSC contains: CEL, ILO, PCL, PTR", 0,
-    "INS",	"Indian Multi-CSC (FD variant) contains: BNG, INS, INU, NPL, SLI, SKL", 0,
-    "ITV",	"Italian unbranded", 0,
-    "IUS",	"Mexican unbranded", 0,
-    "KTC",	"Republic of Korea unbranded", 0,
-    "LUX",	"Luxembourg unbranded",	0,
-    "MOT",	"Slovenia unbranded",	0,
-    "NEE",	"Nordic Countries unbranded", 0,
-    "NZC",	"New Zealand unbranded", 0,
-    "OPS",	"Australia Optus branded", 0,
-    "PHE",	"Spain unbranded", 0,
-    "PHN",	"Netherlands unbranded", 0,
-    "SER",	"Russian Multi-CSC contains: CAC, CAU, SEK, SER, SKZ", 0,
-    "SKC",	"Korea unbranded", 0,
-    "TCE",	"Mexican Telcel branded", 0,
-    "TEL",	"Telstra branded", 0,
-    "TGY",	"HongKong unbranded",	0,
-    "THL",	"Thailand Multi-CSC contains: CAM, GLB, MM1, MYM, SIN, SMA, STH, THL, XME, XSP, XTC, XTE, XXV",	0,
-    "TMS",	"Slovak unbranded",	0,
-    "TPA",	"Panama Multi-CSC contains: ALE, ARO, BVO, CHO, COO, EON, PCW, TPA, TTT, UPO, UYO",	0,
-    "TSI",	"Ireland unbranded", 0,
-    "TUR",	"Turkey Multi-CSC contains: ACR, AFR, ECT, KSA, TUR, XFA", 0,
-    "VAU",	"Australia Vodafone branded", 0,
-    "VD2",	"Vodafone Multi-CSC contains: ATL, AVF, CNX, CYV, MOB, MTL, OMN, PRO, SIM, SWC, TCL, VD2, VDC, VDF, VDH, VDI, VGR, VIP, VOD, XFV", 0,
-    "VDS",	"Sweden unbranded", 0,
-    "VIA",	"Germany Multi-CSC contains: O2U, VIA, XEC", 0,
-    "VVT",	"Bulgaria unbranded",	0,
-    "VZW",	"USA Verizon branded",	0,
-    "XAC",	"Canada Multi-CSC (W8) contains: BMC, BWA, ESK, FMC, GLW, KDO, MTA, RWC, TLS, VMC, VTR, XAC",	0,
-    "XEF",	"France Multi-CSC contains: BTU, CPW, DBT, ITV, KOR, NEE, XEF, XEO", 0,
-    "XEO",	"Poland Multi-CSC contains: BGL, CYO, MET, ORX, ROM, SEB, SEE, SIO, TOP, TWO, VIM, XEH, XEO",	0,
-    "XID",	"Indonesia unbranded", 0,
-    "XSA",	"Australia unbranded", 0,
-    "XSG",	"Arabish Emirate Multi-CSC contains: ACR, AFG, AFR, BTC, DKR, DRC, ECT, EGY, KSA, LYS, MAT, MID, MRT, MRU, MTZ, MWD, PAK, SMG, THR, TMC, TUN, TUR, WTL, XFA, XFE, XFM, XFU, XSG", 0,
-    "ZTO",	"Brazil unbranded",	0               
+  "THE GALAXY PROJECT G93xx",
+  "Please select a CSC to install",
+  "@default",
+  "csc-g93xx.prop",
+  "Skip", "", 1,
+  "ATO", "Austria Open unbranded", 0,
+  "ATT", "USA AT&T branded", 0,
+  "AUT", "Switzerland unbranded", 0,
+  "BOG", "France Bouygues branded", 0,
+  "BRI", "Taiwan unbranded", 0,
+  "BTU", "United Kingdom unbranded", 0,
+  "COS", "Greeze Cosmote branded", 0,
+  "CTI", "Argentina Multi-CSC contains: CDR, CHL, COM, CPA, CRC, CTI, CTP, CTU, ECO, PCT, PET, PGU", 0,
+  "DBT", "Germany unbranded", 0,
+  "DDE", "Germany Multi-CSC contains: DCO, DDE, DTM", 0,
+  "ETL", "Czech Republic unbranded", 0,
+  "EUR", "Greece unbranded", 0,
+  "EVR", "United Kingdom T-Mobile branded", 0,
+  "FTM", "France Orange branded", 0,
+  "GBL", "Bulgaria unbranded", 0,
+  "HTS", "Sweden Mitt3 branded", 0,
+  "ILO", "Israel Multi-CSC contains: CEL, ILO, PCL, PTR", 0,
+  "INS", "Indian Multi-CSC (FD variant) contains: BNG, INS, INU, NPL, SLI, SKL", 0,
+  "ITV", "Italian unbranded", 0,
+  "IUS", "Mexican unbranded", 0,
+  "KTC", "Republic of Korea unbranded", 0,
+  "LUX", "Luxembourg unbranded", 0,
+  "MEO", "Portugal unbranded", 0,
+  "MOT", "Slovenia unbranded", 0,
+  "NEE", "Nordic Countries unbranded", 0,
+  "NZC", "New Zealand unbranded", 0,
+  "OPS", "Australia Optus branded", 0,
+  "ORO", "Romania Orange branded", 0,
+  "PHE", "Spain unbranded", 0,
+  "PHN", "Netherlands unbranded", 0,
+  "SER", "Russian Multi-CSC contains: CAC, CAU, SEK, SER, SKZ", 0,
+  "SFR", "France SFR branded", 0,
+  "SKC", "Korea unbranded", 0,
+  "TCE", "Mexican Telcel branded", 0,
+  "TEL", "Telstra branded", 0,
+  "TEN", "Norway Telenor branded", 0,
+  "TGY", "HongKong unbranded", 0,
+  "THL", "Thailand Multi-CSC contains: CAM, GLB, MM1, MYM, SIN, SMA, STH, THL, XME, XSP, XTC, XTE, XXV", 0,
+  "TMB", "USA T-Mobile Branded", 0,
+  "TMS", "Slovak unbranded", 0,
+  "TMZ", "Czech T-Mobile branded", 0,
+  "TPA", "Panama Multi-CSC contains: ALE, ARO, BVO, CHO, COO, EON, PCW, TPA, TTT, UPO, UYO", 0,
+  "TSI", "Ireland unbranded", 0,
+  "TUR", "Turkey Multi-CSC contains: ACR, AFR, ECT, KSA, TUR, XFA", 0,
+  "VAU", "Australia Vodafone branded", 0,
+  "VD2", "Vodafone Multi-CSC contains: ATL, AVF, CNX, CYV, MOB, MTL, OMN, PRO, SIM, SWC, TCL, VD2, VDC, VDF, VDH, VDI, VGR, VIP, VOD, XFV", 0,
+  "VDS", "Sweden unbranded", 0,
+  "VIA", "Germany Multi-CSC contains: O2U, VIA, XEC", 0,
+  "VVT", "Bulgaria unbranded", 0,
+  "VZW", "USA Verizon branded", 0,
+  "XAC", "Canada Multi-CSC (W8) contains: BMC, BWA, ESK, FMC, GLW, KDO, MTA, RWC, TLS, VMC, VTR, XAC", 0,
+  "XAS", "USA Sprint Multi-CSC branded, contains: BST, SPR, VMU, XAS", 0,
+  "XEF", "France Multi-CSC contains: BTU, CPW, DBT, ITV, KOR, NEE, XEF, XEO", 0,
+  "XEO", "Poland Multi-CSC contains: BGL, CYO, MET, ORX, ROM, SEB, SEE, SIO, TOP, TWO, VIM, XEH, XEO", 0,
+  "XID", "Indonesia unbranded", 0,
+  "XSA", "Australia unbranded", 0,
+  "XSG", "Arabic Emirate Multi-CSC contains: ACR, AFG, AFR, BTC, DKR, DRC, ECT, EGY, KSA, LYS, MAT, MID, MRT, MRU, MTZ, MWD, PAK, SMG, THR, TMC, TUN, TUR, WTL, XFA, XFE, XFM, XFU, XSG", 0,
+  "ZTO", "Brazil unbranded", 0        
 );
-if (prop("csc-g930f.prop","selected.0")=="2") then
+if (prop("csc-g93xx.prop","selected.0")=="2") then
   writetmpfile("csc.prop","install=101");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="3") then
+if (prop("csc-g93xx.prop","selected.0")=="3") then
   writetmpfile("csc.prop","install=102");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="4") then
+if (prop("csc-g93xx.prop","selected.0")=="4") then
   writetmpfile("csc.prop","install=103");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="5") then
+if (prop("csc-g93xx.prop","selected.0")=="5") then
   writetmpfile("csc.prop","install=104");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="6") then
+if (prop("csc-g93xx.prop","selected.0")=="6") then
   writetmpfile("csc.prop","install=105");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="7") then
+if (prop("csc-g93xx.prop","selected.0")=="7") then
   writetmpfile("csc.prop","install=106");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="8") then
+if (prop("csc-g93xx.prop","selected.0")=="8") then
   writetmpfile("csc.prop","install=107");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="9") then
+if (prop("csc-g93xx.prop","selected.0")=="9") then
   writetmpfile("csc.prop","install=108");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="10") then
+if (prop("csc-g93xx.prop","selected.0")=="10") then
   writetmpfile("csc.prop","install=109");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="11") then
+if (prop("csc-g93xx.prop","selected.0")=="11") then
   writetmpfile("csc.prop","install=110");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="12") then
+if (prop("csc-g93xx.prop","selected.0")=="12") then
   writetmpfile("csc.prop","install=111");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="13") then
+if (prop("csc-g93xx.prop","selected.0")=="13") then
   writetmpfile("csc.prop","install=112");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="14") then
+if (prop("csc-g93xx.prop","selected.0")=="14") then
   writetmpfile("csc.prop","install=113");
 endif;
-if (prop("csc-g930f.prop","selected.0")=="15") then
+if (prop("csc-g93xx.prop","selected.0")=="15") then
   writetmpfile("csc.prop","install=114");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="16") then
+if (prop("csc-g93xx.prop","selected.0")=="16") then
   writetmpfile("csc.prop","install=115");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="17") then
+if (prop("csc-g93xx.prop","selected.0")=="17") then
   writetmpfile("csc.prop","install=116");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="18") then
+if (prop("csc-g93xx.prop","selected.0")=="18") then
   writetmpfile("csc.prop","install=117");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="19") then
+if (prop("csc-g93xx.prop","selected.0")=="19") then
   writetmpfile("csc.prop","install=118");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="20") then
+if (prop("csc-g93xx.prop","selected.0")=="20") then
   writetmpfile("csc.prop","install=119");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="21") then
+if (prop("csc-g93xx.prop","selected.0")=="21") then
   writetmpfile("csc.prop","install=120");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="22") then
+if (prop("csc-g93xx.prop","selected.0")=="22") then
   writetmpfile("csc.prop","install=121");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="23") then
+if (prop("csc-g93xx.prop","selected.0")=="23") then
   writetmpfile("csc.prop","install=122");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="24") then
+if (prop("csc-g93xx.prop","selected.0")=="24") then
   writetmpfile("csc.prop","install=123");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="25") then
+if (prop("csc-g93xx.prop","selected.0")=="25") then
   writetmpfile("csc.prop","install=124");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="26") then
+if (prop("csc-g93xx.prop","selected.0")=="26") then
   writetmpfile("csc.prop","install=125");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="27") then
+if (prop("csc-g93xx.prop","selected.0")=="27") then
   writetmpfile("csc.prop","install=126");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="28") then
+if (prop("csc-g93xx.prop","selected.0")=="28") then
   writetmpfile("csc.prop","install=127");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="29") then
+if (prop("csc-g93xx.prop","selected.0")=="29") then
   writetmpfile("csc.prop","install=128");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="30") then
+if (prop("csc-g93xx.prop","selected.0")=="30") then
   writetmpfile("csc.prop","install=129");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="31") then
+if (prop("csc-g93xx.prop","selected.0")=="31") then
   writetmpfile("csc.prop","install=130");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="32") then
+if (prop("csc-g93xx.prop","selected.0")=="32") then
   writetmpfile("csc.prop","install=131");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="33") then
+if (prop("csc-g93xx.prop","selected.0")=="33") then
   writetmpfile("csc.prop","install=132");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="34") then
+if (prop("csc-g93xx.prop","selected.0")=="34") then
   writetmpfile("csc.prop","install=133");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="35") then
+if (prop("csc-g93xx.prop","selected.0")=="35") then
   writetmpfile("csc.prop","install=134");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="36") then
+if (prop("csc-g93xx.prop","selected.0")=="36") then
   writetmpfile("csc.prop","install=135");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="37") then
+if (prop("csc-g93xx.prop","selected.0")=="37") then
   writetmpfile("csc.prop","install=136");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="38") then
+if (prop("csc-g93xx.prop","selected.0")=="38") then
   writetmpfile("csc.prop","install=137");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="39") then
+if (prop("csc-g93xx.prop","selected.0")=="39") then
   writetmpfile("csc.prop","install=138");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="40") then
+if (prop("csc-g93xx.prop","selected.0")=="40") then
   writetmpfile("csc.prop","install=139");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="41") then
+if (prop("csc-g93xx.prop","selected.0")=="41") then
   writetmpfile("csc.prop","install=140");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="42") then
+if (prop("csc-g93xx.prop","selected.0")=="42") then
   writetmpfile("csc.prop","install=141");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="43") then
+if (prop("csc-g93xx.prop","selected.0")=="43") then
   writetmpfile("csc.prop","install=142");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="44") then
+if (prop("csc-g93xx.prop","selected.0")=="44") then
   writetmpfile("csc.prop","install=143");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="45") then
+if (prop("csc-g93xx.prop","selected.0")=="45") then
   writetmpfile("csc.prop","install=144");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="46") then
+if (prop("csc-g93xx.prop","selected.0")=="46") then
   writetmpfile("csc.prop","install=145");
 endif;  
-if (prop("csc-g930f.prop","selected.0")=="47") then
+if (prop("csc-g93xx.prop","selected.0")=="47") then
   writetmpfile("csc.prop","install=146");
 endif;                                              
-if (prop("csc-g930f.prop","selected.0")=="48") then
+if (prop("csc-g93xx.prop","selected.0")=="48") then
   writetmpfile("csc.prop","install=147");
-endif;                                      
+endif;
+if (prop("csc-g93xx.prop","selected.0")=="49") then
+  writetmpfile("csc.prop","install=148");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="50") then
+  writetmpfile("csc.prop","install=149");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="51") then
+  writetmpfile("csc.prop","install=150");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="52") then
+  writetmpfile("csc.prop","install=151");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="53") then
+  writetmpfile("csc.prop","install=152");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="54") then
+  writetmpfile("csc.prop","install=153");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="55") then
+  writetmpfile("csc.prop","install=154");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="56") then
+  writetmpfile("csc.prop","install=155");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="57") then
+  writetmpfile("csc.prop","install=156");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="58") then
+  writetmpfile("csc.prop","install=157");
+endif;    
+if (prop("csc-g93xx.prop","selected.0")=="59") then
+  writetmpfile("csc.prop","install=158");
+endif;    
 
 endif;
 
