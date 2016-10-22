@@ -3012,7 +3012,8 @@
 			<package name="com.samsung.android.incallui" seinfo="platform" />
 			<package name="com.android.incallui" seinfo="platform" />
 			<package name="com.android.server.telecom" seinfo="platform" />
-		    <package name="com.android.providers.contacts" seinfo="shared" />
+			<package name="com.android.providers.contacts" seinfo="shared" />
+			<package name="com.kddi.android.evc" seinfo="filtered_untrusted" />
 		</method>
 
 		<method name="isBluetoothEnterpriseContactSharingDisabled">
@@ -3024,6 +3025,7 @@
 			<package name="com.android.incallui" seinfo="platform" />
 			<package name="com.android.server.telecom" seinfo="platform" />
 			<package name="com.android.providers.contacts" seinfo="shared" />
+			<package name="com.kddi.android.evc" seinfo="filtered_untrusted" />
 		</method>
 	</service>
 

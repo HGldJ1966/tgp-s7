@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<VERSION value="160830"/>
+<VERSION value="160901"/>
 <LIST>
   <HASHVALUE name="20ea88fbb7b65d287ce42d1bdafb2be594489e04586bbcbd3f1065f9d7f1fe3a">
     <HASH value="ALL"/>
@@ -16,6 +16,7 @@
   <HASHVALUE name="560e0499d0a48a88fee711a54d6f885a32b88840eb250039cd3908faffcd74fa">
     <HASH value="fa7f5ee3c930d7a0c6866a33928ae58a64ad7afd11be6fb365bb651a7a571bcd"/>
     <HASH value="194f9dc688d98dac00dbe136792e0a004d1e9a2331c1d8e3d767d7ba061b8ea4"/>
+    <HASH value="8f7a693bd497c53904c470cd2274ac1ca453fbba311bd12f6468179983c60551"/>
   </HASHVALUE>
   <HASHVALUE name="7db5a95db5b61ae33e48eedd4d11b01a12fab5e971ebdeef59af510fa1aad957">
     <HASH value="ALL"/>

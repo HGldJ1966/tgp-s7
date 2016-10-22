@@ -1,4 +1,4 @@
-Mon, 12 Sep 2016 20:10:45 +0900
+Fri, 07 Oct 2016 12:17:47 +0900
 :TZ_DRM
 Number of modules
 10
@@ -7,7 +7,7 @@ system/bin/mediaserver
 system/bin/drmserver
 9a3fe990b07b7f8056ec44f85f831936102aec27635b1f2efd23a85e579354d1
 system/lib/libstagefright.so
-7f5f3384641025f5ecc568fd1b1627ff53f308d87faed3c6d5da0dd052b1bceb
+1a3bd635a7df3bf0ba2149923e5845f50f4e86390baa81e4a8e5c47a3d6b9af2
 system/lib/libdrmframework.so
 8f497899a1be58d954684ea3f4b954b487ab3bebc6495a4b16c16e83d55b6076
 system/lib/libdrmframework_jni.so
@@ -34,7 +34,7 @@ fbc5f2d8213e16b11236a5c6ee00817fc80ddfbe73c9407c88155f685919ca82
 system/lib64/libMcRegistry.so
 0d009fe0702725c2ee444c91b4829c7f02497a6fda65f2c1b8c312227290c75b
 system/bin/mcDriverDaemon
-5f62dc96984e3730feed4195662b413eb8b32982878cbb73d868e8cd1dbc9d2f
+e5974ecf57b1790a072e1474af403bd52b792eae8201d25daca1550f53980e04
 system/lib/libbauthtzcommon.so
 fc917390ecb2caa88352dfd5809aac887cc0136f8a703468b1e9325bb485a4f9
 system/lib/libsynaFpSensorTestNwd.so
@@ -67,13 +67,13 @@ e8eed0bc60179813686b6d35f57b3ee8621b9a685a44fef6d0ace38c04a99968
 system/bin/gatekeeperd
 4ec7acffd9b8458e867005c3ac69f74414aff24a1ebdbfd9d0a8f536b00e698f
 system/bin/mcDriverDaemon
-5f62dc96984e3730feed4195662b413eb8b32982878cbb73d868e8cd1dbc9d2f
+e5974ecf57b1790a072e1474af403bd52b792eae8201d25daca1550f53980e04
 system/bin/dalvikvm
 5e5e9e3aee3584c788a088faf298531eda7cf0fc017cf0d47d1f6b08724deacc
 system/bin/sfotahelper
 912942acbe6c0ec0eaa67ab9503d31748139b3ed48628e9cb525613347fc8719
 system/bin/vold
-ab355a6324c766f4acbc07aae01a77497365376afc24d65c48a4a902b4dd3cd0
+de53588d0243277f9b188898b87b9a3d62c33b94d7cfc908c124ad49f8e39079
 system/bin/wpa_supplicant
 34d76bf071211c75d1ca5e4184965fd12027be121da25b42e5da6e0de481eb91
 system/bin/app_process
@@ -119,7 +119,7 @@ b61197702985a1d2762f15e659484833063fffe94b32dce81db5c8862693e257
 system/lib64/libcrypto.so
 cdddc229fc0b6b462f1593e7895cb25c9f140563b8982b0a718767a31bd6305d
 system/lib64/libdirencryption.so
-aa149d22c12afe2b3f0826ddbc237fe77f0a0c607324999beaca1888038ade8e
+a7e2910060e8728c8a3e403e88ce5b8b6b1968e08e233c007729649b94510551
 system/lib64/libjavacrypto.so
 d21a6c7a0de721736c8d24896d1032d3cce974289d45624b9ee2a0670e0e7b1d
 system/lib64/libkeyutils.so
@@ -140,5 +140,4 @@ system/lib64/libsecure_storage.so
 308b77d21b764812a3a2b8694fc74c574c5f21457fe8c6540b2d3fff233b5664
 system/lib64/libsecure_storage_jni.so
 4ce91043c107d7c5779de5b76e320fe03420684d8d988b8079eafed323a3d625
-›*ÿå‰J›=ƒñiZS†6Idªãh3¡¤‹K+¥šþ>Yªí„
-éŠc!,qðžq“WËé²RgfýnŽªmpºµªq~]x3AýÈêR›Î`òú6}¹?6;·¸;rìeû^SfõÅLÞÊi`b	ESÕO²ºÎµRöföê±’öf¢m×á¶ÂÍ(À”ù=|ºDß7Ç Cï°*­vüãWšT2ù½°ÂS6ïDµÙ¾‚4vzHËQý$ïieß.Yª¶yÀ„7ab/Á0&ˆL2ªÉZ˜r´Z¹ÃÜoš[7'¼f^ÛnVñ5)÷F›„‹œ¤n8y
+…t¨S	T˜šø2â÷%MdF$ØÑ(­ó±¦¿€:ÜfD'aà4np¦)™ö¿iwa@€Ho¿ëº¹gM–Gãcs‘}°	êðíXñ-°Æ¢4åM²ÇÒ™l«n9"×³/õ˜ß5×é±¼¬°Á¥õŽ9Ý¿Iþ®n×xÿÝ¬Ú+ÚºõyVøœËÀqúØ¾-µÖ³'"gY˜ƒ;@îþ  æ å½7æä5L›«µØ-+^ˆÈ(è¡¡;~ÔÕ7kIÜLãbÁQ¶]Ø¦$×Z–}ägEi|Aë‘œŒÎµ¾÷†ÿøµµŽÖP®/ÿ”þ7i«=!Æ¡

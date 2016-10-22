@@ -158,8 +158,8 @@
 /system/app/KnoxAttestationAgent/KnoxAttestationAgent.apk
 /system/app/BluetoothMidiService/BluetoothMidiService.apk
 /system/app/SplitSoundService/SplitSoundService.apk
-/system/app/PartnerBookmarksProvider/PartnerBookmarksProvider.apk
 /system/app/EdmSimPinService/EdmSimPinService.apk
+/system/app/PartnerBookmarksProvider/PartnerBookmarksProvider.apk
 /system/app/EdmVpnServices/EdmVpnServices.apk
 /system/app/PacProcessor/PacProcessor.apk
 /system/app/ImsTelephonyService/ImsTelephonyService.apk
