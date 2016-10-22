@@ -1,25 +1,26 @@
 #!/bin/bash
-# TGP Build Script for Linux v1.00 by djb77 / XDA-Developers
+# TGP Build Script for Linux v1.01 by djb77 / XDA-Developers
 
-export RDIR=$(pwd)
+export rootdir=$(pwd)
 export tgpfirmware=$(<tools/firmware)
 export tgpversion=$(<tools/version)
-export ZIP_NAME='TGP_G93xx_'$tgpfirmware'_v'$tgpversion'.zip'
+export zipname='TGP_G93xx_'$tgpfirmware'_v'$tgpversion'.zip'
+export heapsize=$(free -m | gawk '/^Mem:/{print $2-500}')
 
 echo ""
-echo "Building Zip File $ZIP_NAME"
+echo "Building Zip File $zipname"
 cd build
-zip -gq $ZIP_NAME -r META-INF/ -x "*~"
-zip -gq $ZIP_NAME -r tgp/ -x "*~"
-mv $ZIP_NAME $RDIR/$ZIP_NAME
-cd $RDIR
+zip -gq $zipname -r META-INF/ -x "*~"
+zip -gq $zipname -r tgp/ -x "*~"
+mv $zipname $rootdir/$zipname
+cd $rootdir
 if [ -n `which java` ]; then
 echo "Java Detected, Signing Zip File"
-mv $ZIP_NAME old$ZIP_NAME
-java -Xmx1024m -jar $RDIR/tools/signapk-linux.jar -w $RDIR/tools/testkey.x509.pem $RDIR/tools/testkey.pk8 old$ZIP_NAME $ZIP_NAME
-rm old$ZIP_NAME
+mv $zipname old$zipname
+java -Xmx${heapsize}m -jar $rootdir/tools/signapk.jar -w $rootdir/tools/testkey.x509.pem $rootdir/tools/testkey.pk8 old$zipname $zipname
+rm old$zipname
 fi
-chmod a+r $ZIP_NAME
+chmod a+r $zipname
 echo ""
 echo "Done."
 echo ""
