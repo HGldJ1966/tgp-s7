@@ -982,7 +982,10 @@ endif;
     ui_print(" ");
     ui_print("@Flashing SuperKernel");
     run_program("/tmp/bin/kernel");
+    package_extract_dir("tgp/kernels/data-super", "/data");    
     package_extract_dir("tgp/kernels/system", "/system");
+    package_extract_dir("tgp/kernels/system-super", "/system");
+    set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
     set_metadata_recursive("/system/app/mcRegistry", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
     if file_getprop("/tmp/aroma/variant.prop","install") == "1"
     then

@@ -13,10 +13,10 @@
 # --------
 ini_set("force_colorspace","rgba");
 ini_set("rom_name", "The Galaxy Project");
-ini_set("rom_version", "5.21 XXU1BPIF");
+ini_set("rom_version", "6.00 XXU1BPJ7");
 ini_set("rom_author", "djb77");
 ini_set("rom_device", "SM-G930F");
-ini_set("rom_date", "October 18th 2016");
+ini_set("rom_date", "October 22nd 2016");
 
 # SETUP
 # -----
