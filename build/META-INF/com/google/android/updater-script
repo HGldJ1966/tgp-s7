@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.50
+# TGP AROMA INSTALLER v6.60
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -1015,25 +1015,10 @@ endif;
 
 set_progress(0.85);
 
-# INSTALL MAGISK
-# --------------
-if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
+# INSTALL SUPERSU / BUSYBOX
+# -------------------------
+if file_getprop("/tmp/aroma/root-supersu.prop","install") == "1"
 then
-  ui_print(" ");
-  ui_print("@Setting up Magisk");
-	delete("/data/su.img");  
-  package_extract_dir("tgp/installers/magisk-files/data", "/data");
-  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
-  run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk/magisk.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk");
-  run_program("/sbin/busybox", "sh", "/tmp/installers/magisk/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk/magisk.zip");
-endif;
-
-# SUPERSU / BUSYBOX
-# -----------------
-if file_getprop("/tmp/aroma/root.prop","install") == "1"
-then
-  if file_getprop("/tmp/aroma/magisk.prop","install") == "0"
-  then
     ui_print(" ");
     ui_print("@Setting up SuperSU");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/supersu/supersu.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/supersu");
@@ -1042,16 +1027,34 @@ then
     ui_print("@Setting up Busybox");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/busybox/busybox.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/busybox");
     run_program("/sbin/busybox", "sh", "/tmp/installers/busybox/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/busybox/busybox.zip");
-  endif;
-    if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
-  then
-    ui_print(" ");
-    ui_print("@Setting up SU for Magisk");
-    package_extract_dir("tgp/installers/magisk-su-files/data", "/data");
-    set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);        
-    run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-su/magisk-su.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-su");
-    run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-su/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-su/magisk-su.zip");
-  endif;
+endif;
+
+# INSTALL MAGISK
+# --------------
+if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Setting up Magisk");  
+  package_extract_dir("tgp/installers/magisk-files/data", "/data");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
+  run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk/magisk.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk");
+  run_program("/sbin/busybox", "sh", "/tmp/installers/magisk/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk/magisk.zip");
+endif;
+
+# INSTALL PHH SUPERUSER / BUSYBOX
+# -------------------------------
+if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Setting up PHH Superuser");
+  package_extract_dir("tgp/installers/phh-files/data", "/data");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);        
+  run_program("/sbin/busybox", "unzip", "/tmp/installers/phh/phh.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/phh");
+  run_program("/sbin/busybox", "sh", "/tmp/installers/phh/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/phh/phh.zip");
+  ui_print(" ");
+  ui_print("@Setting up Busybox");
+  run_program("/sbin/busybox", "unzip", "/tmp/installers/busybox/busybox.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/busybox");
+  run_program("/sbin/busybox", "sh", "/tmp/installers/busybox/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/busybox/busybox.zip");  
 endif;
 
 # XPOSED FRAMEWORK + APPS
