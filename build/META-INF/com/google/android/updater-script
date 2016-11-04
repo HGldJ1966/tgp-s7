@@ -25,12 +25,21 @@ then
 endif;
 mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/USERDATA", "/data");
 mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/CACHE", "/cache");
+mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/EFS", "/efs");
 ui_print(" Copying Installer Files");
 package_extract_dir("tgp/bin", "/tmp/bin");
 package_extract_dir("tgp/installers", "/tmp/installers");
 set_perm_recursive(0, 0, 0777, 0777, "/tmp/bin");
 set_perm_recursive(0, 0, 0777, 0777, "/tmp/installers");
 set_progress(0.1);
+
+# BACKUP EFS
+# ----------
+if file_getprop("/tmp/aroma/efs.prop","install") == "1"
+then
+  ui_print(" Backing up EFS");
+  run_program("/tmp/bin/efs");
+endif;
 
 # INSTALL ROM
 # -----------

@@ -23,6 +23,7 @@ ini_set("rom_date", "November 2nd, 2016");
 writetmpfile("variant.prop","install=0");
 writetmpfile("g930x.prop","install=0");
 writetmpfile("wipe.prop","install=0");
+writetmpfile("efs.prop","install=0");
 writetmpfile("rominstall.prop","install=0");
 writetmpfile("modinstall.prop","install=0");
 writetmpfile("shutdownanimation.prop","install=0");
@@ -130,8 +131,14 @@ selectbox(
   "Standard Install", "Installs ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video apps, and TGPKernel.", 1,
   "Full Install", "Installs ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video apps, and TGPKernel. THe shutdown animation is also removed.", 0,
   "Extreme Install", "Installs ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video apps, and SuperKernel. THe shutdown animation is also removed.", 0,
-  "Custom Install", "Customise your installation.", 0
+  "Custom Install", "Customise your installation.", 0,
+  "Do you want to perform an EFS Backup?", "", 2,
+  "Yes", "", 1,
+  "No", "", 0
 );
+if (prop("rom.prop","selected.2")=="1") then
+  writetmpfile("efs.prop","install=1");
+endif;
 if (prop("rom.prop","selected.1")=="1") then
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("kernel.prop","install=1");
