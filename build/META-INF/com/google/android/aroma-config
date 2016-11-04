@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.60
+# TGP AROMA INSTALLER v6.61
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -13,10 +13,10 @@
 # --------
 ini_set("force_colorspace","rgba");
 ini_set("rom_name", "The Galaxy Project");
-ini_set("rom_version", "6.11 XXU1BPJ7");
+ini_set("rom_version", "6.12 XXU1BPJ7");
 ini_set("rom_author", "djb77");
 ini_set("rom_device", "SM-G930F");
-ini_set("rom_date", "November 2nd, 2016");
+ini_set("rom_date", "November 4th, 2016");
 
 # SETUP
 # -----
@@ -86,9 +86,9 @@ selectbox(
     "Galaxy S7 SM-G930F", "", 1,
     "Galaxy S7 SM-G930FQ", "", 0,    
     "Galaxy S7 SM-G930W8", "", 0,
-    "Galaxy S7 SM-G935F", "", 0,
-    "Galaxy S7 SM-G935FQ", "", 0,    
-    "Galaxy S7 SM-G935W8", "", 0,    
+    "Galaxy S7 Edge SM-G935F", "", 0,
+    "Galaxy S7 Edge SM-G935FQ", "", 0,    
+    "Galaxy S7 Edge SM-G935W8", "", 0,    
     "Do you want the installer to perform a Full Wipe", "", 2,
     "No", "", 1,
     "Yes", "", 0                   
@@ -129,8 +129,8 @@ selectbox(
   "Select which ROM version you want installed", "", 2,
   "Lite Install", "Installs ROM and TGPKernel.", 0,
   "Standard Install", "Installs ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video apps, and TGPKernel.", 1,
-  "Full Install", "Installs ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video apps, and TGPKernel. THe shutdown animation is also removed.", 0,
-  "Extreme Install", "Installs ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video apps, and SuperKernel. THe shutdown animation is also removed.", 0,
+  "Full Install", "Installs ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video apps, and TGPKernel.", 0,
+  "Extreme Install", "Installs ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video apps, and SuperKernel.", 0,
   "Custom Install", "Customise your installation.", 0,
   "Do you want to perform an EFS Backup?", "", 2,
   "Yes", "", 1,
