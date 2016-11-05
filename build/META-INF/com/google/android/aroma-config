@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.61
+# TGP AROMA INSTALLER v6.62
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -16,7 +16,7 @@ ini_set("rom_name", "The Galaxy Project");
 ini_set("rom_version", "6.12 XXU1BPJ7");
 ini_set("rom_author", "djb77");
 ini_set("rom_device", "SM-G930F");
-ini_set("rom_date", "November 4th, 2016");
+ini_set("rom_date", "November 6th, 2016");
 
 # SETUP
 # -----
@@ -127,10 +127,10 @@ selectbox(
   "@default",
   "rom.prop",
   "Select which ROM version you want installed", "", 2,
-  "Lite Install", "Installs ROM and TGPKernel.", 0,
-  "Standard Install", "Installs ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video apps, and TGPKernel.", 1,
-  "Full Install", "Installs ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video apps, and TGPKernel.", 0,
-  "Extreme Install", "Installs ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video apps, and SuperKernel.", 0,
+  "Lite Install", "ROM and TGPKernel.", 0,
+  "Standard Install", "ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video, and TGPKernel.", 1,
+  "Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video, and TGPKernel.", 0,
+  "Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video, and SuperKernel.", 0,
   "Custom Install", "Customise your installation.", 0,
   "Do you want to perform an EFS Backup?", "", 2,
   "Yes", "", 1,

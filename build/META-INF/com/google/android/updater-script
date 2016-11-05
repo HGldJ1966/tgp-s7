@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.61
+# TGP AROMA INSTALLER v6.62
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -18,11 +18,8 @@ unmount("/system");
 unmount("/preload");
 unmount("/cache");
 unmount("/data");
-if file_getprop("/tmp/aroma/rominstall.prop","install") == "0"
-then
-  mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/SYSTEM", "/system");
-  mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/HIDDEN", "/preload");
-endif;
+mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/SYSTEM", "/system");
+mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/HIDDEN", "/preload");
 mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/USERDATA", "/data");
 mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/CACHE", "/cache");
 mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/EFS", "/efs");
@@ -52,7 +49,9 @@ then
   endif;
   if file_getprop("/tmp/aroma/wipe.prop","install") == "1" then
     ui_print(" Formatting Device (Full Wipe)");
-  endif;      
+  endif;
+  unmount("/system");
+  unmount("/preload");      
   format("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/SYSTEM", "0", "/system");
   format("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/HIDDEN", "0", "/preload");
   mount("ext4", "EMMC", "/dev/block/platform/155a0000.ufs/by-name/SYSTEM", "/system");
