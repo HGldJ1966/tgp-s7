@@ -178,6 +178,8 @@ examples:
 
 <!-- SEAU Austrailia -->
     <spnOverride numeric="50502" imsi_subset="9" spn_display_rule="SPN_RULE_SHOW_SPN" spn_override_only_on="50502"/>
+    <spnOverride numeric="50571" spn_display_rule="SPN_RULE_SHOW_SPN" spn_override_only_on="50501,50571,50572"/>
+    <spnOverride numeric="50572" spn_display_rule="SPN_RULE_SHOW_SPN" spn_override_only_on="50501,50571,50572"/>
 
 <!-- SENZ New Zealand SKINNY -->
     <spnOverride numeric="53005" imsi_subset="204" spn_display_rule="SPN_RULE_SHOW_SPN" spn_override_only_on="53005"/>

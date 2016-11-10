@@ -110,6 +110,12 @@ auditfilter untrusted_app surfaceflinger:unix_stream_socket ioctl;
 # com.google.android.apps.docs.editors.docs
 auditfilter untrusted_app unlabeled:file 0x800000;
 
+#P161010-02585 N930FXXU2BPJ4 system/etc/ lsattr command
+#avc:  denied  { ioctl } for  pid=686 comm="lsattr" path="/system/etc/ppp" dev="dm-0" ino=1647 ioctlcmd=6601 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:ppp_system_file:s0 tclass=dir permissive=0
+#avc:  denied  { ioctl } for  pid=686 comm="lsattr" path="/system/etc/security/.drm" dev="dm-0" ino=1779 ioctlcmd=6601 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:drm_security_system_file:s0 tclass=dir permissive=0 
+allow untrusted_app drm_security_system_file:dir ioctl;
+allow untrusted_app ppp_system_file:dir ioctl;
+
 #P160610-04329 / com.UCMobile.intl / Grace US VERIZON / SEPF_SECMOBILE_6.0.1_0013
 auditfilter untrusted_app system_data_file:dir setattr;
 
@@ -121,6 +127,15 @@ auditfilter { filtered_untrusted_app isolated_app llk_untrusted_app sec_untruste
 
 # P160415-05796 /data/data/com.android.settings/app_fonts/sans.loc / user0 path but it is not necessary for plugin_app
 auditfilter mrst_plugin_app system_app_data_file:dir search; name="com.android.settings"
+
+# P160924-00845 SM-C9000_CHN_CHC
+# com.tencent.qqlive:services
+# avc:  denied  { setattr } for  pid=8500 comm="TMAssistantDown" name="default" dev="tmpfs" ino=243 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:storage_file:s0 tclass=dir permissive=0
+auditfilter untrusted_app storage_file:dir setattr;
+# com.ts.batterystatus
+# avc:  denied  { read } for  pid=14691 comm="s.batterystatus" name="temperature" dev="sysfs" ino=21508 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs_sec:s0 tclass=file permissive=0
+auditfilter untrusted_app sysfs_sec:file read;
+
 
 ########### non-appdomain ###########
 
@@ -205,7 +220,10 @@ auditfilter sgdisk { firmware_file hidden_file }:file read;
 # avc:  denied  { read } for  pid=708 comm="sgdisk" path="/dev/block/sda" dev="tmpfs" ino=15696 scontext=u:r:sgdisk:s0 tcontext=u:object_r:emmcblk_device:s0 tclass=blk_file permissive=0
 auditfilter sgdisk emmcblk_device:blk_file read;
 
-
+### mnld ### 
+# Mediatek deamon Booting denial
+# avc:  denied  { search } for  pid=277 comm="mnld" name="com.android.angryGps" dev="mmcblk0p29" ino=337 scontext=u:r:mnld:s0 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=dir permissive=1 SEPF_SECMOBILE_6.0.1_0014
+auditfilter mnld app_data_file:dir search;
 
 ##### AVC LOGS #####
 
