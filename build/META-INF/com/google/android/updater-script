@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.64
+# TGP AROMA INSTALLER v6.65
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -70,20 +70,6 @@ then
   package_extract_dir("tgp/system_mods/system", "/system");
   delete("/system/etc/init.d/placeholder");
 
-  # EXTRA FILES FOR MODS
-  if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
-  then
-    package_extract_dir("tgp/installers/magisk-files/data", "/data");
-  endif;
-  if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
-  then
-    package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
-  endif;
-  if file_getprop("/tmp/aroma/xposed.prop","install") == "1"
-  then
-    package_extract_dir("tgp/installers/xposed-files/data", "/data");
-  endif;
-
   # VARIANTS
   if file_getprop("/tmp/aroma/variant.prop","install") == "1"
   then
@@ -124,6 +110,20 @@ then
   run_program("/tmp/bin/sdcard_fix");
 
 endif;
+
+  # EXTRA FILES FOR MODS
+  if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
+  then
+    package_extract_dir("tgp/installers/magisk-files/data", "/data");
+  endif;
+  if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
+  then
+    package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
+  endif;
+  if file_getprop("/tmp/aroma/xposed.prop","install") == "1"
+  then
+    package_extract_dir("tgp/installers/xposed-files/data", "/data");
+  endif;
   
 # CSC
 # ---
