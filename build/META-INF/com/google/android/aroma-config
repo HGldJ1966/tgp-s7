@@ -58,6 +58,7 @@ writetmpfile("extra-samsung-10.prop","install=0");
 writetmpfile("extra-samsung-11.prop","install=0");
 writetmpfile("extra-samsung-12.prop","install=0");
 writetmpfile("extra-samsung-13.prop","install=0");
+writetmpfile("extra-samsung-14.prop","install=0");
 writetmpfile("kernel.prop","install=0");
 writetmpfile("csc.prop","install=0");
 
@@ -203,7 +204,6 @@ checkbox(
     "Install phh Superuser", "", 1,    
     "Install Xposed Framework + Apps", "", 1,
     "Install ADB", "", 0,
-    "Install Good Lock", "", 0,
     "Install Modified Camera", "", 0,
     "Install The Sound Mod", "", 1
 );
@@ -231,16 +231,12 @@ if (prop("mods1.prop","item.1.7")=="1") then
 endif;
 if (prop("mods1.prop","item.1.8")=="1") then
     writetmpfile("modinstall.prop","install=1");
-    writetmpfile("goodlock.prop","install=1");
-endif;
-if (prop("mods1.prop","item.1.9")=="1") then
-    writetmpfile("modinstall.prop","install=1");
     writetmpfile("camera.prop","install=1");
 endif;
 
 # THE SOUND MOD PAGE
 # ------------------
-if (prop("mods1.prop","item.1.10")=="1") then
+if (prop("mods1.prop","item.1.9")=="1") then
     selectbox(
       "THE GALAXY PROJECT G93xx",
       "Please select the Sound Mod you want",
@@ -396,6 +392,7 @@ checkbox(
     "Install All Extra Samsung Apps", "", 0,
     "Car Mode", "", 0,
     "Email", "", 0,
+    "Good Lock", "", 0,
     "KIES", "", 0,
     "Samsung Cloud", "", 0,    
     "Samsung Gear", "", 0,
@@ -463,6 +460,10 @@ endif;
 if (prop("extra.prop","item.1.14")=="1") then
   writetmpfile("extra-samsung.prop","install=1");
   writetmpfile("extra-samsung-13.prop","install=1");
+endif;
+if (prop("extra.prop","item.1.15")=="1") then
+  writetmpfile("extra-samsung.prop","install=1");
+  writetmpfile("extra-samsung-14.prop","install=1");
 endif;
 
 # KERNEL / RECOVERY INSTALL PAGE
@@ -745,6 +746,7 @@ if (prop("extra-samsung-all.prop","install")=="1") then
   writetmpfile("extra-samsung-11.prop","install=1");
   writetmpfile("extra-samsung-12.prop","install=1");
   writetmpfile("extra-samsung-13.prop","install=1");
+  writetmpfile("extra-samsung-14.prop","install=1");
 endif;
 
 # INSTALL PROCESS

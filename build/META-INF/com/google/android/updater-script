@@ -884,53 +884,58 @@ then
   endif;
   if file_getprop("/tmp/aroma/extra-samsung-3.prop","install") == "1"
   then
+    ui_print(" Installing Good Lock");
+    package_extract_dir("tgp/apps/samsung/GoodLock", "/data/app");
+  endif;
+  if file_getprop("/tmp/aroma/extra-samsung-4.prop","install") == "1"
+  then
     ui_print(" Installing Kies");
     package_extract_dir("tgp/apps/samsung/Kies", "/system/priv-app/Kies");
   endif;
-    if file_getprop("/tmp/aroma/extra-samsung-4.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-5.prop","install") == "1"
   then
     ui_print(" Installing Samsung Cloud");
     package_extract_dir("tgp/apps/samsung/CloudGateway", "/system/app/CloudGateway");
     package_extract_dir("tgp/apps/samsung/SamsungCloud", "/system/priv-app/SamsungCloud");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-5.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-6.prop","install") == "1"
   then
     ui_print(" Installing Samsung Gear");
     package_extract_dir("tgp/apps/samsung/GearManagerStub", "/system/app/GearManagerStub");
     package_extract_dir("tgp/apps/samsung/GearManager", "/system/priv-app/GearManager");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-6.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-7.prop","install") == "1"
   then
     ui_print(" Installing Samsung Members");
     package_extract_dir("tgp/apps/samsung/GalaxyCare", "/system/priv-app/GalaxyCare");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-7.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-8.prop","install") == "1"
   then
     ui_print(" Installing Samsung Music");
     package_extract_dir("tgp/apps/samsung/Music", "/system/app/Music");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-8.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-9.prop","install") == "1"
   then
     ui_print(" Installing Samsung Video");
     package_extract_dir("tgp/apps/samsung/Video", "/system/app/Video");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-9.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-10.prop","install") == "1"
   then
     ui_print(" Installing S Health");
     package_extract_dir("tgp/apps/samsung/SHealth4", "/system/priv-app/SHealth4");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-10.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-11.prop","install") == "1"
   then
     ui_print(" Installing Smart Switch");
     package_extract_dir("tgp/apps/samsung/SmartSwitch", "/system/priv-app/SmartSwitch");
   endif;  
   
-  if file_getprop("/tmp/aroma/extra-samsung-11.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-12.prop","install") == "1"
   then
     ui_print(" Installing S Memo");
     package_extract_dir("tgp/apps/samsung/SecMemo3", "/system/app/SecMemo3");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-12.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-13.prop","install") == "1"
   then
     ui_print(" Installing S Voice");
     package_extract_dir("tgp/apps/samsung/SVoice_1.0", "/system/priv-app/SVoice_1.0");
@@ -944,7 +949,7 @@ then
     package_extract_dir("tgp/apps/samsung/SVoicePLM_1.0", "/system/priv-app/SVoicePLM_1.0");
     package_extract_dir("tgp/apps/samsung/VoiceWakeUp", "/system/priv-app/VoiceWakeUp");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-13.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-14.prop","install") == "1"
   then
     ui_print(" Installing Text-To-Speech Engine");
     package_extract_dir("tgp/apps/samsung/SamsungTTS", "/system/app/SamsungTTS");
@@ -969,14 +974,6 @@ then
   delete("/system/media/shutdown.qmg");
   delete("/system/media/video/shutdown.qmg");
   delete("/system/media/video/shutdown/shutdown.qmg");
-endif;
-
-# GOOD LOCK
-# ---------
-if file_getprop("/tmp/aroma/goodlock.prop","install") == "1"
-then
-  ui_print(" Installing Good Lock");
-  package_extract_dir("tgp/apps/goodlock/data", "/data");
 endif;
 
 # MODDED CAMERA
