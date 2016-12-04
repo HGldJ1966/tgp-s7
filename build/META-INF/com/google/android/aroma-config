@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.65
+# TGP AROMA INSTALLER v6.70
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -35,6 +35,7 @@ writetmpfile("adb.prop","install=0");
 writetmpfile("goodlock.prop","install=0");
 writetmpfile("camera.prop","install=0");
 writetmpfile("soundmod.prop","install=0");
+writetmpfile("soundmod-magisk.prop","install=0");
 writetmpfile("5way.prop","install=0");
 writetmpfile("5way-magisk.prop","install=0");
 writetmpfile("adblock.prop","install=0");
@@ -58,7 +59,6 @@ writetmpfile("extra-samsung-10.prop","install=0");
 writetmpfile("extra-samsung-11.prop","install=0");
 writetmpfile("extra-samsung-12.prop","install=0");
 writetmpfile("extra-samsung-13.prop","install=0");
-writetmpfile("extra-samsung-14.prop","install=0");
 writetmpfile("kernel.prop","install=0");
 writetmpfile("csc.prop","install=0");
 
@@ -205,7 +205,7 @@ checkbox(
     "Install Xposed Framework + Apps", "", 1,
     "Install ADB", "", 0,
     "Install Modified Camera", "", 0,
-    "Install The Sound Mod", "", 1
+    "Install Ad Blocking", "", 1
 );
 if (prop("mods1.prop","item.1.1")=="1") then
     writetmpfile("rominstall.prop","install=1");
@@ -233,57 +233,10 @@ if (prop("mods1.prop","item.1.8")=="1") then
     writetmpfile("modinstall.prop","install=1");
     writetmpfile("camera.prop","install=1");
 endif;
-
-# THE SOUND MOD PAGE
-# ------------------
-if (prop("mods1.prop","item.1.9")=="1") then
-    selectbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select the Sound Mod you want",
-      "@default",
-      "soundmod_page.prop",
-      "The Sound Mod Options", "", 2,
-      "Stock Sound Settings", "", 0,
-      "Volume Mod Level 1", "", 0,           
-      "Volume Mod Level 2", "", 0,
-      "Volume Mod Level 3", "", 0,    
-      "Dual Speaker Level 0", "", 0,
-      "Dual Speaker Level 1", "", 0,           
-      "Dual Speaker Level 2", "", 0,
-      "Dual Speaker Level 3", "", 1    
-  );
-  if (prop("soundmod_page.prop","selected.1")=="1") then
-      writetmpfile("soundmod.prop","install=1");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="2") then
+  if (prop("mods1.prop","item.1.9")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=2");
+      writetmpfile("adblock.prop","install=1");
   endif;
-  if (prop("soundmod_page.prop","selected.1")=="3") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=3");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="4") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=4");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="5") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=5");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="6") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=6");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="7") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=7");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="8") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=8");
-  endif;
- endif;
  
 # MODS INSTALL - PAGE 2 (STANDARD MODS)
 # -------------------------------------
@@ -295,7 +248,7 @@ if (prop("mods1.prop","item.1.3")=="0") then
       "mods2.prop",
       "Additional Mods", "", 2,
       "Install 5way Reboot Menu", "", 0,    
-      "Install Ad Blocking", "", 1,
+      "Install The Sound Mod", "", 1,
       "Permanently enable Unknown Sources", "", 0,
       "Install Screen Overlay Fix", "", 0,
       "Install 3Minit Battery Mod", "", 0,
@@ -307,7 +260,7 @@ if (prop("mods1.prop","item.1.3")=="0") then
   endif;
   if (prop("mods2.prop","item.1.2")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("adblock.prop","install=1");
+      writetmpfile("soundmod.prop","install=99");
   endif;
   if (prop("mods2.prop","item.1.3")=="1") then
       writetmpfile("modinstall.prop","install=1");
@@ -338,9 +291,10 @@ if (prop("mods1.prop","item.1.3")=="1") then
       "Magisk Enabled Mods", "", 2,
       "Install 5way Reboot Menu", "", 1,    
       "3Minit Battery Mod", "", 1,      
+      "Install The Sound Mod", "", 1,            
       "Standard Mods", "", 2,
       "Install 5way Reboot Menu", "", 0,    
-      "Install Ad Blocking", "", 0,
+      "Install The Sound Mod", "", 0,
       "Permanently enable Unknown Sources", "", 0,
       "Install Screen Overlay Fix", "", 0,
       "Install 3Minit Battery Mod", "", 0,
@@ -354,13 +308,16 @@ if (prop("mods1.prop","item.1.3")=="1") then
       writetmpfile("3minit.prop","install=0");
       writetmpfile("3minit-magisk.prop","install=1");
   endif;  
+  if (prop("mods3.prop","item.1.3")=="1") then
+    writetmpfile("soundmod-magisk.prop","install=1");
+  endif;    
   if (prop("mods3.prop","item.2.1")=="1") then
     writetmpfile("modinstall.prop","install=1");
     writetmpfile("5way.prop","install=1");
   endif;
   if (prop("mods3.prop","item.2.2")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("adblock.prop","install=1");
+      writetmpfile("soundmod.prop","install=99");
   endif;
   if (prop("mods3.prop","item.2.3")=="1") then
       writetmpfile("modinstall.prop","install=1");
@@ -380,6 +337,97 @@ if (prop("mods1.prop","item.1.3")=="1") then
   endif;
 endif;
 
+# THE SOUND MOD PAGE (MAGISK)
+# ---------------------------
+if (prop("soundmod-magisk.prop","install")=="1") then
+    selectbox(
+      "THE GALAXY PROJECT G93xx",
+      "Please select the Sound Mod you want",
+      "@default",
+      "soundmod_page.prop",
+      "The Sound Mod Options", "", 2,
+      "Skip", "", 0,
+      "Volume Mod Level 1", "", 0,           
+      "Volume Mod Level 2", "", 0,
+      "Volume Mod Level 3", "", 0,    
+      "Dual Speaker Level 0", "", 0,
+      "Dual Speaker Level 1", "", 0,           
+      "Dual Speaker Level 2", "", 0,
+      "Dual Speaker Level 3", "", 1    
+  );
+  if (prop("soundmod_page.prop","selected.1")=="2") then
+      writetmpfile("soundmod.prop","install=12");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="3") then
+      writetmpfile("soundmod.prop","install=13");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="4") then
+      writetmpfile("soundmod.prop","install=14");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="5") then
+      writetmpfile("soundmod.prop","install=15");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="6") then
+      writetmpfile("soundmod.prop","install=16");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="7") then
+      writetmpfile("soundmod.prop","install=17");
+  endif;
+  if (prop("soundmod_page.prop","selected.1")=="8") then
+      writetmpfile("soundmod.prop","install=18");
+  endif;
+ endif;
+ 
+ # THE SOUND MOD PAGE (NORMAL)
+# ---------------------------
+if (prop("soundmod.prop","install")=="99") then
+    selectbox(
+      "THE GALAXY PROJECT G93xx",
+      "Please select the Sound Mod you want",
+      "@default",
+      "soundmod_page2.prop",
+      "The Sound Mod Options", "", 2,
+      "Stock Sound Settings", "", 0,
+      "Volume Mod Level 1", "", 0,           
+      "Volume Mod Level 2", "", 0,
+      "Volume Mod Level 3", "", 0,    
+      "Dual Speaker Level 0", "", 0,
+      "Dual Speaker Level 1", "", 0,           
+      "Dual Speaker Level 2", "", 0,
+      "Dual Speaker Level 3", "", 1    
+  );
+  if (prop("soundmod_page2.prop","selected.1")=="1") then
+      writetmpfile("soundmod.prop","install=1");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="2") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=2");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="3") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=3");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="4") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=4");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="5") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=5");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="6") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=6");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="7") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=7");
+  endif;
+  if (prop("soundmod_page2.prop","selected.1")=="8") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("soundmod.prop","install=8");
+  endif;
+ endif;
                                 
 # EXTRA APPS PAGE
 # ---------------
@@ -392,7 +440,6 @@ checkbox(
     "Install All Extra Samsung Apps", "", 0,
     "Car Mode", "", 0,
     "Email", "", 0,
-    "Good Lock", "", 0,
     "KIES", "", 0,
     "Samsung Cloud", "", 0,    
     "Samsung Gear", "", 0,
@@ -460,10 +507,6 @@ endif;
 if (prop("extra.prop","item.1.14")=="1") then
   writetmpfile("extra-samsung.prop","install=1");
   writetmpfile("extra-samsung-13.prop","install=1");
-endif;
-if (prop("extra.prop","item.1.15")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-14.prop","install=1");
 endif;
 
 # KERNEL / RECOVERY INSTALL PAGE
@@ -746,7 +789,6 @@ if (prop("extra-samsung-all.prop","install")=="1") then
   writetmpfile("extra-samsung-11.prop","install=1");
   writetmpfile("extra-samsung-12.prop","install=1");
   writetmpfile("extra-samsung-13.prop","install=1");
-  writetmpfile("extra-samsung-14.prop","install=1");
 endif;
 
 # INSTALL PROCESS

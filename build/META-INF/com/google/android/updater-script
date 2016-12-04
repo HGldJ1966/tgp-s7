@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.65
+# TGP AROMA INSTALLER v6.70
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -884,58 +884,53 @@ then
   endif;
   if file_getprop("/tmp/aroma/extra-samsung-3.prop","install") == "1"
   then
-    ui_print(" Installing Good Lock");
-    package_extract_dir("tgp/apps/samsung/GoodLock", "/data/app");
-  endif;
-  if file_getprop("/tmp/aroma/extra-samsung-4.prop","install") == "1"
-  then
     ui_print(" Installing Kies");
     package_extract_dir("tgp/apps/samsung/Kies", "/system/priv-app/Kies");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-5.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-4.prop","install") == "1"
   then
     ui_print(" Installing Samsung Cloud");
     package_extract_dir("tgp/apps/samsung/CloudGateway", "/system/app/CloudGateway");
     package_extract_dir("tgp/apps/samsung/SamsungCloud", "/system/priv-app/SamsungCloud");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-6.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-5.prop","install") == "1"
   then
     ui_print(" Installing Samsung Gear");
     package_extract_dir("tgp/apps/samsung/GearManagerStub", "/system/app/GearManagerStub");
     package_extract_dir("tgp/apps/samsung/GearManager", "/system/priv-app/GearManager");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-7.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-6.prop","install") == "1"
   then
     ui_print(" Installing Samsung Members");
     package_extract_dir("tgp/apps/samsung/GalaxyCare", "/system/priv-app/GalaxyCare");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-8.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-7.prop","install") == "1"
   then
     ui_print(" Installing Samsung Music");
     package_extract_dir("tgp/apps/samsung/Music", "/system/app/Music");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-9.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-8.prop","install") == "1"
   then
     ui_print(" Installing Samsung Video");
     package_extract_dir("tgp/apps/samsung/Video", "/system/app/Video");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-10.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-9.prop","install") == "1"
   then
     ui_print(" Installing S Health");
     package_extract_dir("tgp/apps/samsung/SHealth4", "/system/priv-app/SHealth4");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-11.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-10.prop","install") == "1"
   then
     ui_print(" Installing Smart Switch");
     package_extract_dir("tgp/apps/samsung/SmartSwitch", "/system/priv-app/SmartSwitch");
   endif;  
   
-  if file_getprop("/tmp/aroma/extra-samsung-12.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-11.prop","install") == "1"
   then
     ui_print(" Installing S Memo");
     package_extract_dir("tgp/apps/samsung/SecMemo3", "/system/app/SecMemo3");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-13.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-12.prop","install") == "1"
   then
     ui_print(" Installing S Voice");
     package_extract_dir("tgp/apps/samsung/SVoice_1.0", "/system/priv-app/SVoice_1.0");
@@ -949,7 +944,7 @@ then
     package_extract_dir("tgp/apps/samsung/SVoicePLM_1.0", "/system/priv-app/SVoicePLM_1.0");
     package_extract_dir("tgp/apps/samsung/VoiceWakeUp", "/system/priv-app/VoiceWakeUp");
   endif;
-  if file_getprop("/tmp/aroma/extra-samsung-14.prop","install") == "1"
+  if file_getprop("/tmp/aroma/extra-samsung-13.prop","install") == "1"
   then
     ui_print(" Installing Text-To-Speech Engine");
     package_extract_dir("tgp/apps/samsung/SamsungTTS", "/system/app/SamsungTTS");
@@ -1249,6 +1244,52 @@ then
   run_program("/tmp/bin/magisk-3minit");
   run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-3minit/magisk-3minit.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-3minit");
   run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-3minit/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-3minit/magisk-3minit.zip");  
+endif;
+
+# THE SOUND MOD (MAGISK)
+# ----------------------
+if file_getprop("/tmp/aroma/soundmod-magisk.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Installing The Sound Mod (for Magisk)");
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "12"
+  then
+    ui_print(" Installing Volume Mod Level 1");  
+    package_extract_dir("tgp/mods/soundmod/volume-l1", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "13"
+  then
+    ui_print(" Installing Volume Mod Level 2");  
+    package_extract_dir("tgp/mods/soundmod/volume-l2", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "14"
+  then
+    ui_print(" Installing Volume Mod Level 3");  
+    package_extract_dir("tgp/mods/soundmod/volume-l3", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "15"
+  then
+    ui_print(" Installing Dual Speaker Mod Level 0");  
+    package_extract_dir("tgp/mods/soundmod/dual-l0", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "16"
+  then
+    ui_print(" Installing Dual Speaker Mod Level 1");  
+    package_extract_dir("tgp/mods/soundmod/dual-l1", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;                                                    
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "17"
+  then
+    ui_print(" Installing Dual Speaker Mod Level 2");  
+    package_extract_dir("tgp/mods/soundmod/dual-l2", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  if file_getprop("/tmp/aroma/soundmod.prop","install") == "18"
+  then
+    ui_print(" Installing Dual Speaker Mod Level 3");  
+    package_extract_dir("tgp/mods/soundmod/dual-l3", "/tmp/installers/magisk-soundmod/import/system/etc");  
+  endif;
+  run_program("/tmp/bin/magisk-soundmod");
+  run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-soundmod/magisk-soundmod.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-soundmod");    
+  run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-soundmod/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-soundmod/magisk-soundmod.zip");
 endif;
 
 # FINISH
