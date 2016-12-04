@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0010</CSCEdition>
+    <CSCEdition>ED0014</CSCEdition>
     <Country>Canada</Country>
     <CountryISO>CA</CountryISO>
     <Region>NA</Region>
@@ -10,13 +10,11 @@
     <NetworkInfo>
       <MCCMNC>302220</MCCMNC>
       <NetworkName>Telus</NetworkName>
-      <CodeType>HEX</CodeType>
       <SubsetCode>84</SubsetCode>
     </NetworkInfo>
     <NetworkInfo>
       <MCCMNC>302221</MCCMNC>
       <NetworkName>Telus</NetworkName>
-      <CodeType>HEX</CodeType>
       <SubsetCode>84</SubsetCode>
     </NetworkInfo>
   </GeneralInfo>
@@ -118,6 +116,7 @@
           <Home>auto</Home>
           <Roaming>manual</Roaming>
         </MmsReceiving>
+        <NbMMSView>1</NbMMSView>
         <MMSView>
           <MessageUserAgent>SAMSUNG-ANDROID-MMS/1.2.0</MessageUserAgent>
           <MessageUaProfUrl>http://wap.samsungmobile.com/uaprof/SAMSUNGUAPROFC.xml</MessageUaProfUrl>
@@ -624,7 +623,7 @@
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
-        <MTUSize>1500</MTUSize>
+        <MTUSize>1440</MTUSize>
         <Proxy>
           <EnableFlag>off</EnableFlag>
         </Proxy>
@@ -643,7 +642,7 @@
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
-        <MTUSize>1500</MTUSize>
+        <MTUSize>1440</MTUSize>
         <Proxy>
           <EnableFlag>on</EnableFlag>
           <ServAddr>mmscproxy.mobility.ca</ServAddr>
@@ -663,7 +662,7 @@
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
-        <MTUSize>1500</MTUSize>
+        <MTUSize>1440</MTUSize>
         <Proxy>
           <EnableFlag>off</EnableFlag>
         </Proxy>
