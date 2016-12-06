@@ -3,9 +3,9 @@
 /system/app/SBrowser_4_LATEST/SBrowser_4_LATEST.apk
 /system/app/OneNote/OneNote.apk
 /system/app/Maps/Maps.apk
+/system/app/Photos/Photos.apk
 /system/app/Hangouts/Hangouts.apk
 /system/app/SamsungIMEv3/SamsungIMEv3.apk
-/system/app/Photos/Photos.apk
 /system/app/YouTube/YouTube.apk
 /system/app/GoogleTTS/GoogleTTS.apk
 /system/app/Drive/Drive.apk
@@ -177,8 +177,8 @@
 /system/priv-app/PhotoStudio_WQHD_Hero/PhotoStudio_WQHD_Hero.apk
 /system/priv-app/GalaxyApps_3xh/GalaxyApps_3xh.apk
 /system/priv-app/TeleService/TeleService.apk
-/system/priv-app/VoiceWakeUp/VoiceWakeUp.apk
 /system/priv-app/SecContacts_M/SecContacts_M.apk
+/system/priv-app/VoiceWakeUp/VoiceWakeUp.apk
 /system/priv-app/SecMms_Epic_Common/SecMms_Epic_Common.apk
 /system/priv-app/PeopleStripe/PeopleStripe.apk
 /system/priv-app/GalaxyCare/GalaxyCare.apk
@@ -213,8 +213,8 @@
 /system/priv-app/SmartManagerSDK/SmartManagerSDK.apk
 /system/priv-app/AODService/AODService.apk
 /system/priv-app/SamsungPayStub/SamsungPayStub.apk
-/system/priv-app/FotaAgent/FotaAgent.apk
 /system/priv-app/TouchWizHome_2016/TouchWizHome_2016.apk
+/system/priv-app/FotaAgent/FotaAgent.apk
 /system/priv-app/SamsungVideoPlayer/SamsungVideoPlayer.apk
 /system/priv-app/SecMyFiles/SecMyFiles.apk
 /system/priv-app/Hearingdro_V5/Hearingdro_V5.apk
