@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.70
+# TGP AROMA INSTALLER v6.71
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -106,9 +106,6 @@ then
     package_extract_dir("tgp/system_mods_g930x/system", "/system");
   endif;
   
-  ui_print(" Fixing SDCard Permissions");  
-  run_program("/tmp/bin/sdcard_fix");
-
 endif;
 
   # EXTRA FILES FOR MODS

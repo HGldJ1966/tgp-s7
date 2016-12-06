@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.70
+# TGP AROMA INSTALLER v6.71
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -85,10 +85,10 @@ selectbox(
     "start.prop",
     "Device Model", "", 2,
     "Galaxy S7 SM-G930F", "", 1,
-    "Galaxy S7 SM-G930FQ", "", 0,    
+    "Galaxy S7 SM-G930FD", "", 0,    
     "Galaxy S7 SM-G930W8", "", 0,
     "Galaxy S7 Edge SM-G935F", "", 0,
-    "Galaxy S7 Edge SM-G935FQ", "", 0,    
+    "Galaxy S7 Edge SM-G935FD", "", 0,    
     "Galaxy S7 Edge SM-G935W8", "", 0,    
     "Do you want the installer to perform a Full Wipe", "", 2,
     "No", "", 1,
