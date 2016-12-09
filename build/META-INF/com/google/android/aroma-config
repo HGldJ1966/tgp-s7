@@ -189,7 +189,8 @@ if (prop("rom.prop","selected.1")=="4") then
   writetmpfile("kernel.prop","install=2");    
 endif;
 
-
+# CUSTOM INSTALL
+# --------------
 if (prop("rom.prop","selected.1")=="5") then
 
 # ROOT / MAGISK SELECTION
@@ -203,14 +204,13 @@ selectbox(
     "No", "", 0,
     "Yes", "", 1,
     "Install Magisk", "", 2,               
-    "No, "", 0,
+    "No", "", 0,
     "Yes", "", 1,    
     "Root Selection", "", 2,
     "PHH's Superuser (for Magisk)", "", 0,
     "SuperSU (Systemless)", "", 1,
     "SuperSU (System Mode)", "", 0
 );
-
 if (prop("root.prop","selected.1")=="2") then
   writetmpfile("rominstall.prop","install=1");
 endif;
@@ -221,10 +221,10 @@ if (prop("root.prop","selected.3")=="1") then
   writetmpfile("root-phh.prop","install=1");
 endif;
 if (prop("root.prop","selected.3")=="2") then
-  writetmpfile("root-superuser.prop","install=1");
+  writetmpfile("root-supersu.prop","install=1");
 endif;
 if (prop("root.prop","selected.3")=="3") then
-  writetmpfile("root-superuser_system.prop","install=1");
+  writetmpfile("root-supersu_system.prop","install=1");
 endif;
 
 # MODS INSTALL - PAGE 1
@@ -240,7 +240,9 @@ checkbox(
     "Install ADB", "", 0,
     "Install Modified Camera", "", 0,
     "Install Ad Blocking", "", 1,
-    "Install IOS Emojis", "", 0            
+    "Install IOS Emojis", "", 0,
+    "Permanently enable Unknown Sources", "", 0,
+    "Install Screen Overlay Fix", "", 1            
 );
 if (prop("mods1.prop","item.1.1")=="1") then
   writetmpfile("modinstall.prop","install=1");
@@ -259,11 +261,19 @@ endif;
 if (prop("mods1.prop","item.1.5")=="1") then
     writetmpfile("modinstall.prop","install=1");
     writetmpfile("adblock.prop","install=1");
-ndif;      
+endif;      
 if (prop("mods1.prop","item.1.6")=="1") then
     writetmpfile("modinstall.prop","install=1");
     writetmpfile("iosemojis.prop","install=1");
-endif;      
+endif;
+  if (prop("mods1.prop","item.1.7")=="1") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("unknownsources.prop","install=1");
+  endif;
+  if (prop("mods1.prop","item.1.8")=="1") then
+      writetmpfile("modinstall.prop","install=1");
+      writetmpfile("screenoverlay.prop","install=1");
+  endif;      
 
  
 # MODS INSTALL - PAGE 2 (STANDARD MODS)
@@ -276,10 +286,8 @@ if (prop("magisk.prop","install")=="0") then
       "mods2.prop",
       "Additional Mods", "", 2,
       "Install 5way Reboot Menu", "", 0,    
-      "Install The Sound Mod", "", 1,
-      "Permanently enable Unknown Sources", "", 0,
-      "Install Screen Overlay Fix", "", 0,
-      "Install 3Minit Battery Mod", "", 0
+      "Install 3Minit Battery Mod", "", 0,
+      "Install The Sound Mod", "", 1
   );
   if (prop("mods2.prop","item.1.1")=="1") then
       writetmpfile("modinstall.prop","install=1");
@@ -287,19 +295,11 @@ if (prop("magisk.prop","install")=="0") then
   endif;
   if (prop("mods2.prop","item.1.2")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=99");
+      writetmpfile("3minit.prop","install=1");
   endif;
   if (prop("mods2.prop","item.1.3")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("unknownsources.prop","install=1");
-  endif;
-  if (prop("mods2.prop","item.1.4")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("screenoverlay.prop","install=1");
-  endif;
-  if (prop("mods2.prop","item.1.5")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("3minit.prop","install=1");
+      writetmpfile("soundmod.prop","install=99");
   endif;
 endif;
 
@@ -317,10 +317,8 @@ if (prop("magisk.prop","install")=="1") then
       "Install The Sound Mod", "", 1,            
       "Standard Mods", "", 2,
       "Install 5way Reboot Menu", "", 0,    
-      "Install The Sound Mod", "", 0,
-      "Permanently enable Unknown Sources", "", 0,
-      "Install Screen Overlay Fix", "", 0,
-      "Install 3Minit Battery Mod", "", 0
+      "Install 3Minit Battery Mod", "", 0,
+      "Install The Sound Mod", "", 0      
   );
   if (prop("mods3.prop","item.1.1")=="1") then
     writetmpfile("5way.prop","install=0");
@@ -339,20 +337,12 @@ if (prop("magisk.prop","install")=="1") then
   endif;
   if (prop("mods3.prop","item.2.2")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=99");
+      writetmpfile("3minit.prop","install=1");
   endif;
   if (prop("mods3.prop","item.2.3")=="1") then
       writetmpfile("modinstall.prop","install=1");
-      writetmpfile("unknownsources.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.2.4")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("screenoverlay.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.2.5")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("3minit.prop","install=1");
-  endif;
+      writetmpfile("soundmod.prop","install=99");
+  endif;  
 endif;
 
 # THE SOUND MOD PAGE (MAGISK)

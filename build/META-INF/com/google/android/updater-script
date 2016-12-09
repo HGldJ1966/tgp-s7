@@ -914,7 +914,7 @@ then
   if file_getprop("/tmp/aroma/extra-samsung-9.prop","install") == "1"
   then
     ui_print(" Installing S Health");
-    package_extract_dir("tgp/apps/samsung/SHealth4", "/system/priv-app/SHealth4");
+    package_extract_dir("tgp/apps/samsung/SHealth5", "/system/priv-app/SHealth5");
   endif;
   if file_getprop("/tmp/aroma/extra-samsung-10.prop","install") == "1"
   then
