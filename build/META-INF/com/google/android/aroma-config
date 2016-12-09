@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.71
+# TGP AROMA INSTALLER v6.80
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -29,6 +29,7 @@ writetmpfile("modinstall.prop","install=0");
 writetmpfile("shutdownanimation.prop","install=0");
 writetmpfile("magisk.prop","install=0");
 writetmpfile("root-supersu.prop","install=0");
+writetmpfile("root-supersu_system.prop","install=0");
 writetmpfile("root-phh.prop","install=0");
 writetmpfile("xposed.prop","install=0");
 writetmpfile("adb.prop","install=0");
@@ -188,59 +189,86 @@ if (prop("rom.prop","selected.1")=="4") then
   writetmpfile("kernel.prop","install=2");    
 endif;
 
+
+if (prop("rom.prop","selected.1")=="5") then
+
+# ROOT / MAGISK SELECTION
+# -----------------------
+selectbox(
+    "THE GALAXY PROJECT G93xx",
+    "Custom Installation - Page 1/2",
+    "@default",
+    "root.prop",
+    "Install ROM", "", 2,
+    "No", "", 0,
+    "Yes", "", 1,
+    "Install Magisk", "", 2,               
+    "No, "", 0,
+    "Yes", "", 1,    
+    "Root Selection", "", 2,
+    "PHH's Superuser (for Magisk)", "", 0,
+    "SuperSU (Systemless)", "", 1,
+    "SuperSU (System Mode)", "", 0
+);
+
+if (prop("root.prop","selected.1")=="2") then
+  writetmpfile("rominstall.prop","install=1");
+endif;
+if (prop("root.prop","selected.2")=="2") then
+  writetmpfile("magisk.prop","install=1");
+endif;
+if (prop("root.prop","selected.3")=="1") then
+  writetmpfile("root-phh.prop","install=1");
+endif;
+if (prop("root.prop","selected.3")=="2") then
+  writetmpfile("root-superuser.prop","install=1");
+endif;
+if (prop("root.prop","selected.3")=="3") then
+  writetmpfile("root-superuser_system.prop","install=1");
+endif;
+
 # MODS INSTALL - PAGE 1
 # ---------------------
-if (prop("rom.prop","selected.1")=="5") then
 checkbox(
     "THE GALAXY PROJECT G93xx",
     "Custom Installation - Page 1/2",
     "@default",
     "mods1.prop",
     "Custom installation", "", 2,
-    "Install ROM", "", 1,
     "Remove Shutdown Animation", "", 1,
-    "Install Magisk", "", 1,               
-    "Install SuperSU", "", 0,
-    "Install phh Superuser", "", 1,    
     "Install Xposed Framework + Apps", "", 1,
     "Install ADB", "", 0,
     "Install Modified Camera", "", 0,
-    "Install Ad Blocking", "", 1
+    "Install Ad Blocking", "", 1,
+    "Install IOS Emojis", "", 0            
 );
 if (prop("mods1.prop","item.1.1")=="1") then
-    writetmpfile("rominstall.prop","install=1");
+  writetmpfile("modinstall.prop","install=1");
+  writetmpfile("shutdownanimation.prop","install=1");
 endif;
 if (prop("mods1.prop","item.1.2")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("shutdownanimation.prop","install=1");
+  writetmpfile("xposed.prop","install=1");
 endif;
 if (prop("mods1.prop","item.1.3")=="1") then
-    writetmpfile("magisk.prop","install=1");
+  writetmpfile("adb.prop","install=1");
 endif;
 if (prop("mods1.prop","item.1.4")=="1") then
-    writetmpfile("root-supersu.prop","install=1");
+  writetmpfile("modinstall.prop","install=1");
+  writetmpfile("camera.prop","install=1");
 endif;
 if (prop("mods1.prop","item.1.5")=="1") then
-    writetmpfile("root-phh.prop","install=1");
-endif;
-if (prop("mods1.prop","item.1.6")=="1") then
-    writetmpfile("xposed.prop","install=1");
-endif;
-if (prop("mods1.prop","item.1.7")=="1") then
-    writetmpfile("adb.prop","install=1");
-endif;
-if (prop("mods1.prop","item.1.8")=="1") then
     writetmpfile("modinstall.prop","install=1");
-    writetmpfile("camera.prop","install=1");
-endif;
-  if (prop("mods1.prop","item.1.9")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("adblock.prop","install=1");
-  endif;
+    writetmpfile("adblock.prop","install=1");
+ndif;      
+if (prop("mods1.prop","item.1.6")=="1") then
+    writetmpfile("modinstall.prop","install=1");
+    writetmpfile("iosemojis.prop","install=1");
+endif;      
+
  
 # MODS INSTALL - PAGE 2 (STANDARD MODS)
 # -------------------------------------
-if (prop("mods1.prop","item.1.3")=="0") then
+if (prop("magisk.prop","install")=="0") then
   checkbox(
       "THE GALAXY PROJECT G93xx",
     "Custom Installation - Page 2/2",
@@ -251,8 +279,7 @@ if (prop("mods1.prop","item.1.3")=="0") then
       "Install The Sound Mod", "", 1,
       "Permanently enable Unknown Sources", "", 0,
       "Install Screen Overlay Fix", "", 0,
-      "Install 3Minit Battery Mod", "", 0,
-      "Install IOS Emojis", "", 0        
+      "Install 3Minit Battery Mod", "", 0
   );
   if (prop("mods2.prop","item.1.1")=="1") then
       writetmpfile("modinstall.prop","install=1");
@@ -274,15 +301,11 @@ if (prop("mods1.prop","item.1.3")=="0") then
       writetmpfile("modinstall.prop","install=1");
       writetmpfile("3minit.prop","install=1");
   endif;
-  if (prop("mods2.prop","item.1.6")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("iosemojis.prop","install=1");
-  endif;
 endif;
 
 # MODS INSTALL - PAGE 2 (STANDARD / MAGISK MODS)
 # ----------------------------------------------
-if (prop("mods1.prop","item.1.3")=="1") then
+if (prop("magisk.prop","install")=="1") then
   checkbox(
       "THE GALAXY PROJECT G93xx",
     "Custom Installation - Page 2/2",
@@ -297,8 +320,7 @@ if (prop("mods1.prop","item.1.3")=="1") then
       "Install The Sound Mod", "", 0,
       "Permanently enable Unknown Sources", "", 0,
       "Install Screen Overlay Fix", "", 0,
-      "Install 3Minit Battery Mod", "", 0,
-      "Install IOS Emojis", "", 0                     
+      "Install 3Minit Battery Mod", "", 0
   );
   if (prop("mods3.prop","item.1.1")=="1") then
     writetmpfile("5way.prop","install=0");
@@ -330,10 +352,6 @@ if (prop("mods1.prop","item.1.3")=="1") then
   if (prop("mods3.prop","item.2.5")=="1") then
       writetmpfile("modinstall.prop","install=1");
       writetmpfile("3minit.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.2.6")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-    writetmpfile("iosemojis.prop","install=1");
   endif;
 endif;
 
