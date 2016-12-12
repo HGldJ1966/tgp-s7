@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.80
+# TGP AROMA INSTALLER v6.90
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -60,6 +60,15 @@ writetmpfile("extra-samsung-10.prop","install=0");
 writetmpfile("extra-samsung-11.prop","install=0");
 writetmpfile("extra-samsung-12.prop","install=0");
 writetmpfile("extra-samsung-13.prop","install=0");
+writetmpfile("xposed-apps.prop","install=1");
+writetmpfile("xposed-all.prop","install=0");
+writetmpfile("xposed-1.prop","install=0");
+writetmpfile("xposed-2.prop","install=0");
+writetmpfile("xposed-3.prop","install=0");
+writetmpfile("xposed-4.prop","install=0");
+writetmpfile("xposed-5.prop","install=0");
+writetmpfile("xposed-6.prop","install=0");
+writetmpfile("xposed-7.prop","install=0");
 writetmpfile("kernel.prop","install=0");
 writetmpfile("csc.prop","install=0");
 
@@ -274,7 +283,58 @@ endif;
       writetmpfile("modinstall.prop","install=1");
       writetmpfile("screenoverlay.prop","install=1");
   endif;      
-
+ 
+ # XPOSED APPS
+# -----------
+if (prop("xposed.prop","install")=="1") then
+  checkbox(
+      "THE GALAXY PROJECT G93xx",
+    "Xposed Apps Installation",
+      "@default",
+      "xposed-appspage.prop",
+      "Xposed Apps", "", 2,
+      "Install All Xposed Apps", "", 0,    
+      "Install App Settings", "", 0,
+      "Install GalaxyXMod", "", 0,
+      "Install GravityBox", "", 1,
+      "Install Lucky Patcher", "", 0,
+      "Install Xposed Torch", "", 1,
+      "Install XTouchWiz", "", 1,
+      "Install YouTube AdAway", "", 1                                         
+  );
+  if (prop("xposed-appspage.prop","item.1.1")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-all.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.2")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-1.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.3")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-2.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.4")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-3.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.5")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-4.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.6")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-5.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.7")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-6.prop","install=1");
+  endif;
+  if (prop("xposed-appspage.prop","item.1.8")=="1") then
+      writetmpfile("xposed-apps.prop","install=1");
+      writetmpfile("xposed-7.prop","install=1");
+  endif;           
+endif;
  
 # MODS INSTALL - PAGE 2 (STANDARD MODS)
 # -------------------------------------
@@ -797,6 +857,16 @@ if (prop("extra-samsung-all.prop","install")=="1") then
   writetmpfile("extra-samsung-11.prop","install=1");
   writetmpfile("extra-samsung-12.prop","install=1");
   writetmpfile("extra-samsung-13.prop","install=1");
+endif;
+if (prop("xposed-all.prop","install")=="1") then
+  writetmpfile("xposed-apps.prop","install=1");
+  writetmpfile("xposed-1.prop","install=1");
+  writetmpfile("xposed-2.prop","install=1");
+  writetmpfile("xposed-3.prop","install=1");
+  writetmpfile("xposed-4.prop","install=1");
+  writetmpfile("xposed-5.prop","install=1");
+  writetmpfile("xposed-6.prop","install=1");
+  writetmpfile("xposed-7.prop","install=1");  
 endif;
 
 # INSTALL PROCESS

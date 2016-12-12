@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.80
+# TGP AROMA INSTALLER v6.90
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -116,10 +116,6 @@ endif;
   if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
   then
     package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
-  endif;
-  if file_getprop("/tmp/aroma/xposed.prop","install") == "1"
-  then
-    package_extract_dir("tgp/installers/xposed-files/data", "/data");
   endif;
   
 # CSC
@@ -1211,16 +1207,58 @@ then
   ui_print(" ");
   if file_getprop("/tmp/aroma/magisk.prop","install") == "0"
   then
-    ui_print("@Setting up Xposed Framework + Apps");
+    ui_print("@Setting up Xposed Framework");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/xposed/xposed.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/xposed");
     run_program("/sbin/busybox", "sh", "/tmp/installers/xposed/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/xposed/xposed.zip");
   endif;
   if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
   then
-    ui_print("@Setting up Xposed Framework + Apps for Magisk");
+    ui_print("@Setting up Xposed Framework for Magisk");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-xposed/magisk-xposed.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-xposed");
     run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-xposed/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-xposed/magisk-xposed.zip");
-  endif;  
+  endif;
+  package_extract_dir("tgp/apps/xposed/installer", "/data/app");
+  if file_getprop("/tmp/aroma/xposed-apps.prop","install") == "1"
+  then
+    ui_print(" ");
+    ui_print("@Installing Xposed Apps");
+    if file_getprop("/tmp/aroma/xposed-1.prop","install") == "1"
+    then
+       ui_print("Installing App Settings");
+       package_extract_dir("tgp/apps/xposed/appsettings", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-2.prop","install") == "1"
+    then
+       ui_print("Installing GalaxyXMod");
+       package_extract_dir("tgp/apps/xposed/galaxyxmod", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-3.prop","install") == "1"
+    then
+       ui_print("Installing GravityBox");
+       package_extract_dir("tgp/apps/xposed/gravitybox", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-4.prop","install") == "1"
+    then
+       ui_print("Installing Lucky Patcher");
+       package_extract_dir("tgp/apps/xposed/luckypatcher", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-5.prop","install") == "1"
+    then
+       ui_print("Installing Xposed Torch");
+       package_extract_dir("tgp/apps/xposed/xposedtorch", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-6.prop","install") == "1"
+    then
+       ui_print("Installing XTouchWiz");
+       package_extract_dir("tgp/apps/xposed/xtouchwiz", "/data/app");
+    endif;
+    if file_getprop("/tmp/aroma/xposed-7.prop","install") == "1"
+    then
+       ui_print("Installing YouTube AdAway");
+       package_extract_dir("tgp/apps/xposed/youtubeadaway", "/data/app");
+    endif;
+  endif;
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
 endif;
 
 # ADB
