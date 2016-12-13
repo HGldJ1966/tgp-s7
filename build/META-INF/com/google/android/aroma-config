@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.90
+# TGP AROMA INSTALLER v6.91
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -33,7 +33,6 @@ writetmpfile("root-supersu_system.prop","install=0");
 writetmpfile("root-phh.prop","install=0");
 writetmpfile("xposed.prop","install=0");
 writetmpfile("adb.prop","install=0");
-writetmpfile("goodlock.prop","install=0");
 writetmpfile("camera.prop","install=0");
 writetmpfile("soundmod.prop","install=0");
 writetmpfile("soundmod-magisk.prop","install=0");
@@ -45,21 +44,21 @@ writetmpfile("screenoverlay.prop","install=0");
 writetmpfile("3minit.prop","install=0");
 writetmpfile("3minit-magisk.prop","install=0");
 writetmpfile("iosemojis.prop","install=0");
-writetmpfile("extra-samsung.prop","install=0");
-writetmpfile("extra-samsung-all.prop","install=0");
-writetmpfile("extra-samsung-1.prop","install=0");
-writetmpfile("extra-samsung-2.prop","install=0");
-writetmpfile("extra-samsung-3.prop","install=0");
-writetmpfile("extra-samsung-4.prop","install=0");
-writetmpfile("extra-samsung-5.prop","install=0");
-writetmpfile("extra-samsung-6.prop","install=0");
-writetmpfile("extra-samsung-7.prop","install=0");
-writetmpfile("extra-samsung-8.prop","install=0");
-writetmpfile("extra-samsung-9.prop","install=0");
-writetmpfile("extra-samsung-10.prop","install=0");
-writetmpfile("extra-samsung-11.prop","install=0");
-writetmpfile("extra-samsung-12.prop","install=0");
-writetmpfile("extra-samsung-13.prop","install=0");
+writetmpfile("samsung.prop","install=0");
+writetmpfile("samsung-all.prop","install=0");
+writetmpfile("samsung-1.prop","install=0");
+writetmpfile("samsung-2.prop","install=0");
+writetmpfile("samsung-3.prop","install=0");
+writetmpfile("samsung-4.prop","install=0");
+writetmpfile("samsung-5.prop","install=0");
+writetmpfile("samsung-6.prop","install=0");
+writetmpfile("samsung-7.prop","install=0");
+writetmpfile("samsung-8.prop","install=0");
+writetmpfile("samsung-9.prop","install=0");
+writetmpfile("samsung-10.prop","install=0");
+writetmpfile("samsung-11.prop","install=0");
+writetmpfile("samsung-12.prop","install=0");
+writetmpfile("samsung-13.prop","install=0");
 writetmpfile("xposed-apps.prop","install=1");
 writetmpfile("xposed-all.prop","install=0");
 writetmpfile("xposed-1.prop","install=0");
@@ -83,11 +82,11 @@ fontresload( "1", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "14" ); #
 
 # SPLASH SCREEN
 # -------------
+theme("material_green");
 splash(3000,"splash");
 
 # CHOOSE VARIANT
 # --------------
-theme("material_gray");
 selectbox(
     "THE GALAXY PROJECT G93xx",
     "Please select the model of your Device",
@@ -131,7 +130,6 @@ endif;
 
 # ROM INSTALL
 # -----------
-theme("material_red");
 selectbox(
   "THE GALAXY PROJECT G93xx",
   "Here is a list of available options to install",
@@ -155,34 +153,40 @@ if (prop("rom.prop","selected.1")=="1") then
   writetmpfile("kernel.prop","install=1");
 endif;
 if (prop("rom.prop","selected.1")=="2") then
+  writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("magisk.prop","install=1");  
   writetmpfile("root-phh.prop","install=1");
   writetmpfile("xposed.prop","install=1");
-  writetmpfile("extra-samsung-7.prop","install=1");
-  writetmpfile("extra-samsung-8.prop","install=1");
+  writetmpfile("xposed-all.prop","install=1");    
+  writetmpfile("samsung-7.prop","install=1");
+  writetmpfile("samsung-8.prop","install=1");
   writetmpfile("kernel.prop","install=1");
 endif;
 if (prop("rom.prop","selected.1")=="3") then
+  writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("modinstall.prop","install=1");
   writetmpfile("shutdownanimation.prop","install=1");
   writetmpfile("magisk.prop","install=1");  
   writetmpfile("root-phh.prop","install=1");
   writetmpfile("xposed.prop","install=1");
+  writetmpfile("xposed-all.prop","install=1");    
   writetmpfile("soundmod.prop","install=8");  
   writetmpfile("5way-magisk.prop","install=1");
-  writetmpfile("extra-samsung-7.prop","install=1");
-  writetmpfile("extra-samsung-8.prop","install=1");  
+  writetmpfile("samsung-7.prop","install=1");
+  writetmpfile("samsung-8.prop","install=1");  
   writetmpfile("kernel.prop","install=1");
 endif;
 if (prop("rom.prop","selected.1")=="4") then
+  writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("modinstall.prop","install=1");
   writetmpfile("shutdownanimation.prop","install=1");
   writetmpfile("magisk.prop","install=1");
   writetmpfile("root-phh.prop","install=1");
   writetmpfile("xposed.prop","install=1");  
+  writetmpfile("xposed-all.prop","install=1");  
   writetmpfile("adb.prop","install=1");
   writetmpfile("goodlock.prop","install=1");
   writetmpfile("camera.prop","install=1");
@@ -192,9 +196,7 @@ if (prop("rom.prop","selected.1")=="4") then
   writetmpfile("unknownsources.prop","install=0");
   writetmpfile("screenoverlay.prop","install=0");
   writetmpfile("iosemojis.prop","install=0");
-  writetmpfile("extra-samsung-all.prop","install=1");
-  writetmpfile("extra-samsung-7.prop","install=1");
-  writetmpfile("extra-samsung-8.prop","install=1");  
+  writetmpfile("samsung-all.prop","install=1");
   writetmpfile("kernel.prop","install=2");    
 endif;
 
@@ -210,20 +212,21 @@ selectbox(
     "@default",
     "root.prop",
     "Install ROM", "", 2,
-    "No", "", 0,
     "Yes", "", 1,
+    "No", "", 0,    
     "Install Magisk", "", 2,               
-    "No", "", 0,
-    "Yes", "", 1,    
+    "Yes", "", 1,
+    "No", "", 0,        
     "Root Selection", "", 2,
     "PHH's Superuser (for Magisk)", "", 0,
     "SuperSU (Systemless)", "", 1,
-    "SuperSU (System Mode)", "", 0
+    "SuperSU (System Mode)", "", 0,
+    "No Root", "", 0    
 );
-if (prop("root.prop","selected.1")=="2") then
+if (prop("root.prop","selected.1")=="1") then
   writetmpfile("rominstall.prop","install=1");
 endif;
-if (prop("root.prop","selected.2")=="2") then
+if (prop("root.prop","selected.2")=="1") then
   writetmpfile("magisk.prop","install=1");
 endif;
 if (prop("root.prop","selected.3")=="1") then
@@ -504,8 +507,8 @@ checkbox(
     "Would you like to install any extra apps?",
     "@default",
     "extra.prop",
-    "Install Extra Samsung Apps", "", 2,
-    "Install All Extra Samsung Apps", "", 0,
+    "Install Samsung Apps", "", 2,
+    "Install All Samsung Apps", "", 0,
     "Car Mode", "", 0,
     "Email", "", 0,
     "KIES", "", 0,
@@ -521,67 +524,67 @@ checkbox(
     "Text-To-Speech", "", 0
 );
 if (prop("extra.prop","item.1.1")=="1") then
-  writetmpfile("extra-samsung-all.prop","install=1");
+  writetmpfile("samsung-all.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.2")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-1.prop","install=1");
-  writetmpfile("extra-samsung-12.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-1.prop","install=1");
+  writetmpfile("samsung-12.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.3")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-2.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-2.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.4")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-3.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-3.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.5")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-4.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-4.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.6")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-5.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-5.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.7")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-6.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-6.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.8")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-7.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-7.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.9")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-8.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-8.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.10")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-9.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-9.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.11")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-10.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-10.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.12")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-11.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-11.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.13")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-12.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-12.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.14")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-13.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-13.prop","install=1");
 endif;
 
-# KERNEL / RECOVERY INSTALL PAGE
-# -----------------------------
+# KERNEL INSTALL PAGE
+# -------------------
 selectbox(
     "THE GALAXY PROJECT G93xx",
-    "Please select a Kernel and Recovery to install",
+    "Please select a Kernel to install",
     "@default",
     "kernelpage.prop",
     "Kernel Selection", "", 2,
@@ -842,21 +845,21 @@ endif;
 
 # SETUP EXTRA APPS
 # ----------------
-if (prop("extra-samsung-all.prop","install")=="1") then
-  writetmpfile("extra-samsung.prop","install=1");
-  writetmpfile("extra-samsung-1.prop","install=1");
-  writetmpfile("extra-samsung-2.prop","install=1");
-  writetmpfile("extra-samsung-3.prop","install=1");
-  writetmpfile("extra-samsung-4.prop","install=1");
-  writetmpfile("extra-samsung-5.prop","install=1");
-  writetmpfile("extra-samsung-6.prop","install=1");
-  writetmpfile("extra-samsung-7.prop","install=1");
-  writetmpfile("extra-samsung-8.prop","install=1");
-  writetmpfile("extra-samsung-9.prop","install=1");
-  writetmpfile("extra-samsung-10.prop","install=1");
-  writetmpfile("extra-samsung-11.prop","install=1");
-  writetmpfile("extra-samsung-12.prop","install=1");
-  writetmpfile("extra-samsung-13.prop","install=1");
+if (prop("samsung-all.prop","install")=="1") then
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-1.prop","install=1");
+  writetmpfile("samsung-2.prop","install=1");
+  writetmpfile("samsung-3.prop","install=1");
+  writetmpfile("samsung-4.prop","install=1");
+  writetmpfile("samsung-5.prop","install=1");
+  writetmpfile("samsung-6.prop","install=1");
+  writetmpfile("samsung-7.prop","install=1");
+  writetmpfile("samsung-8.prop","install=1");
+  writetmpfile("samsung-9.prop","install=1");
+  writetmpfile("samsung-10.prop","install=1");
+  writetmpfile("samsung-11.prop","install=1");
+  writetmpfile("samsung-12.prop","install=1");
+  writetmpfile("samsung-13.prop","install=1");
 endif;
 if (prop("xposed-all.prop","install")=="1") then
   writetmpfile("xposed-apps.prop","install=1");
@@ -888,8 +891,7 @@ ini_set("icon_next", "@finish");
 checkviewbox(
     "THE GALAXY PROJECT G93xx",
     "<#selectbg_g><b>Installation is now complete...</b></#>\n\n"+
-    "<b>"+ini_get("rom_name")+"</b> has been installed into your device.\n\n"+
-    "Installer Status: "+getvar("retstatus")+"\n\n",
+    "<b>"+ini_get("rom_name")+"</b> has been installed.\n\n",
     "@default",
     "Reboot your device now.",
     "0",
