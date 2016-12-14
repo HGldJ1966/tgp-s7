@@ -77,6 +77,9 @@
 
 <!-- SIP -->
 
+<!-- SmartManager -->
+<CscFeature_SmartManager_ConfigSubFeatures>roguepopup|autoclean|autorestart|applock</CscFeature_SmartManager_ConfigSubFeatures>
+
 <!-- Streaming -->
 
 <!-- SystemUI -->
