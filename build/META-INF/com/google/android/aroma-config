@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.00
+# TGP AROMA INSTALLER v7.01
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -13,10 +13,10 @@
 # --------
 ini_set("force_colorspace","rgba");
 ini_set("rom_name", "The Galaxy Project");
-ini_set("rom_version", "8.00 XXU1BPL3");
+ini_set("rom_version", "8.10 XXU1BPL3");
 ini_set("rom_author", "djb77");
 ini_set("rom_device", "SM-G930F");
-ini_set("rom_date", "December 10th, 2016");
+ini_set("rom_date", "December 14th, 2016");
 
 # SETUP
 # -----
@@ -163,7 +163,7 @@ endif;
 # ---------------
 selectbox(
   "THE GALAXY PROJECT G93xx",
-  "Please select the model of your Device",
+  "Please select the options for the installer",
   "@default",
   "options.prop",    
   "Do you want the installer to perform a Full Wipe", "", 2,
@@ -173,8 +173,8 @@ selectbox(
   "Yes", "", 1,
   "No", "", 0,
   "Backup your configuration.", "", 2,
-  "Yes", "This option will make a backup of your settings you just entered, and create a config file that you can use later on.", 0,
-  "No", "", 1                         
+  "Yes", "This option will make a backup of your settings you just entered, and create a config file that you can use later on.", 1,
+  "No", "", 0
 );
 if (prop("options.prop","selected.1")=="1") then
   writetmpfile("wipe.prop","install=1"); 
@@ -190,7 +190,7 @@ endif;
 # -----------
 selectbox(
   "THE GALAXY PROJECT G93xx",
-  "Here is a list of available options to install",
+  "Here is a list of available install options",
   "@default",
   "rom.prop",
   "Select which ROM version you want installed", "", 2,
@@ -203,6 +203,7 @@ selectbox(
 if (prop("rom.prop","selected.1")=="1") then
   writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
+  writetmpfile("screenoverlay.prop","install=1");
   writetmpfile("kernel.prop","install=1");
 endif;
 if (prop("rom.prop","selected.1")=="2") then
@@ -212,6 +213,7 @@ if (prop("rom.prop","selected.1")=="2") then
   writetmpfile("root-phh.prop","install=1");
   writetmpfile("xposed.prop","install=1");
   writetmpfile("xposed-all.prop","install=1");    
+  writetmpfile("screenoverlay.prop","install=1");
   writetmpfile("samsung-7.prop","install=1");
   writetmpfile("samsung-8.prop","install=1");
   writetmpfile("kernel.prop","install=1");
@@ -227,6 +229,7 @@ if (prop("rom.prop","selected.1")=="3") then
   writetmpfile("xposed-all.prop","install=1");    
   writetmpfile("soundmod.prop","install=8");  
   writetmpfile("5way-magisk.prop","install=1");
+  writetmpfile("screenoverlay.prop","install=1");
   writetmpfile("samsung-7.prop","install=1");
   writetmpfile("samsung-8.prop","install=1");  
   writetmpfile("kernel.prop","install=1");
@@ -261,7 +264,7 @@ if (prop("rom.prop","selected.1")=="5") then
 # -----------------------
 selectbox(
     "THE GALAXY PROJECT G93xx",
-    "Custom Installation - Page 1/2",
+    "Please select from the following options",
     "@default",
     "root.prop",
     "Install ROM", "", 2,
@@ -296,7 +299,7 @@ endif;
 # ---------------------
 checkbox(
     "THE GALAXY PROJECT G93xx",
-    "Custom Installation - Page 1/2",
+    "Please select from the following options",
     "@default",
     "mods1.prop",
     "Custom installation", "", 2,
@@ -345,7 +348,7 @@ endif;
 if (prop("xposed.prop","install")=="1") then
   checkbox(
       "THE GALAXY PROJECT G93xx",
-    "Xposed Apps Installation",
+      "Xposed Apps Installation",
       "@default",
       "xposed-appspage.prop",
       "Xposed Apps", "", 2,
@@ -397,7 +400,7 @@ endif;
 if (prop("magisk.prop","install")=="0") then
   checkbox(
       "THE GALAXY PROJECT G93xx",
-    "Custom Installation - Page 2/2",
+      "Please select from the following options",
       "@default",
       "mods2.prop",
       "Additional Mods", "", 2,
@@ -424,7 +427,7 @@ endif;
 if (prop("magisk.prop","install")=="1") then
   checkbox(
       "THE GALAXY PROJECT G93xx",
-    "Custom Installation - Page 2/2",
+      "Please select from the following options",
       "@default",
       "mods3.prop",
       "Magisk Enabled Mods", "", 2,
@@ -557,7 +560,7 @@ if (prop("soundmod.prop","install")=="99") then
 # ---------------
 checkbox(
     "THE GALAXY PROJECT G93xx",
-    "Would you like to install any extra apps?",
+    "Samsung Apps Installation",
     "@default",
     "extra.prop",
     "Install Samsung Apps", "", 2,
