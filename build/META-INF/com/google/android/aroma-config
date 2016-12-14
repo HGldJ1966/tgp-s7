@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.91
+# TGP AROMA INSTALLER v7.00
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -70,6 +70,9 @@ writetmpfile("xposed-6.prop","install=0");
 writetmpfile("xposed-7.prop","install=0");
 writetmpfile("kernel.prop","install=0");
 writetmpfile("csc.prop","install=0");
+writetmpfile("backup.prop","install=0");
+writetmpfile("tgp_backup.prop","install=0");
+writetmpfile("tgp_restore.prop","install=0");
 
 # SET LANGUAGE
 # ------------
@@ -85,23 +88,54 @@ fontresload( "1", "ttf/Roboto-Regular.ttf;ttf/DroidSansFallback.ttf;", "14" ); #
 theme("material_green");
 splash(3000,"splash");
 
+# CHECK FOR CONFIG BACKUP
+# -----------------------
+restotmp("config_check","config_check");
+exec("/tmp/aroma/config_check","","","");
+if (prop("backup.prop","install")=="1") then
+  setvar(
+      "backup_text",
+      "<b>CONFIGURATION BACKUP FOUND</b>\n\n"+
+      "The installer has located a saved configuration file in the TGP folder on your Internal Memory.\n\n"+
+      "You will now be given an option to use this configuration and proceed straight to the installer, "+
+      "skipping all the installation selection screens.\n\n"+
+      "Press the <b>Next</b> button, then select <b>Yes</b> or <b>No</b> on the Popup Dialog Box."+
+      ""
+  );
+  textbox(
+      "THE GALAXY PROJECT G93xx",
+      " ",
+      "@deafult",
+      getvar("backup_text")
+  );
+  if
+    confirm(
+    "THE GALAXY PROJECT G93xx",
+    "Would you like to use your current saved configuration?",
+    "@default"
+    )=="yes"
+  then
+      writetmpfile("tgp_restore.prop","install=1");
+    else
+      writetmpfile("tgp_restore.prop","install=0");
+    endif;
+endif;
+
+if (prop("tgp_restore.prop","install")=="0") then
 # CHOOSE VARIANT
 # --------------
 selectbox(
-    "THE GALAXY PROJECT G93xx",
-    "Please select the model of your Device",
-    "@default",
-    "start.prop",
-    "Device Model", "", 2,
-    "Galaxy S7 SM-G930F", "", 1,
-    "Galaxy S7 SM-G930FD", "", 0,    
-    "Galaxy S7 SM-G930W8", "", 0,
-    "Galaxy S7 Edge SM-G935F", "", 0,
-    "Galaxy S7 Edge SM-G935FD", "", 0,    
-    "Galaxy S7 Edge SM-G935W8", "", 0,    
-    "Do you want the installer to perform a Full Wipe", "", 2,
-    "No", "", 1,
-    "Yes", "", 0                   
+  "THE GALAXY PROJECT G93xx",
+  "Please select the model of your Device",
+  "@default",
+  "start.prop",
+  "Device Model", "", 2,
+  "Galaxy S7 SM-G930F", "", 1,
+  "Galaxy S7 SM-G930FD", "", 0,    
+  "Galaxy S7 SM-G930W8", "", 0,
+  "Galaxy S7 Edge SM-G935F", "", 0,
+  "Galaxy S7 Edge SM-G935FD", "", 0,    
+  "Galaxy S7 Edge SM-G935W8", "", 0           
 );
 if (prop("start.prop","selected.1")=="1") then
   writetmpfile("variant.prop","install=1");
@@ -124,8 +158,32 @@ endif;
 if (prop("start.prop","selected.1")=="6") then
   writetmpfile("variant.prop","install=6"); 
 endif;
-if (prop("start.prop","selected.2")=="2") then
+
+# INSTALL OPTIONS
+# ---------------
+selectbox(
+  "THE GALAXY PROJECT G93xx",
+  "Please select the model of your Device",
+  "@default",
+  "options.prop",    
+  "Do you want the installer to perform a Full Wipe", "", 2,
+  "Yes", "", 0,
+  "No", "", 1,
+  "Do you want to perform an EFS Backup?", "", 2,
+  "Yes", "", 1,
+  "No", "", 0,
+  "Backup your configuration.", "", 2,
+  "Yes", "This option will make a backup of your settings you just entered, and create a config file that you can use later on.", 0,
+  "No", "", 1                         
+);
+if (prop("options.prop","selected.1")=="1") then
   writetmpfile("wipe.prop","install=1"); 
+endif;
+if (prop("options.prop","selected.2")=="1") then
+  writetmpfile("efs.prop","install=1"); 
+endif;
+if (prop("options.prop","selected.3")=="1") then
+  writetmpfile("tgp_backup.prop","install=1"); 
 endif;
 
 # ROM INSTALL
@@ -140,15 +198,10 @@ selectbox(
   "Standard Install", "ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video, and TGPKernel.", 1,
   "Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video, and TGPKernel.", 0,
   "Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video, and SuperKernel.", 0,
-  "Custom Install", "Customise your installation.", 0,
-  "Do you want to perform an EFS Backup?", "", 2,
-  "Yes", "", 1,
-  "No", "", 0
+  "Custom Install", "Customise your installation.", 0
 );
-if (prop("rom.prop","selected.2")=="1") then
-  writetmpfile("efs.prop","install=1");
-endif;
 if (prop("rom.prop","selected.1")=="1") then
+  writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("kernel.prop","install=1");
 endif;
@@ -840,6 +893,8 @@ endif;
 if (prop("csc-g93xx.prop","selected.0")=="59") then
   writetmpfile("csc.prop","install=158");
 endif;    
+
+endif;
 
 endif;
 

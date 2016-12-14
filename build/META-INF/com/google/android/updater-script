@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v6.91
+# TGP AROMA INSTALLER v7.00
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -33,6 +33,22 @@ package_extract_dir("tgp/installers", "/tmp/installers");
 set_perm_recursive(0, 0, 0777, 0777, "/tmp/bin");
 set_perm_recursive(0, 0, 0777, 0777, "/tmp/installers");
 set_progress(0.1);
+
+# BACKUP CONFIG
+# -------------
+if file_getprop("/tmp/aroma/tgp_backup.prop","install") == "1"
+then
+  ui_print(" Backing up Config");
+  run_program("/tmp/bin/config_backup");  
+endif;
+
+# RESTORE CONFIG
+# --------------
+if file_getprop("/tmp/aroma/tgp_restore.prop","install") == "1"
+then
+  ui_print(" Restoring Config");
+  run_program("/tmp/bin/config_restore");
+endif;
 
 # BACKUP EFS
 # ----------
