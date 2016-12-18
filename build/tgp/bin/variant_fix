@@ -1,0 +1,93 @@
+#!/sbin/sh
+# Variant fix script by djb77
+# Inspired by Tkkg1994
+
+getprop ro.boot.bootloader >> /tmp/variant_model
+
+# Mount /system Partition
+mount /dev/block/platform/155a0000.ufs/by-name/SYSTEM /system
+
+if [ -e /system/CSCVersion.txt ]; then
+  if grep -q G935 /tmp/variant_model;
+  then
+    sed -i -- 's/G930/G935/g' /system/CSCVersion.txt
+    sed -i -- 's/G930/G935/g' /system/SW_Configuration.xml
+  fi
+  if grep -q G930 /tmp/variant_model;
+  then
+    sed -i -- 's/G935/G930/g' /system/CSCVersion.txt
+    sed -i -- 's/G935/G930/g' /system/SW_Configuration.xml
+  fi
+fi
+
+if grep -q G930F /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930F/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+if grep -q G930FD /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930FD/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+if grep -q G930K /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930K/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+if grep -q G930L /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930L/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+if grep -q G930S /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930S/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+if grep -q G930W8 /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G930W8/g' /system/build.prop
+  sed -i -- 's/hero2lte/herolte/g' /system/build.prop
+  echo "install=1" > /tmp/aroma/g930x.prop
+fi
+
+# G935F NOT NEEDED
+
+if grep -q G935FD /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G935FD/g' /system/build.prop
+fi
+
+if grep -q G935K /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G935K/g' /system/build.prop
+fi
+
+if grep -q G935L /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G935L/g' /system/build.prop
+fi
+
+if grep -q G935S /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G935S/g' /system/build.prop
+fi
+
+if grep -q G935W8 /tmp/variant_model;
+then
+  sed -i -- 's/G935F/G935W8/g' /system/build.prop
+fi
+
+exit 10
+

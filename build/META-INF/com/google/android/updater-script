@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.01
+# TGP AROMA INSTALLER v7.10
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -80,6 +80,8 @@ then
   delete_recursive("/data/dalvik-cache");
   if file_getprop("/tmp/aroma/wipe.prop","install") == "1" then
     run_program("/tmp/bin/wipe");
+    delete_recursive("/magisk");
+    delete_recursive("/supersu");
   endif;
   set_progress(0.15);
   ui_print(" Installing Core ROM Files");
@@ -499,36 +501,7 @@ then
 endif;
 
 # VARIANTS
-if file_getprop("/tmp/aroma/variant.prop","install") == "1"
-then
-  ui_print(" Installing Files for G930F Variant");  
-  package_extract_dir("tgp/variants/g930f", "/system");  
-endif;
-if file_getprop("/tmp/aroma/variant.prop","install") == "2"
-then
-  ui_print(" Installing Files for G930FD Variant");  
-  package_extract_dir("tgp/variants/g930fd", "/system");  
-endif;
-if file_getprop("/tmp/aroma/variant.prop","install") == "3"
-then
-  ui_print(" Installing Files for G930W8 Variant");  
-  package_extract_dir("tgp/variants/g930w8", "/system");  
-endif;
-if file_getprop("/tmp/aroma/variant.prop","install") == "4"
-then
-  ui_print(" Installing Files for G935F Variant");  
-  package_extract_dir("tgp/variants/g935f", "/system");  
-endif;
-if file_getprop("/tmp/aroma/variant.prop","install") == "5"
-then
-  ui_print(" Installing Files for G935FD Variant");  
-  package_extract_dir("tgp/variants/g935fd", "/system");  
-endif;
-if file_getprop("/tmp/aroma/variant.prop","install") == "6"
-then
-  ui_print(" Installing Files for G935W8 Variant");  
-  package_extract_dir("tgp/variants/g935w8", "/system");  
-endif;
+run_program("/tmp/bin/variant_fix");
 if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
 then
   package_extract_dir("tgp/system_mods_g930x/system", "/system");
