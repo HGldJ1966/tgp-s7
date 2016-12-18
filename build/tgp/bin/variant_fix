@@ -62,31 +62,39 @@ then
   echo "install=1" > /tmp/aroma/g930x.prop
 fi
 
-# G935F NOT NEEDED
+if grep -q G935F /tmp/variant_model;
+then
+  echo "install=0" > /tmp/aroma/g930x.prop
+fi
 
 if grep -q G935FD /tmp/variant_model;
 then
   sed -i -- 's/G935F/G935FD/g' /system/build.prop
+  echo "install=0" > /tmp/aroma/g930x.prop
 fi
 
 if grep -q G935K /tmp/variant_model;
 then
   sed -i -- 's/G935F/G935K/g' /system/build.prop
+  echo "install=0" > /tmp/aroma/g930x.prop
 fi
 
 if grep -q G935L /tmp/variant_model;
 then
   sed -i -- 's/G935F/G935L/g' /system/build.prop
+  echo "install=0" > /tmp/aroma/g930x.prop
 fi
 
 if grep -q G935S /tmp/variant_model;
 then
   sed -i -- 's/G935F/G935S/g' /system/build.prop
+  echo "install=0" > /tmp/aroma/g930x.prop
 fi
 
 if grep -q G935W8 /tmp/variant_model;
 then
   sed -i -- 's/G935F/G935W8/g' /system/build.prop
+  echo "install=0" > /tmp/aroma/g930x.prop
 fi
 
 exit 10

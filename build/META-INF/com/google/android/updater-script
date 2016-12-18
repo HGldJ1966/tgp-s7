@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.10
+# TGP AROMA INSTALLER v7.11
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -80,8 +80,6 @@ then
   delete_recursive("/data/dalvik-cache");
   if file_getprop("/tmp/aroma/wipe.prop","install") == "1" then
     run_program("/tmp/bin/wipe");
-    delete_recursive("/magisk");
-    delete_recursive("/supersu");
   endif;
   set_progress(0.15);
   ui_print(" Installing Core ROM Files");
@@ -93,6 +91,7 @@ then
 endif;
   
 # CSC
+# ---
 if file_getprop("/tmp/aroma/csc.prop","install") == "101"
 then
   ui_print(" Installing ATO CSC");
@@ -500,24 +499,16 @@ then
   package_extract_dir("tgp/csc/ZTO/system", "/system");
 endif;
 
-# VARIANTS
+# VARIANT FIX
+# -----------
 run_program("/tmp/bin/variant_fix");
 if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
 then
   package_extract_dir("tgp/system_mods_g930x/system", "/system");
 endif;
 
-# EXTRA FILES FOR MODS
-if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
-then
-  package_extract_dir("tgp/installers/magisk-files/data", "/data");
-endif;
-if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
-then
-  package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
-endif;
-
 # SYMLINKS
+# --------
 set_progress(0.3);
 ui_print(" Setting Symlinks");
 symlink("app_process64", "/system/bin/app_process");
@@ -702,6 +693,7 @@ symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/hw/vulkan.exynos5
 symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/libOpenCL.so.1.1");
 
 # PERMISSIONS
+# -----------
 ui_print(" Setting Permissions");
 set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
 set_metadata("/data/app", "uid", 1000, "gid", 1000, "mode", 0771, "capabilities", 0x0);
@@ -849,92 +841,6 @@ set_metadata("/system/etc/init.d", "uid", 0, "gid", 0, "mode", 0755, "capabiliti
 set_metadata_recursive("/system/su.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/su.d", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 
-# SAMSUNG APPS
-# ------------
-if file_getprop("/tmp/aroma/samsung.prop","install") == "1"
-then
-  ui_print(" ");
-  ui_print("@Installing Extra Samsung Apps");
-    if file_getprop("/tmp/aroma/samsung-1.prop","install") == "1"
-  then
-    ui_print(" Installing Car Mode");
-    package_extract_dir("tgp/apps/samsung/CarMode", "/system/app/CarMode");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-2.prop","install") == "1"
-  then
-    ui_print(" Installing E-Mail");
-    package_extract_dir("tgp/apps/samsung/SecEmail_M", "/system/app/SecEmail_M");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-3.prop","install") == "1"
-  then
-    ui_print(" Installing Kies");
-    package_extract_dir("tgp/apps/samsung/Kies", "/system/priv-app/Kies");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-4.prop","install") == "1"
-  then
-    ui_print(" Installing Samsung Cloud");
-    package_extract_dir("tgp/apps/samsung/CloudGateway", "/system/app/CloudGateway");
-    package_extract_dir("tgp/apps/samsung/SamsungCloud", "/system/priv-app/SamsungCloud");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-5.prop","install") == "1"
-  then
-    ui_print(" Installing Samsung Gear");
-    package_extract_dir("tgp/apps/samsung/GearManagerStub", "/system/app/GearManagerStub");
-    package_extract_dir("tgp/apps/samsung/GearManager", "/system/priv-app/GearManager");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-6.prop","install") == "1"
-  then
-    ui_print(" Installing Samsung Members");
-    package_extract_dir("tgp/apps/samsung/GalaxyCare", "/system/priv-app/GalaxyCare");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-7.prop","install") == "1"
-  then
-    ui_print(" Installing Samsung Music");
-    package_extract_dir("tgp/apps/samsung/Music", "/system/app/Music");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-8.prop","install") == "1"
-  then
-    ui_print(" Installing Samsung Video");
-    package_extract_dir("tgp/apps/samsung/Video", "/system/app/Video");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-9.prop","install") == "1"
-  then
-    ui_print(" Installing S Health");
-    package_extract_dir("tgp/apps/samsung/SHealth5", "/system/priv-app/SHealth5");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-10.prop","install") == "1"
-  then
-    ui_print(" Installing Smart Switch");
-    package_extract_dir("tgp/apps/samsung/SmartSwitch", "/system/priv-app/SmartSwitch");
-  endif;  
-  
-  if file_getprop("/tmp/aroma/samsung-11.prop","install") == "1"
-  then
-    ui_print(" Installing S Memo");
-    package_extract_dir("tgp/apps/samsung/SecMemo3", "/system/app/SecMemo3");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-12.prop","install") == "1"
-  then
-    ui_print(" Installing S Voice");
-    package_extract_dir("tgp/apps/samsung/SVoice_1.0", "/system/priv-app/SVoice_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_EnglishPack_GB_1.0", "/system/priv-app/SVoiceLang_EnglishPack_GB_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_EnglishPack_US_1.0", "/system/priv-app/SVoiceLang_EnglishPack_US_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_FrenchPack_1.0", "/system/priv-app/SVoiceLang_FrenchPack_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_GermanPack_DE_1.0", "/system/priv-app/SVoiceLang_GermanPack_DE_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_ItalianPack_IT_1.0", "/system/priv-app/SVoiceLang_ItalianPack_IT_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_RussianPack_RU_1.0", "/system/priv-app/SVoiceLang_RussianPack_RU_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoiceLang_SpanishPack_ES_1.0", "/system/priv-app/SVoiceLang_SpanishPack_ES_1.0");
-    package_extract_dir("tgp/apps/samsung/SVoicePLM_1.0", "/system/priv-app/SVoicePLM_1.0");
-    package_extract_dir("tgp/apps/samsung/VoiceWakeUp", "/system/priv-app/VoiceWakeUp");
-  endif;
-  if file_getprop("/tmp/aroma/samsung-13.prop","install") == "1"
-  then
-    ui_print(" Installing Text-To-Speech Engine");
-    package_extract_dir("tgp/apps/samsung/SamsungTTS", "/system/app/SamsungTTS");
-  endif;
-endif;
-
-# ------------
 # INSTALL MODS
 # ------------
 set_progress(0.5);
@@ -1062,79 +968,131 @@ then
   package_extract_dir("tgp/mods/iosemojis/system", "/system");  
 endif;
 
+# SAMSUNG APPS
 # ------------
+if file_getprop("/tmp/aroma/samsung.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Installing Extra Samsung Apps");
+    if file_getprop("/tmp/aroma/samsung-1.prop","install") == "1"
+  then
+    ui_print(" Installing Car Mode");
+    package_extract_dir("tgp/apps/samsung/CarMode", "/system/app/CarMode");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-2.prop","install") == "1"
+  then
+    ui_print(" Installing E-Mail");
+    package_extract_dir("tgp/apps/samsung/SecEmail_M", "/system/app/SecEmail_M");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-3.prop","install") == "1"
+  then
+    ui_print(" Installing Kies");
+    package_extract_dir("tgp/apps/samsung/Kies", "/system/priv-app/Kies");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-4.prop","install") == "1"
+  then
+    ui_print(" Installing Samsung Cloud");
+    package_extract_dir("tgp/apps/samsung/CloudGateway", "/system/app/CloudGateway");
+    package_extract_dir("tgp/apps/samsung/SamsungCloud", "/system/priv-app/SamsungCloud");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-5.prop","install") == "1"
+  then
+    ui_print(" Installing Samsung Gear");
+    package_extract_dir("tgp/apps/samsung/GearManagerStub", "/system/app/GearManagerStub");
+    package_extract_dir("tgp/apps/samsung/GearManager", "/system/priv-app/GearManager");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-6.prop","install") == "1"
+  then
+    ui_print(" Installing Samsung Members");
+    package_extract_dir("tgp/apps/samsung/GalaxyCare", "/system/priv-app/GalaxyCare");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-7.prop","install") == "1"
+  then
+    ui_print(" Installing Samsung Music");
+    package_extract_dir("tgp/apps/samsung/Music", "/system/app/Music");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-8.prop","install") == "1"
+  then
+    ui_print(" Installing Samsung Video");
+    package_extract_dir("tgp/apps/samsung/Video", "/system/app/Video");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-9.prop","install") == "1"
+  then
+    ui_print(" Installing S Health");
+    package_extract_dir("tgp/apps/samsung/SHealth5", "/system/priv-app/SHealth5");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-10.prop","install") == "1"
+  then
+    ui_print(" Installing Smart Switch");
+    package_extract_dir("tgp/apps/samsung/SmartSwitch", "/system/priv-app/SmartSwitch");
+  endif;  
+  
+  if file_getprop("/tmp/aroma/samsung-11.prop","install") == "1"
+  then
+    ui_print(" Installing S Memo");
+    package_extract_dir("tgp/apps/samsung/SecMemo3", "/system/app/SecMemo3");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-12.prop","install") == "1"
+  then
+    ui_print(" Installing S Voice");
+    package_extract_dir("tgp/apps/samsung/SVoice_1.0", "/system/priv-app/SVoice_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_EnglishPack_GB_1.0", "/system/priv-app/SVoiceLang_EnglishPack_GB_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_EnglishPack_US_1.0", "/system/priv-app/SVoiceLang_EnglishPack_US_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_FrenchPack_1.0", "/system/priv-app/SVoiceLang_FrenchPack_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_GermanPack_DE_1.0", "/system/priv-app/SVoiceLang_GermanPack_DE_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_ItalianPack_IT_1.0", "/system/priv-app/SVoiceLang_ItalianPack_IT_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_RussianPack_RU_1.0", "/system/priv-app/SVoiceLang_RussianPack_RU_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoiceLang_SpanishPack_ES_1.0", "/system/priv-app/SVoiceLang_SpanishPack_ES_1.0");
+    package_extract_dir("tgp/apps/samsung/SVoicePLM_1.0", "/system/priv-app/SVoicePLM_1.0");
+    package_extract_dir("tgp/apps/samsung/VoiceWakeUp", "/system/priv-app/VoiceWakeUp");
+  endif;
+  if file_getprop("/tmp/aroma/samsung-13.prop","install") == "1"
+  then
+    ui_print(" Installing Text-To-Speech Engine");
+    package_extract_dir("tgp/apps/samsung/SamsungTTS", "/system/app/SamsungTTS");
+  endif;
+endif;
+
 # FLASH KERNEL
 # ------------
-  set_progress(0.75);
-    if file_getprop("/tmp/aroma/kernel.prop","install") == "1"
+set_progress(0.75);
+if file_getprop("/tmp/aroma/kernel.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Flashing TGPKernel");
+  run_program("/tmp/bin/kernel");
+  package_extract_dir("tgp/kernels/data-tgp", "/data");    
+  package_extract_dir("tgp/kernels/system", "/system");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
+  set_metadata_recursive("/system/app/mcRegistry", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+  if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
   then
-    ui_print(" ");
-    ui_print("@Flashing TGPKernel");
-    run_program("/tmp/bin/kernel");
-    package_extract_dir("tgp/kernels/data-tgp", "/data");    
-    package_extract_dir("tgp/kernels/system", "/system");
-    set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
-    set_metadata_recursive("/system/app/mcRegistry", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-    if file_getprop("/tmp/aroma/variant.prop","install") == "1"
-    then
-      package_extract_file("tgp/kernels/g930x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "2"
-    then
-      package_extract_file("tgp/kernels/g930x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "3"
-    then
-      package_extract_file("tgp/kernels/g930x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "4"
-    then
-      package_extract_file("tgp/kernels/g935x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "5"
-    then
-      package_extract_file("tgp/kernels/g935x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "6"
-    then
-      package_extract_file("tgp/kernels/g935x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;     
-  endif;  
-  if file_getprop("/tmp/aroma/kernel.prop","install") == "2"
+    package_extract_file("tgp/kernels/g930x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
+  endif;
+  if file_getprop("/tmp/aroma/g930x.prop","install") == "0"
   then
-    ui_print(" ");
-    ui_print("@Flashing SuperKernel");
-    run_program("/tmp/bin/kernel");
-    package_extract_dir("tgp/kernels/data-super", "/data");    
-    package_extract_dir("tgp/kernels/system", "/system");
-    package_extract_dir("tgp/kernels/system-super", "/system");
-    set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
-    set_metadata_recursive("/system/app/mcRegistry", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
-    if file_getprop("/tmp/aroma/variant.prop","install") == "1"
-    then
-      package_extract_file("tgp/kernels/g930x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "2"
-    then
-      package_extract_file("tgp/kernels/g930x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "3"
-    then
-      package_extract_file("tgp/kernels/g930x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "4"
-    then
-      package_extract_file("tgp/kernels/g935x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "5"
-    then
-      package_extract_file("tgp/kernels/g935x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;
-    if file_getprop("/tmp/aroma/variant.prop","install") == "6"
-    then
-      package_extract_file("tgp/kernels/g935x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
-    endif;     
-  endif;  
+    package_extract_file("tgp/kernels/g935x/tgp.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
+  endif;
+endif;  
+if file_getprop("/tmp/aroma/kernel.prop","install") == "2"
+then
+  ui_print(" ");
+  ui_print("@Flashing SuperKernel");
+  run_program("/tmp/bin/kernel");
+  package_extract_dir("tgp/kernels/data-super", "/data");    
+  package_extract_dir("tgp/kernels/system", "/system");
+  package_extract_dir("tgp/kernels/system-super", "/system");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
+  set_metadata_recursive("/system/app/mcRegistry", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+  if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
+  then
+    package_extract_file("tgp/kernels/g930x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
+  endif;
+  if file_getprop("/tmp/aroma/g930x.prop","install") == "0"
+  then
+    package_extract_file("tgp/kernels/g935x/super.img", "/dev/block/platform/155a0000.ufs/by-name/BOOT");
+  endif;
+endif;  
 
 set_progress(0.85);
 
@@ -1174,6 +1132,8 @@ then
   ui_print("@Setting up Magisk");  
   run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk/magisk.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk");
   run_program("/sbin/busybox", "sh", "/tmp/installers/magisk/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk/magisk.zip");
+  package_extract_dir("tgp/installers/magisk-files/data", "/data");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
 endif;
 
 # INSTALL PHH SUPERUSER / BUSYBOX
@@ -1184,6 +1144,8 @@ then
   ui_print("@Setting up PHH Superuser");
   run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-phh/magisk-phh.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-phh");
   run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-phh/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-phh/magisk-phh.zip");
+  package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
+  set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
   ui_print(" ");
   ui_print("@Setting up Busybox");
   run_program("/sbin/busybox", "unzip", "/tmp/installers/busybox/busybox.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/busybox");
