@@ -1,8 +1,13 @@
 #!/sbin/sh
 # Cleanup for CSC Installation
 
+# Mount /system Partition
+mount /dev/block/platform/155a0000.ufs/by-name/SYSTEM /system
+  
 rm -rf /system/csc
 rm -rf /system/media/audio/notifications
 rm -rf /system/media/audio/ringtones
 rm -rf /system/CSCVersion.txt
 rm -rf /system/SW_Configuration.xml
+
+exit 10

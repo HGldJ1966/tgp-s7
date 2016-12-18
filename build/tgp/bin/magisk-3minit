@@ -4,3 +4,5 @@
 name=magisk-3minit
 cd /tmp/installers/$name/import
 /tmp/bin/zip -r /tmp/installers/$name/$name.zip *
+
+exit 10

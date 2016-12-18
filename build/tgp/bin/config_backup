@@ -1,7 +1,7 @@
 #!/sbin/sh
 # Config Backup script by djb77
 
-# Mount /data partition
+# Mount /data Partition
 mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
 
 # Variables
@@ -50,5 +50,4 @@ do
   fi 
 done
 
-# Unmount /data Partition
-unmount /data
+exit 10

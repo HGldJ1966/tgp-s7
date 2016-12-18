@@ -2,6 +2,7 @@
 # Written by Tkkg1994
 # Modified by djb77
 
+# Mount /data Partition
 mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
 
 if [ ! -d /data/media/0/TGP ];then
@@ -9,10 +10,14 @@ if [ ! -d /data/media/0/TGP ];then
   chmod 777 /data/media/0/TGP
 fi
 
+if [ ! -f /data/media/0/TGP/efs.img.bak ];then
+  rm -f /data/media/0/TGP/efs.img.bak 
+fi
+
+if [ ! -f /data/media/0/TGP/efs.img ];then
+  mv /data/media/0/TGP/efs.img /data/media/0/TGP/efs.img.bak
+fi
+
 dd if=/dev/block/sda3 of=/data/media/0/TGP/efs.img bs=4096
 
-unmount /data
-
 exit 10
-
-

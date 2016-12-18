@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.00
+# TGP AROMA INSTALLER v7.01
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -87,58 +87,10 @@ then
   package_extract_dir("tgp/data", "/data");
   package_extract_dir("tgp/system_mods/data", "/data");  
   package_extract_dir("tgp/system_mods/system", "/system");
-  delete("/system/etc/init.d/placeholder");
-
-  # VARIANTS
-  if file_getprop("/tmp/aroma/variant.prop","install") == "1"
-  then
-    ui_print(" Installing Files for G930F Variant");  
-    package_extract_dir("tgp/variants/g930f", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/variant.prop","install") == "2"
-  then
-    ui_print(" Installing Files for G930FD Variant");  
-    package_extract_dir("tgp/variants/g930fd", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/variant.prop","install") == "3"
-  then
-    ui_print(" Installing Files for G930W8 Variant");  
-    package_extract_dir("tgp/variants/g930w8", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/variant.prop","install") == "4"
-  then
-    ui_print(" Installing Files for G935F Variant");  
-    package_extract_dir("tgp/variants/g935f", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/variant.prop","install") == "5"
-  then
-    ui_print(" Installing Files for G935FD Variant");  
-    package_extract_dir("tgp/variants/g935fd", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/variant.prop","install") == "6"
-  then
-    ui_print(" Installing Files for G935W8 Variant");  
-    package_extract_dir("tgp/variants/g935w8", "/system");  
-  endif;
-  if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
-  then
-    package_extract_dir("tgp/system_mods_g930x/system", "/system");
-  endif;
-  
-endif;
-
-# EXTRA FILES FOR MODS
-if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
-then
-  package_extract_dir("tgp/installers/magisk-files/data", "/data");
-endif;
-if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
-then
-  package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
+  delete("/system/etc/init.d/placeholder");  
 endif;
   
 # CSC
-# ---
 if file_getprop("/tmp/aroma/csc.prop","install") == "101"
 then
   ui_print(" Installing ATO CSC");
@@ -546,8 +498,53 @@ then
   package_extract_dir("tgp/csc/ZTO/system", "/system");
 endif;
 
-# SYMLINKS / PERMISSIONS
-# ----------------------
+# VARIANTS
+if file_getprop("/tmp/aroma/variant.prop","install") == "1"
+then
+  ui_print(" Installing Files for G930F Variant");  
+  package_extract_dir("tgp/variants/g930f", "/system");  
+endif;
+if file_getprop("/tmp/aroma/variant.prop","install") == "2"
+then
+  ui_print(" Installing Files for G930FD Variant");  
+  package_extract_dir("tgp/variants/g930fd", "/system");  
+endif;
+if file_getprop("/tmp/aroma/variant.prop","install") == "3"
+then
+  ui_print(" Installing Files for G930W8 Variant");  
+  package_extract_dir("tgp/variants/g930w8", "/system");  
+endif;
+if file_getprop("/tmp/aroma/variant.prop","install") == "4"
+then
+  ui_print(" Installing Files for G935F Variant");  
+  package_extract_dir("tgp/variants/g935f", "/system");  
+endif;
+if file_getprop("/tmp/aroma/variant.prop","install") == "5"
+then
+  ui_print(" Installing Files for G935FD Variant");  
+  package_extract_dir("tgp/variants/g935fd", "/system");  
+endif;
+if file_getprop("/tmp/aroma/variant.prop","install") == "6"
+then
+  ui_print(" Installing Files for G935W8 Variant");  
+  package_extract_dir("tgp/variants/g935w8", "/system");  
+endif;
+if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
+then
+  package_extract_dir("tgp/system_mods_g930x/system", "/system");
+endif;
+
+# EXTRA FILES FOR MODS
+if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
+then
+  package_extract_dir("tgp/installers/magisk-files/data", "/data");
+endif;
+if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
+then
+  package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
+endif;
+
+# SYMLINKS
 set_progress(0.3);
 ui_print(" Setting Symlinks");
 symlink("app_process64", "/system/bin/app_process");
@@ -731,6 +728,7 @@ symlink("/vendor/lib64/egl/libGLES_mali.so", "/system/vendor/lib64/libOpenCL.so.
 symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/hw/vulkan.exynos5.so");
 symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/libOpenCL.so.1.1");
 
+# PERMISSIONS
 ui_print(" Setting Permissions");
 set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
 set_metadata("/data/app", "uid", 1000, "gid", 1000, "mode", 0771, "capabilities", 0x0);
