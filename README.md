@@ -2,14 +2,23 @@
 
 ![alt tag](https://github.com/djb77/tgp-s7/raw/tw601/tools/logo.jpg?raw=true?raw=true)
 
-URL: http://forum.xda-developers.com/showthread.php?t=3440314
+URL (S7 Forum): http://forum.xda-developers.com/showthread.php?t=3440314
+
+URL (S7 Edge Forum): http://forum.xda-developers.com/showthread.php?t=3501569
+
 
 ## Compatible with the following variants
 - G930F
 - G930FD
+- G930K
+- G930L
+- G930S
 - G930W8
 - G935F
 - G935FD
+- G935K
+- G935L
+- G935S
 - G935W8
 
 ## How to check for updates via git
