@@ -11,8 +11,7 @@ if [ -e $config/tgp_backup.prop ];then
   echo "install=1" > /tmp/aroma/backup.prop
 fi
 
-# Unmount /data Partition
-unmount /data
+exit 10
 
 
 

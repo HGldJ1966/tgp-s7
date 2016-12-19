@@ -4,7 +4,10 @@
 mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
 
 /sbin/busybox find /data -maxdepth 1 -type d ! -path "/data" ! -path "/data/media" | xargs rm -rf
-rm -rf /supersu
+
+chmod -R 777 /magisk
+chmod -R 777 /supersu
 rm -rf /magisk
+rm -rf /supersu
 
 exit 10
