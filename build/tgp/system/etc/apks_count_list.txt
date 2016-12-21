@@ -18,12 +18,12 @@
 /system/app/UniversalSwitch/UniversalSwitch.apk
 /system/app/KnoxSetupWizardClient/KnoxSetupWizardClient.apk
 /system/app/SPlanner_M/SPlanner_M.apk
+/system/app/WeatherWidget2016/WeatherWidget2016.apk
 /system/app/HighlightPlayer_Hero/HighlightPlayer_Hero.apk
 /system/app/FlipboardBriefing/FlipboardBriefing.apk
+/system/app/Weather2016/Weather2016.apk
 /system/app/VideoCollage_Hero/VideoCollage_Hero.apk
 /system/app/ClockPackage_M/ClockPackage_M.apk
-/system/app/WeatherWidget2016/WeatherWidget2016.apk
-/system/app/Weather2016/Weather2016.apk
 /system/app/STalkback/STalkback.apk
 /system/app/SecMemo3/SecMemo3.apk
 /system/app/VideoEditorLite_Hero/VideoEditorLite_Hero.apk
@@ -157,8 +157,8 @@
 /system/app/KnoxAttestationAgent/KnoxAttestationAgent.apk
 /system/app/BluetoothMidiService/BluetoothMidiService.apk
 /system/app/SplitSoundService/SplitSoundService.apk
-/system/app/PartnerBookmarksProvider/PartnerBookmarksProvider.apk
 /system/app/EdmSimPinService/EdmSimPinService.apk
+/system/app/PartnerBookmarksProvider/PartnerBookmarksProvider.apk
 /system/app/EdmVpnServices/EdmVpnServices.apk
 /system/app/PacProcessor/PacProcessor.apk
 /system/app/ImsTelephonyService/ImsTelephonyService.apk
@@ -198,8 +198,8 @@
 /system/priv-app/SVoiceLang_FrenchPack_1.0/SVoiceLang_FrenchPack_1.0.apk
 /system/priv-app/DeviceKeystring/DeviceKeystring.apk
 /system/priv-app/ThemeStore_3xh/ThemeStore_3xh.apk
-/system/priv-app/SmartcardManager/SmartcardManager.apk
 /system/priv-app/SamsungCloud/SamsungCloud.apk
+/system/priv-app/SmartcardManager/SmartcardManager.apk
 /system/priv-app/SecSetupWizard2015/SecSetupWizard2015.apk
 /system/priv-app/SVoiceLang_SpanishPack_ES_1.0/SVoiceLang_SpanishPack_ES_1.0.apk
 /system/priv-app/SetupWizard/SetupWizard.apk
@@ -260,6 +260,7 @@
 /system/priv-app/SettingsReceiver/SettingsReceiver.apk
 /system/priv-app/Fmm/Fmm.apk
 /system/priv-app/AutomationTest_FB/AutomationTest_FB.apk
+/system/priv-app/SVCAgent/SVCAgent.apk
 /system/priv-app/SelectiveFocusViewer/SelectiveFocusViewer.apk
 /system/priv-app/SamsungMagnifier3/SamsungMagnifier3.apk
 /system/priv-app/GamepadService/GamepadService.apk

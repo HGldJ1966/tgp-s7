@@ -3014,8 +3014,6 @@
 			<package name="com.android.server.telecom" seinfo="platform" />
 			<package name="com.android.providers.contacts" seinfo="shared" />
 			<package name="com.kddi.android.evc" seinfo="filtered_untrusted" />
-            <package name="com.samsung.android.contacts" seinfo="shared" />
-            <package name="com.android.contacts" seinfo="shared" />
 		</method>
 
 		<method name="isBluetoothEnterpriseContactSharingDisabled">

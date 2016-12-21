@@ -204,6 +204,9 @@ auditfilter undefined_service shell_exec:file execute;
 # auditfilter vold system_data_file:file create; managed by KNOX Service Group
 # auditfilter vold app_data_file:lnk_file read; dev="ecryptfs" fixed CL6731407
 
+# P161018-01283, P161018-00719
+auditfilter vold dalvikcache_data_file:dir write; comm="vold"
+
 ### vdc ###
 # P160526-05365 / Once Security Notice during ics file sent via WiFi direct / SEPF_SECMOBILE_6.0.1_0012
 auditfilter vdc vold:netlink_socket { read write };
