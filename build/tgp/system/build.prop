@@ -120,7 +120,7 @@ debug.slsi_platform=1
 debug.hwc.winupdate=1
 drm.service.enabled=true
 ro.hdcp2.rx=tz
-ro.securestorage.support=true
+ro.securestorage.support=false
 security.mdpp.mass=skmm
 ro.product.first_api_level=23
 ro.build.scafe.version=2016A
@@ -167,10 +167,16 @@ dalvik.vm.isa.arm64.variant=generic
 dalvik.vm.isa.arm64.features=default
 dalvik.vm.isa.arm.variant=cortex-a15
 dalvik.vm.isa.arm.features=default
-ro.config.knox=v30
+ro.config.knox=0
 ro.kernel.qemu=0
 net.bt.name=Android
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 ro.build.version.sdl=2301
 ro.expect.recovery_id=0xc55597e50252834c187350b8dde241a6025e2985000000000000000000000000
+
+# EXTRA TWEAKS
+persist.adb.notify=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
 
