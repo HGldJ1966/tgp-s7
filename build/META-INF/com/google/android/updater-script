@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.11
+# TGP AROMA INSTALLER v7.20
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -80,6 +80,25 @@ then
   delete_recursive("/data/dalvik-cache");
   if file_getprop("/tmp/aroma/wipe.prop","install") == "1" then
     run_program("/tmp/bin/wipe");
+    delete_recursive("/magisk");
+    delete_recursive("/data/magisk");
+    delete_recursive("/supersu");
+    delete_recursive("/su");
+    delete_recursive("/sdcard/.android_secure");
+    delete_recursive("/sdcard/.bookmark_thumb1");
+    delete_recursive("/sdcard/.data");
+    delete_recursive("/sdcard/Android");
+    delete_recursive("/sdcard/bugreports");
+    delete_recursive("/sdcard/LOST.DIR");
+    delete_recursive("/sdcard/obb");
+    delete_recursive("/sdcard/tmp");
+    delete_recursive("/external_sd/.android_secure");
+    delete_recursive("/external_sd/.bookmark_thumb1");
+    delete_recursive("/external_sd/.data");
+    delete_recursive("/external_sd/Android");
+    delete_recursive("/external_sd/bugreports");
+    delete_recursive("/external_sd/LOST.DIR");
+    delete_recursive("/external_sd/obb");
   endif;
   set_progress(0.15);
   ui_print(" Installing Core ROM Files");
@@ -1157,15 +1176,15 @@ endif;
 if file_getprop("/tmp/aroma/xposed.prop","install") == "1"
 then
   ui_print(" ");
-  if file_getprop("/tmp/aroma/magisk.prop","install") == "0"
+  if file_getprop("/tmp/aroma/xposed-systemless.prop","install") == "10"
   then
     ui_print("@Setting up Xposed Framework");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/xposed/xposed.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/xposed");
     run_program("/sbin/busybox", "sh", "/tmp/installers/xposed/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/xposed/xposed.zip");
   endif;
-  if file_getprop("/tmp/aroma/magisk.prop","install") == "1"
+  if file_getprop("/tmp/aroma/xposed-systemless.prop","install") == "11"
   then
-    ui_print("@Setting up Xposed Framework for Magisk");
+    ui_print("@Setting up Xposed Framework (Systemless)");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-xposed/magisk-xposed.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-xposed");
     run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-xposed/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-xposed/magisk-xposed.zip");
   endif;
