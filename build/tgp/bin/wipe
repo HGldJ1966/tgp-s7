@@ -1,12 +1,20 @@
 #!/sbin/sh
 
-# Mount /data Partition
+# Mount Partitions
 mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
+mount /dev/block/platform/155a0000.ufs/by-name/CACHE /cache
+
+umount /su
+rm -rf /data/app/me.phh.superuser* /data/data/me.phh.superuser* /data/su
+rm -rf /cache/.supersu /cache/su.img /cache/SuperSU.apk /data/.supersu /data/stock_boot_*.img.gz /data/su.img 
+rm -rf /data/SuperSU.apk /data/app/eu.chainfire.supersu* /data/data/eu.chainfire.supersu*;
 
 /sbin/busybox find /data -maxdepth 1 -type d ! -path "/data" ! -path "/data/media" | xargs rm -rf
 
 cd /data
 rm -f *.img
+rm -f *.info
+rm -f *.pid
 
 exit 10
 
