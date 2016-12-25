@@ -174,9 +174,12 @@ dalvik.vm.stack-trace-file=/data/anr/traces.txt
 ro.build.version.sdl=2301
 ro.expect.recovery_id=0xc55597e50252834c187350b8dde241a6025e2985000000000000000000000000
 
-# EXTRA TWEAKS
+# ADB Tweaks
 persist.adb.notify=0
 persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
+
+# Smart View Fix
+wlan.wfd.hdcp=disable
 

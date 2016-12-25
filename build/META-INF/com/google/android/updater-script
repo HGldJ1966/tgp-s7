@@ -80,10 +80,6 @@ then
   delete_recursive("/data/dalvik-cache");
   if file_getprop("/tmp/aroma/wipe.prop","install") == "1" then
     run_program("/tmp/bin/wipe");
-    delete_recursive("/magisk");
-    delete_recursive("/data/magisk");
-    delete_recursive("/supersu");
-    delete_recursive("/su");
     delete_recursive("/sdcard/.android_secure");
     delete_recursive("/sdcard/.bookmark_thumb1");
     delete_recursive("/sdcard/.data");
