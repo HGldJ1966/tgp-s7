@@ -7,7 +7,7 @@ mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
 
 if [ ! -d /data/media/0/TGP ];then
   mkdir /data/media/0/TGP
-  chmod 777 /data/media/0/TGP
+  chmod -R 777 /data/media/0/TGP
 fi
 
 if [ ! -f /data/media/0/TGP/efs.img.bak ];then
@@ -15,7 +15,9 @@ if [ ! -f /data/media/0/TGP/efs.img.bak ];then
 fi
 
 if [ ! -f /data/media/0/TGP/efs.img ];then
-  mv /data/media/0/TGP/efs.img /data/media/0/TGP/efs.img.bak
+  chmod 777 /data/media/0/TGP/efs.img
+  cp -f /data/media/0/TGP/efs.img /data/media/0/TGP/efs.img.bak
+  rm -f /data/media/0/TGP/efs.img
 fi
 
 dd if=/dev/block/sda3 of=/data/media/0/TGP/efs.img bs=4096

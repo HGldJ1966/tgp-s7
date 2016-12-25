@@ -648,6 +648,7 @@ endif;
 if (prop("extra.prop","item.1.11")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-10.prop","install=1");
+  writetmpfile("samsung-3.prop","install=1");
 endif;
 if (prop("extra.prop","item.1.12")=="1") then
   writetmpfile("samsung.prop","install=1");
