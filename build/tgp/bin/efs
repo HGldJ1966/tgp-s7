@@ -10,12 +10,11 @@ if [ ! -d /data/media/0/TGP ];then
   chmod -R 777 /data/media/0/TGP
 fi
 
-if [ ! -f /data/media/0/TGP/efs.img.bak ];then
+if [ -e /data/media/0/TGP/efs.img.bak ];then
   rm -f /data/media/0/TGP/efs.img.bak 
 fi
 
-if [ ! -f /data/media/0/TGP/efs.img ];then
-  chmod 777 /data/media/0/TGP/efs.img
+if [ -e /data/media/0/TGP/efs.img ];then
   cp -f /data/media/0/TGP/efs.img /data/media/0/TGP/efs.img.bak
   rm -f /data/media/0/TGP/efs.img
 fi
