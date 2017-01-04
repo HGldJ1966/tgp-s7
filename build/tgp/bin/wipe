@@ -5,15 +5,24 @@ mount /dev/block/platform/155a0000.ufs/by-name/USERDATA /data
 mount /dev/block/platform/155a0000.ufs/by-name/CACHE /cache
 
 umount /su
-rm -rf /data/app/me.phh.superuser* /data/data/me.phh.superuser* /data/su /cache/.supersu /data/.supersu /magisk /data/magisk 
+rm -rf /data/app/me.phh.superuser* /data/data/me.phh.superuser* /data/su /cache/.supersu /data/.supersu
 rm -rf /data/app/eu.chainfire.supersu* /data/data/eu.chainfire.supersu* /.subackup /sutmp /supersu /su
-rm -f /cache/su.img /cache/SuperSU.apk /data/stock_boot_*.img.gz /data/su.img /data/SuperSU.apk /sbin/magic_mask.sh /sbin/launch_daemonsu.sh
+rm -f /cache/su.img /cache/SuperSU.apk /sbin/magic_mask.sh /sbin/launch_daemonsu.sh
+
+umount /magisk
+rm -rf /cache/magisk /cache/magisk_merge /cache/magisk_mount /cache/unblock /data/busybox /data/magisk /magisk
+rm -f /cache/magisk.log /cache/last_magisk.log /cache/magiskhide.log
 
 cd /data
+chmod 777 *.apk
 chmod 777 *.img
+chmod 777 *.img.gz
 chmod 777 *.info
+chmod 777 *.pid
 chmod 777 *.sh
+rm -f *.apk
 rm -f *.img
+rm -f *.img.gz
 rm -f *.info
 rm -f *.pid
 rm -f *.sh
