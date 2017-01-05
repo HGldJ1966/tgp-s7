@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.20
+# TGP AROMA INSTALLER v7.21
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -61,7 +61,7 @@ writetmpfile("samsung-10.prop","install=0");
 writetmpfile("samsung-11.prop","install=0");
 writetmpfile("samsung-12.prop","install=0");
 writetmpfile("samsung-13.prop","install=0");
-writetmpfile("xposed-apps.prop","install=1");
+writetmpfile("xposed-apps.prop","install=0");
 writetmpfile("xposed-all.prop","install=0");
 writetmpfile("xposed-1.prop","install=0");
 writetmpfile("xposed-2.prop","install=0");
