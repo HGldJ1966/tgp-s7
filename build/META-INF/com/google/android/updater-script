@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.21
+# TGP AROMA INSTALLER v7.22
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -100,8 +100,8 @@ then
   ui_print(" Installing Core ROM Files");
   package_extract_dir("tgp/system", "/system");
   package_extract_dir("tgp/data", "/data");
-  package_extract_dir("tgp/system_mods/data", "/data");  
-  package_extract_dir("tgp/system_mods/system", "/system");
+  package_extract_dir("tgp/system-mods/data", "/data");  
+  package_extract_dir("tgp/system-mods/system", "/system");
   delete("/system/etc/init.d/placeholder");  
 endif;
   
@@ -519,7 +519,7 @@ endif;
 run_program("/tmp/bin/variant_fix");
 if file_getprop("/tmp/aroma/g930x.prop","install") == "1"
 then
-  package_extract_dir("tgp/system_mods_g930x/system", "/system");
+  package_extract_dir("tgp/system-mods-g930x/system", "/system");
 endif;
 
 # SYMLINKS
@@ -1113,12 +1113,12 @@ set_progress(0.85);
 
 # INSTALL SUPERSU / BUSYBOX (SYSTEM MODE)
 # ---------------------------------------
-if file_getprop("/tmp/aroma/root-supersu_system.prop","install") == "1"
+if file_getprop("/tmp/aroma/root-supersu-system.prop","install") == "1"
 then
     ui_print(" ");
     ui_print("@Setting up SuperSU (System Mode)");
-    run_program("/sbin/busybox", "unzip", "/tmp/installers/supersu_system/supersu_system.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/supersu_system");
-    run_program("/sbin/busybox", "sh", "/tmp/installers/supersu_system/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/supersu_system/supersu_system.zip");
+    run_program("/sbin/busybox", "unzip", "/tmp/installers/supersu-system/supersu-system.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/supersu-system");
+    run_program("/sbin/busybox", "sh", "/tmp/installers/supersu-system/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/supersu-system/supersu-system.zip");
     ui_print(" ");
     ui_print("@Setting up Busybox");
     run_program("/sbin/busybox", "unzip", "/tmp/installers/busybox/busybox.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/busybox");

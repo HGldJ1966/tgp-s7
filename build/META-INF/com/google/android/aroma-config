@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.21
+# TGP AROMA INSTALLER v7.22
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -30,7 +30,7 @@ writetmpfile("shutdownanimation.prop","install=0");
 writetmpfile("systemless.prop","install=0");
 writetmpfile("magisk.prop","install=0");
 writetmpfile("root-supersu.prop","install=0");
-writetmpfile("root-supersu_system.prop","install=0");
+writetmpfile("root-supersu-system.prop","install=0");
 writetmpfile("root-phh.prop","install=0");
 writetmpfile("xposed.prop","install=0");
 writetmpfile("xposed-systemless.prop","install=0");
@@ -260,7 +260,7 @@ if (prop("root.prop","selected.3")=="2") then
   writetmpfile("root-supersu.prop","install=1");
 endif;
 if (prop("root.prop","selected.3")=="3") then
-  writetmpfile("root-supersu_system.prop","install=1");
+  writetmpfile("root-supersu-system.prop","install=1");
 endif;
 
 # MODS INSTALL - PAGE 1 (STANDARD)
