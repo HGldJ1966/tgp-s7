@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.22
+# TGP AROMA INSTALLER v7.30
 # aroma-config portion
 #
 # Created by djb77 from XDA
@@ -44,8 +44,19 @@ writetmpfile("adblock.prop","install=0");
 writetmpfile("unknownsources.prop","install=0");
 writetmpfile("screenoverlay.prop","install=0");
 writetmpfile("3minit.prop","install=0");
-writetmpfile("3minit-magisk.prop","install=0");
 writetmpfile("iosemojis.prop","install=0");
+writetmpfile("extra.prop","install=0");
+writetmpfile("extra-all.prop","install=0");
+writetmpfile("extra-1.prop","install=0");
+writetmpfile("extra-2.prop","install=0");
+writetmpfile("extra-3.prop","install=0");
+writetmpfile("google.prop","install=0");
+writetmpfile("google-all.prop","install=0");
+writetmpfile("google-1.prop","install=0");
+writetmpfile("google-2.prop","install=0");
+writetmpfile("google-3.prop","install=0");
+writetmpfile("google-4.prop","install=0");
+writetmpfile("google-5.prop","install=0");
 writetmpfile("samsung.prop","install=0");
 writetmpfile("samsung-all.prop","install=0");
 writetmpfile("samsung-1.prop","install=0");
@@ -160,16 +171,22 @@ selectbox(
   "@default",
   "rom.prop",
   "Select which ROM version you want installed", "", 2,
-  "Lite Install", "ROM and TGPKernel.", 0,
-  "Standard Install", "ROM, Magisk, PHH Superuser, Xposed, Samsung Music + Video, and TGPKernel.", 1,
-  "Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, Samsung Music + Video, and TGPKernel.", 0,
-  "Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, Samsung Music + Video, and SuperKernel.", 0,
+  "Lite Install", "ROM, minimal apps and TGPKernel.", 0,
+  "Standard Install", "ROM, Magisk, PHH Superuser, Xposed, extra apps, and TGPKernel.", 1,
+  "Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, extra apps, and TGPKernel.", 0,
+  "Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, and SuperKernel.", 0,
   "Custom Install", "Customise your installation.", 0
 );
 if (prop("rom.prop","selected.1")=="1") then
   writetmpfile("efs.prop","install=1");
   writetmpfile("rominstall.prop","install=1");
   writetmpfile("screenoverlay.prop","install=1");
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-4.prop","install=1");
+  writetmpfile("google-5.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
+  writetmpfile("samsung-7.prop","install=1");
+  writetmpfile("samsung-8.prop","install=1");
   writetmpfile("kernel.prop","install=1");
 endif;
 if (prop("rom.prop","selected.1")=="2") then
@@ -180,6 +197,12 @@ if (prop("rom.prop","selected.1")=="2") then
   writetmpfile("xposed.prop","install=1");
   writetmpfile("xposed-all.prop","install=1");    
   writetmpfile("screenoverlay.prop","install=1");
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-2.prop","install=1");
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-4.prop","install=1");
+  writetmpfile("google-5.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-7.prop","install=1");
   writetmpfile("samsung-8.prop","install=1");
   writetmpfile("kernel.prop","install=1");
@@ -196,6 +219,15 @@ if (prop("rom.prop","selected.1")=="3") then
   writetmpfile("soundmod.prop","install=8");  
   writetmpfile("5way-magisk.prop","install=1");
   writetmpfile("screenoverlay.prop","install=1");
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-2.prop","install=1");
+  writetmpfile("extra-3.prop","install=1");
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-1.prop","install=1");
+  writetmpfile("google-2.prop","install=1");
+  writetmpfile("google-4.prop","install=1");
+  writetmpfile("google-5.prop","install=1");
+  writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-7.prop","install=1");
   writetmpfile("samsung-8.prop","install=1");  
   writetmpfile("kernel.prop","install=1");
@@ -218,6 +250,8 @@ if (prop("rom.prop","selected.1")=="4") then
   writetmpfile("unknownsources.prop","install=0");
   writetmpfile("screenoverlay.prop","install=0");
   writetmpfile("iosemojis.prop","install=0");
+  writetmpfile("extra-all.prop","install=1");
+  writetmpfile("google-all.prop","install=1");
   writetmpfile("samsung-all.prop","install=1");
   writetmpfile("kernel.prop","install=2");    
 endif;
@@ -240,8 +274,8 @@ selectbox(
     "Yes", "", 1,
     "No", "", 0,        
     "Root Selection", "", 2,
-    "PHH's Superuser (for Magisk)", "", 0,
-    "SuperSU (Systemless)", "", 1,
+    "PHH's Superuser (for Magisk)", "", 1,
+    "SuperSU (Systemless)", "", 0,
     "SuperSU (System Mode)", "", 0,
     "No Root", "", 0    
 );
@@ -464,7 +498,7 @@ if (prop("magisk.prop","install")=="1") then
     writetmpfile("5way.prop","install=0");
     writetmpfile("5way-magisk.prop","install=1");
   endif;
-  if (prop("mods3.prop","item.1.")=="1") then
+  if (prop("mods3.prop","item.1.2")=="1") then
     writetmpfile("soundmod-magisk.prop","install=1");
   endif;    
   if (prop("mods3.prop","item.2.1")=="1") then
@@ -576,14 +610,74 @@ if (prop("soundmod.prop","install")=="99") then
       writetmpfile("soundmod.prop","install=8");
   endif;
  endif;
-                                
-# EXTRA APPS PAGE
-# ---------------
+           
+# EXTRA / GOOGLE APPS PAGE
+# ------------------------
+checkbox(
+    "THE GALAXY PROJECT G93xx",
+    "Extra / Google Apps Installation",
+    "@default",
+    "extra-apps.prop",
+    "Install All Extra / Google Apps", "", 2,
+    "Install All Extra Apps", "", 0,
+    "Install All Google Apps", "", 0,
+    "Install Extra Apps", "", 2,
+    "Phone INFO", "", 0,
+    "Titanium Backup", "", 1,
+    "Total Commander", "", 0,
+    "Install Google Apps", "", 2,    
+    "Chrome", "", 1,
+    "Drive", "", 1,
+    "GMail", "", 0,
+    "Maps", "", 1,
+    "YouTube", "", 1
+);
+if (prop("extra-apps.prop","item.1.1")=="1") then
+  writetmpfile("extra-all.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.1.2")=="1") then
+  writetmpfile("google-all.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.2.1")=="1") then
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-1.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.2.2")=="1") then
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-2.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.2.3")=="1") then
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-3.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.3.1")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-1.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.3.2")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-2.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.3.3")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-3.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.3.4")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-4.prop","install=1");
+endif;
+if (prop("extra-apps.prop","item.3.5")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-5.prop","install=1");
+endif;
+
+# SAMSUNG APPS PAGE
+# -----------------
 checkbox(
     "THE GALAXY PROJECT G93xx",
     "Samsung Apps Installation",
     "@default",
-    "extra.prop",
+    "extra-samsung.prop",
     "Install Samsung Apps", "", 2,
     "Install All Samsung Apps", "", 0,
     "Car Mode", "", 0,
@@ -600,60 +694,60 @@ checkbox(
     "S Voice", "", 0,               
     "Text-To-Speech", "", 0
 );
-if (prop("extra.prop","item.1.1")=="1") then
+if (prop("extra-samsung.prop","item.1.1")=="1") then
   writetmpfile("samsung-all.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.2")=="1") then
+if (prop("extra-samsung.prop","item.1.2")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-1.prop","install=1");
   writetmpfile("samsung-12.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.3")=="1") then
+if (prop("extra-samsung.prop","item.1.3")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-2.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.4")=="1") then
+if (prop("extra-samsung.prop","item.1.4")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-3.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.5")=="1") then
+if (prop("extra-samsung.prop","item.1.5")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-4.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.6")=="1") then
+if (prop("extra-samsung.prop","item.1.6")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-5.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.7")=="1") then
+if (prop("extra-samsung.prop","item.1.7")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-6.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.8")=="1") then
+if (prop("extra-samsung.prop","item.1.8")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-7.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.9")=="1") then
+if (prop("extra-samsung.prop","item.1.9")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-8.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.10")=="1") then
+if (prop("extra-samsung.prop","item.1.10")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-9.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.11")=="1") then
+if (prop("extra-samsung.prop","item.1.11")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-10.prop","install=1");
   writetmpfile("samsung-3.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.12")=="1") then
+if (prop("extra-samsung.prop","item.1.12")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-11.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.13")=="1") then
+if (prop("extra-samsung.prop","item.1.13")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-12.prop","install=1");
 endif;
-if (prop("extra.prop","item.1.14")=="1") then
+if (prop("extra-samsung.prop","item.1.14")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-13.prop","install=1");
 endif;
@@ -925,6 +1019,20 @@ endif;
 
 # SETUP EXTRA APPS
 # ----------------
+if (prop("extra-all.prop","install")=="1") then
+  writetmpfile("extra.prop","install=1");
+  writetmpfile("extra-1.prop","install=1");
+  writetmpfile("extra-2.prop","install=1");
+  writetmpfile("extra-3.prop","install=1");
+endif;
+if (prop("google-all.prop","install")=="1") then
+  writetmpfile("google.prop","install=1");
+  writetmpfile("google-1.prop","install=1");
+  writetmpfile("google-2.prop","install=1");
+  writetmpfile("google-3.prop","install=1");
+  writetmpfile("google-4.prop","install=1");
+  writetmpfile("google-5.prop","install=1");
+endif;
 if (prop("samsung-all.prop","install")=="1") then
   writetmpfile("samsung.prop","install=1");
   writetmpfile("samsung-1.prop","install=1");

@@ -1,5 +1,5 @@
 # -------------------------
-# TGP AROMA INSTALLER v7.22
+# TGP AROMA INSTALLER v7.30
 # updater-script portion
 #
 # Created by djb77 from XDA
@@ -99,7 +99,6 @@ then
   set_progress(0.15);
   ui_print(" Installing Core ROM Files");
   package_extract_dir("tgp/system", "/system");
-  package_extract_dir("tgp/data", "/data");
   package_extract_dir("tgp/system-mods/data", "/data");  
   package_extract_dir("tgp/system-mods/system", "/system");
   delete("/system/etc/init.d/placeholder");  
@@ -983,12 +982,68 @@ then
   package_extract_dir("tgp/mods/iosemojis/system", "/system");  
 endif;
 
+# EXTRA APPS
+# ----------
+if file_getprop("/tmp/aroma/extra.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Installing Extra Apps");
+    if file_getprop("/tmp/aroma/extra-1.prop","install") == "1"
+  then
+    ui_print(" Installing Phone INFO");
+    package_extract_dir("tgp/apps/extra/PhoneINFO", "/system/priv-app/PhoneINFO");
+  endif;
+    if file_getprop("/tmp/aroma/extra-2.prop","install") == "1"
+  then
+    ui_print(" Installing Titanium Backup");
+    package_extract_dir("tgp/apps/extra/TitaniumBackup", "/system/priv-app/TitaniumBackup");
+  endif;
+    if file_getprop("/tmp/aroma/extra-3.prop","install") == "1"
+  then
+    ui_print(" Installing Total Commander");
+    package_extract_dir("tgp/apps/extra/TotalCommander", "/system/priv-app/TotalCommander");
+  endif;
+endif;
+
+# GOOGLE APPS
+# -----------
+if file_getprop("/tmp/aroma/google.prop","install") == "1"
+then
+  ui_print(" ");
+  ui_print("@Installing Google Apps");
+    if file_getprop("/tmp/aroma/google-1.prop","install") == "1"
+  then
+    ui_print(" Installing Chrome");
+    package_extract_dir("tgp/apps/google/Chrome", "/data/app/com.android.chrome-1");
+  endif;
+    if file_getprop("/tmp/aroma/google-2.prop","install") == "1"
+  then
+    ui_print(" Installing Drive");
+    package_extract_dir("tgp/apps/google/Drive", "/system/app/Drive");
+  endif;
+    if file_getprop("/tmp/aroma/google-3.prop","install") == "1"
+  then
+    ui_print(" Installing Gmail");
+    package_extract_dir("tgp/apps/google/Gmail2", "/system/app/Gmail2");
+  endif;
+    if file_getprop("/tmp/aroma/google-4.prop","install") == "1"
+  then
+    ui_print(" Installing Maps");
+    package_extract_dir("tgp/apps/google/Maps", "/data/app/com.google.android-maps-1");
+  endif;
+    if file_getprop("/tmp/aroma/google-5.prop","install") == "1"
+  then
+    ui_print(" Installing YouTube");
+    package_extract_dir("tgp/apps/google/YouTube", "/system/app/YouTube");
+  endif;
+endif;
+
 # SAMSUNG APPS
 # ------------
 if file_getprop("/tmp/aroma/samsung.prop","install") == "1"
 then
   ui_print(" ");
-  ui_print("@Installing Extra Samsung Apps");
+  ui_print("@Installing Samsung Apps");
     if file_getprop("/tmp/aroma/samsung-1.prop","install") == "1"
   then
     ui_print(" Installing Car Mode");
@@ -1157,9 +1212,9 @@ if file_getprop("/tmp/aroma/root-phh.prop","install") == "1"
 then
   ui_print(" ");
   ui_print("@Setting up PHH Superuser");
-  run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-phh/magisk-phh.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-phh");
-  run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-phh/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-phh/magisk-phh.zip");
-  package_extract_dir("tgp/installers/magisk-phh-files/data", "/data");
+  run_program("/sbin/busybox", "unzip", "/tmp/installers/phh/phh.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/phh");
+  run_program("/sbin/busybox", "sh", "/tmp/installers/phh/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/phh/phh.zip");
+  package_extract_dir("tgp/installers/phh-files/data", "/data");
   set_metadata_recursive("/data/app", "uid", 1000, "gid", 1000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0);
   ui_print(" ");
   ui_print("@Setting up Busybox");
@@ -1181,8 +1236,8 @@ then
   if file_getprop("/tmp/aroma/xposed-systemless.prop","install") == "11"
   then
     ui_print("@Setting up Xposed Framework (Systemless)");
-    run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-xposed/magisk-xposed.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-xposed");
-    run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-xposed/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-xposed/magisk-xposed.zip");
+    run_program("/sbin/busybox", "unzip", "/tmp/installers/xposed-systemless/xposed-systemless.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/xposed-systemless");
+    run_program("/sbin/busybox", "sh", "/tmp/installers/xposed-systemless/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/xposed-systemless/xposed-systemless.zip");
   endif;
   package_extract_dir("tgp/apps/xposed/installer", "/data/app");
   if file_getprop("/tmp/aroma/xposed-apps.prop","install") == "1"
@@ -1248,18 +1303,6 @@ then
   run_program("/tmp/bin/magisk-5wayreboot");
   run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-5wayreboot/magisk-5wayreboot.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-5wayreboot");    
   run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-5wayreboot/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-5wayreboot/magisk-5wayreboot.zip");
-endif;
-
-# 3MINIT BATTERY MOD (MAGISK)
-# ---------------------------
-if file_getprop("/tmp/aroma/3minit-magisk.prop","install") == "1"
-then
-  ui_print(" ");
-  ui_print("@Installing 3minit Battery Mod (for Magisk)");
-  package_extract_dir("tgp/mods/3minit/system", "/tmp/installers/magisk-3minit/import/system");        
-  run_program("/tmp/bin/magisk-3minit");
-  run_program("/sbin/busybox", "unzip", "/tmp/installers/magisk-3minit/magisk-3minit.zip", "META-INF/com/google/android/*", "-d", "/tmp/installers/magisk-3minit");
-  run_program("/sbin/busybox", "sh", "/tmp/installers/magisk-3minit/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/installers/magisk-3minit/magisk-3minit.zip");  
 endif;
 
 # THE SOUND MOD (MAGISK)
