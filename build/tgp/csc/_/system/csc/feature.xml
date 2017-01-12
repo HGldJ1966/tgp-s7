@@ -12,7 +12,7 @@
 
 <!-- Camera -->
 <CscFeature_Camera_EnableCameraDuringCall>true</CscFeature_Camera_EnableCameraDuringCall>
-<CscFeature_Camera_ShutterSoundMenu>true</CscFeature_Camera_ShutterSoundMenu>=
+<CscFeature_Camera_ShutterSoundMenu>true</CscFeature_Camera_ShutterSoundMenu>
 
 <!-- Calendar -->
 
@@ -24,7 +24,7 @@
 <!-- Contacts -->
 
 <!-- Common -->
-<CscFeature_Common_EnableAirMessage>TRUE</CscFeature_Common_EnableAirMessage>
+<CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,on</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
  
 <!-- Dialer -->
 
@@ -48,6 +48,9 @@
 <CscFeature_Message_DisplayMmsTimeAs>server</CscFeature_Message_DisplayMmsTimeAs>
 <CscFeature_Message_DisplaySmsTimeAs>server</CscFeature_Message_DisplaySmsTimeAs>
 <CscFeature_Message_EnableSaveRestoreSDCard>true</CscFeature_Message_EnableSaveRestoreSDCard>
+<CscFeature_Message_DisableSmsToMmsConversionByTextInput>true</CscFeature_Message_DisableSmsToMmsConversionByTextInput>
+<CscFeature_Message_EnableBlackList>true</CscFeature_Message_EnableBlackList>
+<CscFeature_Message_EnableMsgTypeIndicationDuringComposing>true</CscFeature_Message_EnableMsgTypeIndicationDuringComposing>
 
 <!-- Mini Diary -->
 
@@ -60,8 +63,10 @@
 <!-- MyFiles -->
 
 <!-- NFC -->
+<CscFeature_NFC_StatusBarIconType>DEFAULT</CscFeature_NFC_StatusBarIconType>
 
 <!-- RIL -->
+<CscFeature_RIL_ForceConnectMMS>true</CscFeature_RIL_ForceConnectMMS>
 
 <!-- SEC FMRadio -->
 
@@ -74,21 +79,28 @@
 <!-- Settings -->
 <CscFeature_Setting_DisableMenuSoftwareUpdate>true</CscFeature_Setting_DisableMenuSoftwareUpdate>
 <CscFeature_Setting_EnableMenuBlockCallMsg>true</CscFeature_Setting_EnableMenuBlockCallMsg>
+<CscFeature_Setting_CustNetworkSelMenu4>LTEONLY</CscFeature_Setting_CustNetworkSelMenu4>
 
 <!-- SIP -->
 
 <!-- SmartManager -->
 <CscFeature_SmartManager_ConfigSubFeatures>roguepopup|autoclean|autorestart|applock</CscFeature_SmartManager_ConfigSubFeatures>
+<CscFeature_SmartManager_DisableAntiMalware>true</CscFeature_SmartManager_DisableAntiMalware>
+<CscFeature_SmartManager_ConfigDashboard>dual_dashboard</CscFeature_SmartManager_ConfigDashboard>
+<CscFeature_SmartManager_ConfigSubFeatures>roguepopup|autoclean|autorestart|networkpowersaving|storageclean|applock|trafficmanager|notificationmanager|applicationpermission|devicesecurity|data_compression|rootbadgefeature|UDS|cstyle</CscFeature_SmartManager_ConfigSubFeatures>
 
 <!-- Streaming -->
 
 <!-- SystemUI -->
+<CscFeature_SystemUI_SupportRecentAppProtection>true</CscFeature_SystemUI_SupportRecentAppProtection>
+<CscFeature_SystemUI_SupportAssistanceAppChooser>true</CscFeature_SystemUI_SupportAssistanceAppChooser>
 
 <!-- Voice Talk -->
 
 <!-- Web -->
 
 <!-- Wifi -->
+<CscFeature_Wifi_SupportAdvancedMenu>true</CscFeature_Wifi_SupportAdvancedMenu>
 
 </FeatureSet>
 </SamsungMobileFeature>
