@@ -1,5 +1,5 @@
-: TGP S7 Build Script v1.00 by djb77 / XDA Developers
-: Build Date: 3rd October 2016
+: TGP S7 Build Script v1.01 by djb77 / XDA Developers
+: Build Date: 12th January 2017
 
 @echo off
 cd "%~dp0"
@@ -25,7 +25,7 @@ goto sign
 if %javadetect% == 1 (
 @echo Signing %tgpfilename%
 ren %tgpfilename% old%tgpfilename%
-java -jar %~dp0tools\signapk.jar %~dp0tools/testkey.x509.pem %~dp0tools/testkey.pk8 old%tgpfilename% %tgpfilename%
+java -jar %~dp0tools\signapk-win.jar %~dp0tools/testkey.x509.pem %~dp0tools/testkey.pk8 old%tgpfilename% %tgpfilename%
 del /f /q old%tgpfilename%
 )
 @echo.
