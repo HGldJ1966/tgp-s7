@@ -11,6 +11,7 @@
     <CscFeature_Camera_CameraFlicker>60hz</CscFeature_Camera_CameraFlicker>
     <CscFeature_Camera_EnableCameraDuringCall>TRUE</CscFeature_Camera_EnableCameraDuringCall>
     <CscFeature_Common_ConfigEmergencyModePackages>com.samsung.inputmethod</CscFeature_Common_ConfigEmergencyModePackages>
+    <CscFeature_Common_ConfigSamsungCloudVariation>DisablingKeyboardDataSync:boolean:true</CscFeature_Common_ConfigSamsungCloudVariation>
     <CscFeature_Common_DisableNfcHwKeypad>TRUE</CscFeature_Common_DisableNfcHwKeypad>
     <CscFeature_Contact_ANRConfig>0</CscFeature_Contact_ANRConfig>
     <CscFeature_Contact_AddPreloadedSpeedDialAs>None,0,None,None</CscFeature_Contact_AddPreloadedSpeedDialAs>
@@ -82,5 +83,6 @@
     <CscFeature_Message_EnableMsgTypeIndicationDuringComposing>TRUE</CscFeature_Message_EnableMsgTypeIndicationDuringComposing>
     <CscFeature_SmartManager_ConfigSubFeatures>roguepopup|autoclean|autorestart|networkpowersaving|storageclean|applock|trafficmanager|notificationmanager|applicationpermission|devicesecurity|data_compression|rootbadgefeature|UDS|cstyle</CscFeature_SmartManager_ConfigSubFeatures>
     <CscFeature_Common_EnableAirMessage>TRUE</CscFeature_Common_EnableAirMessage>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,on</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
   </FeatureSet>
 </SamsungMobileFeature>
