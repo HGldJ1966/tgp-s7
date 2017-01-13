@@ -106,970 +106,968 @@ splash(3000,"splash");
 restotmp("config_check","config_check");
 exec("/tmp/aroma/config_check","","","");
 if (prop("backup.prop","install")=="1") then
-  setvar(
-      "backup_text",
-      "<b>CONFIGURATION BACKUP FOUND</b>\n\n"+
-      "The installer has located a saved configuration file in the TGP folder on your Internal Memory.\n\n"+
-      "You will now be given an option to use this configuration and proceed straight to the installer, "+
-      "skipping all the installation selection screens.\n\n"+
-      "Press the <b>Next</b> button, then select <b>Yes</b> or <b>No</b> on the Popup Dialog Box."+
-      ""
-  );
-  textbox(
-      "THE GALAXY PROJECT G93xx",
-      " ",
-      "@deafult",
-      getvar("backup_text")
-  );
-  if
-    confirm(
-    "THE GALAXY PROJECT G93xx",
-    "Would you like to use your current saved configuration?",
-    "@default"
-    )=="yes"
-  then
-      writetmpfile("tgp_restore.prop","install=1");
-    else
-      writetmpfile("tgp_restore.prop","install=0");
-    endif;
+	setvar(
+	"backup_text",
+	"<b>CONFIGURATION BACKUP FOUND</b>\n\n"+
+	"The installer has located a saved configuration file in the TGP folder on your Internal Memory.\n\n"+
+	"You will now be given an option to use this configuration and proceed straight to the installer, "+
+	"skipping all the installation selection screens.\n\n"+
+	"Press the <b>Next</b> button, then select <b>Yes</b> or <b>No</b> on the Popup Dialog Box."+
+	""
+	);
+	textbox(
+	"THE GALAXY PROJECT G93xx",
+	" ",
+	"@deafult",
+	getvar("backup_text")
+	);
+	if
+		confirm(
+		"THE GALAXY PROJECT G93xx",
+		"Would you like to use your current saved configuration?",
+		"@default"
+		)=="yes"
+	then
+		writetmpfile("tgp_restore.prop","install=1");
+	else
+		writetmpfile("tgp_restore.prop","install=0");
+	endif;
 endif;
 
 if (prop("tgp_restore.prop","install")=="0") then
 
 # INSTALL OPTIONS
 # ---------------
-selectbox(
-  "THE GALAXY PROJECT G93xx",
-  "Please select the options for the installer",
-  "@default",
-  "options.prop",    
-  "Do you want the installer to perform a Full Wipe", "", 2,
-  "Yes", "", 0,
-  "No", "", 1,
-  "Do you want to perform an EFS Backup?", "", 2,
-  "Yes", "", 1,
-  "No", "", 0,
-  "Backup your configuration.", "", 2,
-  "Yes", "This option will make a backup of your settings you just entered, and create a config file that you can use later on.", 1,
-  "No", "", 0
-);
-if (prop("options.prop","selected.1")=="1") then
-  writetmpfile("wipe.prop","install=1"); 
-endif;
-if (prop("options.prop","selected.2")=="1") then
-  writetmpfile("efs.prop","install=1"); 
-endif;
-if (prop("options.prop","selected.3")=="1") then
-  writetmpfile("tgp_backup.prop","install=1"); 
-endif;
+	selectbox(
+	"THE GALAXY PROJECT G93xx",
+	"Please select the options for the installer",
+	"@default",
+	"options.prop",
+	"Do you want the installer to perform a Full Wipe", "", 2,
+	"Yes", "", 0,
+	"No", "", 1,
+	"Do you want to perform an EFS Backup?", "", 2,
+	"Yes", "", 1,
+	"No", "", 0,
+	"Backup your configuration.", "", 2,
+	"Yes", "This option will make a backup of your settings you just entered, and create a config file that you can use later on.", 1,
+	"No", "", 0
+	);
+	if (prop("options.prop","selected.1")=="1") then
+		writetmpfile("wipe.prop","install=1"); 
+	endif;
+	if (prop("options.prop","selected.2")=="1") then
+		writetmpfile("efs.prop","install=1"); 
+	endif;
+	if (prop("options.prop","selected.3")=="1") then
+		writetmpfile("tgp_backup.prop","install=1"); 
+	endif;
 
 # ROM INSTALL
 # -----------
-selectbox(
-  "THE GALAXY PROJECT G93xx",
-  "Here is a list of available install options",
-  "@default",
-  "rom.prop",
-  "Select which ROM version you want installed", "", 2,
-  "Lite Install", "ROM, minimal apps and TGPKernel.", 0,
-  "Standard Install", "ROM, Magisk, PHH Superuser, Xposed, extra apps, and TGPKernel.", 1,
-  "Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, extra apps, and TGPKernel.", 0,
-  "Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, and SuperKernel.", 0,
-  "Custom Install", "Customise your installation.", 0
-);
-if (prop("rom.prop","selected.1")=="1") then
-  writetmpfile("efs.prop","install=1");
-  writetmpfile("rominstall.prop","install=1");
-  writetmpfile("screenoverlay.prop","install=1");
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-4.prop","install=1");
-  writetmpfile("google-5.prop","install=1");
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-7.prop","install=1");
-  writetmpfile("samsung-8.prop","install=1");
-  writetmpfile("kernel.prop","install=1");
-endif;
-if (prop("rom.prop","selected.1")=="2") then
-  writetmpfile("efs.prop","install=1");
-  writetmpfile("rominstall.prop","install=1");
-  writetmpfile("magisk.prop","install=1");  
-  writetmpfile("root-phh.prop","install=1");
-  writetmpfile("xposed.prop","install=1");
-  writetmpfile("xposed-all.prop","install=1");    
-  writetmpfile("screenoverlay.prop","install=1");
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-2.prop","install=1");
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-4.prop","install=1");
-  writetmpfile("google-5.prop","install=1");
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-7.prop","install=1");
-  writetmpfile("samsung-8.prop","install=1");
-  writetmpfile("kernel.prop","install=1");
-endif;
-if (prop("rom.prop","selected.1")=="3") then
-  writetmpfile("efs.prop","install=1");
-  writetmpfile("rominstall.prop","install=1");
-  writetmpfile("modinstall.prop","install=1");
-  writetmpfile("shutdownanimation.prop","install=1");
-  writetmpfile("magisk.prop","install=1");  
-  writetmpfile("root-phh.prop","install=1");
-  writetmpfile("xposed.prop","install=1");
-  writetmpfile("xposed-all.prop","install=1");    
-  writetmpfile("soundmod.prop","install=8");  
-  writetmpfile("5way-magisk.prop","install=1");
-  writetmpfile("screenoverlay.prop","install=1");
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-2.prop","install=1");
-  writetmpfile("extra-3.prop","install=1");
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-1.prop","install=1");
-  writetmpfile("google-2.prop","install=1");
-  writetmpfile("google-4.prop","install=1");
-  writetmpfile("google-5.prop","install=1");
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-7.prop","install=1");
-  writetmpfile("samsung-8.prop","install=1");  
-  writetmpfile("kernel.prop","install=1");
-endif;
-if (prop("rom.prop","selected.1")=="4") then
-  writetmpfile("efs.prop","install=1");
-  writetmpfile("rominstall.prop","install=1");
-  writetmpfile("modinstall.prop","install=1");
-  writetmpfile("shutdownanimation.prop","install=1");
-  writetmpfile("magisk.prop","install=1");
-  writetmpfile("root-phh.prop","install=1");
-  writetmpfile("xposed.prop","install=1");  
-  writetmpfile("xposed-all.prop","install=1");  
-  writetmpfile("adb.prop","install=1");
-  writetmpfile("goodlock.prop","install=1");
-  writetmpfile("camera.prop","install=1");
-  writetmpfile("soundmod.prop","install=8");
-  writetmpfile("5way-magisk.prop","install=1");
-  writetmpfile("adblock.prop","install=1");
-  writetmpfile("unknownsources.prop","install=0");
-  writetmpfile("screenoverlay.prop","install=0");
-  writetmpfile("iosemojis.prop","install=0");
-  writetmpfile("extra-all.prop","install=1");
-  writetmpfile("google-all.prop","install=1");
-  writetmpfile("samsung-all.prop","install=1");
-  writetmpfile("kernel.prop","install=2");    
-endif;
+	selectbox(
+	"THE GALAXY PROJECT G93xx",
+	"Here is a list of available install options",
+	"@default",
+	"rom.prop",
+	"Select which ROM version you want installed", "", 2,
+	"Lite Install", "ROM, minimal apps and TGPKernel.", 0,
+	"Standard Install", "ROM, Magisk, PHH Superuser, Xposed, extra apps, and TGPKernel.", 1,
+	"Full Install", "ROM, Magisk, PHH Superuser, Xposed, The Sound Mod, 5way Reboot Menu, extra apps, and TGPKernel.", 0,
+	"Extreme Install", "ROM, Magisk, PHH Superuser, Xposed, most mods, all extra Apps, and SuperKernel.", 0,
+	"Custom Install", "Customise your installation.", 0
+	);
+	if (prop("rom.prop","selected.1")=="1") then
+		writetmpfile("efs.prop","install=1");
+		writetmpfile("rominstall.prop","install=1");
+		writetmpfile("screenoverlay.prop","install=1");
+		writetmpfile("google.prop","install=1");
+		writetmpfile("google-4.prop","install=1");
+		writetmpfile("google-5.prop","install=1");
+		writetmpfile("samsung.prop","install=1");
+		writetmpfile("samsung-7.prop","install=1");
+		writetmpfile("samsung-8.prop","install=1");
+		writetmpfile("kernel.prop","install=1");
+	endif;
+	if (prop("rom.prop","selected.1")=="2") then
+		writetmpfile("efs.prop","install=1");
+		writetmpfile("rominstall.prop","install=1");
+		writetmpfile("magisk.prop","install=1");
+		writetmpfile("root-phh.prop","install=1");
+		writetmpfile("xposed.prop","install=1");
+		writetmpfile("xposed-all.prop","install=1");
+		writetmpfile("screenoverlay.prop","install=1");
+		writetmpfile("extra.prop","install=1");
+		writetmpfile("extra-2.prop","install=1");
+		writetmpfile("google.prop","install=1");
+		writetmpfile("google-4.prop","install=1");
+		writetmpfile("google-5.prop","install=1");
+		writetmpfile("samsung.prop","install=1");
+		writetmpfile("samsung-7.prop","install=1");
+		writetmpfile("samsung-8.prop","install=1");
+		writetmpfile("kernel.prop","install=1");
+	endif;
+	if (prop("rom.prop","selected.1")=="3") then
+		writetmpfile("efs.prop","install=1");
+		writetmpfile("rominstall.prop","install=1");
+		writetmpfile("modinstall.prop","install=1");
+		writetmpfile("shutdownanimation.prop","install=1");
+		writetmpfile("magisk.prop","install=1");
+		writetmpfile("root-phh.prop","install=1");
+		writetmpfile("xposed.prop","install=1");
+		writetmpfile("xposed-all.prop","install=1");
+		writetmpfile("soundmod.prop","install=8");
+		writetmpfile("5way-magisk.prop","install=1");
+		writetmpfile("screenoverlay.prop","install=1");
+		writetmpfile("extra.prop","install=1");
+		writetmpfile("extra-2.prop","install=1");
+		writetmpfile("extra-3.prop","install=1");
+		writetmpfile("google.prop","install=1");
+		writetmpfile("google-1.prop","install=1");
+		writetmpfile("google-2.prop","install=1");
+		writetmpfile("google-4.prop","install=1");
+		writetmpfile("google-5.prop","install=1");
+		writetmpfile("samsung.prop","install=1");
+		writetmpfile("samsung-7.prop","install=1");
+		writetmpfile("samsung-8.prop","install=1");
+		writetmpfile("kernel.prop","install=1");
+	endif;
+	if (prop("rom.prop","selected.1")=="4") then
+		writetmpfile("efs.prop","install=1");
+		writetmpfile("rominstall.prop","install=1");
+		writetmpfile("modinstall.prop","install=1");
+		writetmpfile("shutdownanimation.prop","install=1");
+		writetmpfile("magisk.prop","install=1");
+		writetmpfile("root-phh.prop","install=1");
+		writetmpfile("xposed.prop","install=1");
+		writetmpfile("xposed-all.prop","install=1");
+		writetmpfile("adb.prop","install=1");
+		writetmpfile("goodlock.prop","install=1");
+		writetmpfile("camera.prop","install=1");
+		writetmpfile("soundmod.prop","install=8");
+		writetmpfile("5way-magisk.prop","install=1");
+		writetmpfile("adblock.prop","install=1");
+		writetmpfile("unknownsources.prop","install=0");
+		writetmpfile("screenoverlay.prop","install=0");
+		writetmpfile("iosemojis.prop","install=0");
+		writetmpfile("extra-all.prop","install=1");
+		writetmpfile("google-all.prop","install=1");
+		writetmpfile("samsung-all.prop","install=1");
+		writetmpfile("kernel.prop","install=2");
+	endif;
 
 # CUSTOM INSTALL
 # --------------
-if (prop("rom.prop","selected.1")=="5") then
+	if (prop("rom.prop","selected.1")=="5") then
 
 # ROOT / MAGISK SELECTION
 # -----------------------
-selectbox(
-    "THE GALAXY PROJECT G93xx",
-    "Please select from the following options",
-    "@default",
-    "root.prop",
-    "Install ROM", "", 2,
-    "Yes", "", 1,
-    "No", "", 0,    
-    "Install Magisk", "", 2,               
-    "Yes", "", 1,
-    "No", "", 0,        
-    "Root Selection", "", 2,
-    "PHH's Superuser (for Magisk)", "", 1,
-    "SuperSU (Systemless)", "", 0,
-    "SuperSU (System Mode)", "", 0,
-    "No Root", "", 0    
-);
-if (prop("root.prop","selected.1")=="1") then
-  writetmpfile("rominstall.prop","install=1");
-endif;
-if (prop("root.prop","selected.2")=="1") then
-  writetmpfile("systemless.prop","install=1");
-  writetmpfile("magisk.prop","install=1");
-endif;
-if (prop("root.prop","selected.3")=="1") then
-  writetmpfile("root-phh.prop","install=1");
-endif;
-if (prop("root.prop","selected.3")=="2") then
-  writetmpfile("systemless.prop","install=1");
-  writetmpfile("root-supersu.prop","install=1");
-endif;
-if (prop("root.prop","selected.3")=="3") then
-  writetmpfile("root-supersu-system.prop","install=1");
-endif;
+		selectbox(
+		"THE GALAXY PROJECT G93xx",
+		"Please select from the following options",
+		"@default",
+		"root.prop",
+		"Install ROM", "", 2,
+		"Yes", "", 1,
+		"No", "", 0,
+		"Install Magisk", "", 2, 
+		"Yes", "", 1,
+		"No", "", 0,
+		"Root Selection", "", 2,
+		"PHH's Superuser (for Magisk)", "", 1,
+		"SuperSU (Systemless)", "", 0,
+		"SuperSU (System Mode)", "", 0,
+		"No Root", "", 0
+		);
+		if (prop("root.prop","selected.1")=="1") then
+			writetmpfile("rominstall.prop","install=1");
+		endif;
+		if (prop("root.prop","selected.2")=="1") then
+			writetmpfile("systemless.prop","install=1");
+			writetmpfile("magisk.prop","install=1");
+		endif;
+		if (prop("root.prop","selected.3")=="1") then
+			writetmpfile("root-phh.prop","install=1");
+		endif;
+		if (prop("root.prop","selected.3")=="2") then
+			writetmpfile("systemless.prop","install=1");
+			writetmpfile("root-supersu.prop","install=1");
+		endif;
+		if (prop("root.prop","selected.3")=="3") then
+			writetmpfile("root-supersu-system.prop","install=1");
+		endif;
 
 # MODS INSTALL - PAGE 1 (STANDARD)
 # --------------------------------
-if (prop("systemless.prop","install")=="0") then
-  checkbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select from the following options",
-      "@default",
-      "mods1.prop",
-      "Custom installation", "", 2,
-      "Remove Shutdown Animation", "", 1,
-      "Install Xposed Framework", "", 1,
-      "Install ADB", "", 0,
-      "Install Modified Camera", "", 0,
-      "Install Ad Blocking", "", 1,
-      "Permanently enable Unknown Sources", "", 0,
-      "Install Screen Overlay Fix", "", 1            
-  );
-  if (prop("mods1.prop","item.1.1")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("shutdownanimation.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.2")=="1") then
-    writetmpfile("xposed.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.3")=="1") then
-    writetmpfile("adb.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.4")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("camera.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.5")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("adblock.prop","install=1");
-  endif;      
-  if (prop("mods1.prop","item.1.6")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("unknownsources.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.7")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("screenoverlay.prop","install=1");
-  endif;     
-endif;
+		if (prop("systemless.prop","install")=="0") then
+			checkbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select from the following options",
+			"@default",
+			"mods1.prop",
+			"Custom installation", "", 2,
+			"Remove Shutdown Animation", "", 1,
+			"Install Xposed Framework", "", 1,
+			"Install ADB", "", 0,
+			"Install Modified Camera", "", 0,
+			"Install Ad Blocking", "", 1,
+			"Permanently enable Unknown Sources", "", 0,
+			"Install Screen Overlay Fix", "", 1
+			);
+			if (prop("mods1.prop","item.1.1")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("shutdownanimation.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.2")=="1") then
+				writetmpfile("xposed.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.3")=="1") then
+				writetmpfile("adb.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.4")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("camera.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.5")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("adblock.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.6")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("unknownsources.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.7")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("screenoverlay.prop","install=1");
+			endif; 
+		endif;
 
 # MODS INSTALL - PAGE 1 (SYSTEMLESS)
 # ----------------------------------
-if (prop("systemless.prop","install")=="1") then
-  checkbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select from the following options",
-      "@default",
-      "mods1.prop",
-      "Custom installation", "", 2,
-      "Remove Shutdown Animation", "", 1,
-      "Install Xposed Framework", "", 0,
-      "Install Xposed Framework (Systemless)", "", 1,
-      "Install ADB", "", 0,
-      "Install Modified Camera", "", 0,
-      "Install Ad Blocking", "", 1,
-      "Permanently enable Unknown Sources", "", 0,
-      "Install Screen Overlay Fix", "", 1            
-  );
-  if (prop("mods1.prop","item.1.1")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("shutdownanimation.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.2")=="1") then
-    writetmpfile("xposed.prop","install=1");
-    writetmpfile("xposed-systemless.prop","install=10");
-  endif;
-  if (prop("mods1.prop","item.1.3")=="1") then
-    writetmpfile("xposed.prop","install=1");
-    writetmpfile("xposed-systemless.prop","install=11");
-  endif;
-  if (prop("mods1.prop","item.1.4")=="1") then
-    writetmpfile("adb.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.5")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("camera.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.6")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("adblock.prop","install=1");
-  endif;      
-  if (prop("mods1.prop","item.1.7")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("unknownsources.prop","install=1");
-  endif;
-  if (prop("mods1.prop","item.1.8")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("screenoverlay.prop","install=1");
-  endif;     
-endif;
- 
+		if (prop("systemless.prop","install")=="1") then
+			checkbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select from the following options",
+			"@default",
+			"mods1.prop",
+			"Custom installation", "", 2,
+			"Remove Shutdown Animation", "", 1,
+			"Install Xposed Framework", "", 0,
+			"Install Xposed Framework (Systemless)", "", 1,
+			"Install ADB", "", 0,
+			"Install Modified Camera", "", 0,
+			"Install Ad Blocking", "", 1,
+			"Permanently enable Unknown Sources", "", 0,
+			"Install Screen Overlay Fix", "", 1
+			);
+			if (prop("mods1.prop","item.1.1")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("shutdownanimation.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.2")=="1") then
+				writetmpfile("xposed.prop","install=1");
+				writetmpfile("xposed-systemless.prop","install=10");
+			endif;
+			if (prop("mods1.prop","item.1.3")=="1") then
+				writetmpfile("xposed.prop","install=1");
+				writetmpfile("xposed-systemless.prop","install=11");
+			endif;
+			if (prop("mods1.prop","item.1.4")=="1") then
+				writetmpfile("adb.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.5")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("camera.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.6")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("adblock.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.7")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("unknownsources.prop","install=1");
+			endif;
+			if (prop("mods1.prop","item.1.8")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("screenoverlay.prop","install=1");
+			endif; 
+		endif;
+
 # XPOSED APPS
 # -----------
-if (prop("xposed.prop","install")=="1") then
-  checkbox(
-      "THE GALAXY PROJECT G93xx",
-      "Xposed Apps Installation",
-      "@default",
-      "xposed-appspage.prop",
-      "Xposed Apps", "", 2,
-      "Install All Xposed Apps", "", 0,    
-      "Install App Settings", "", 0,
-      "Install GalaxyXMod", "", 0,
-      "Install GravityBox", "", 1,
-      "Install Lucky Patcher", "", 0,
-      "Install Xposed Torch", "", 1,
-      "Install XTouchWiz", "", 1,
-      "Install YouTube AdAway", "", 1                                         
-  );
-  if (prop("xposed-appspage.prop","item.1.1")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-all.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.2")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-1.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.3")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-2.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.4")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-3.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.5")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-4.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.6")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-5.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.7")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-6.prop","install=1");
-  endif;
-  if (prop("xposed-appspage.prop","item.1.8")=="1") then
-      writetmpfile("xposed-apps.prop","install=1");
-      writetmpfile("xposed-7.prop","install=1");
-  endif;           
-endif;
- 
+		if (prop("xposed.prop","install")=="1") then
+			checkbox(
+			"THE GALAXY PROJECT G93xx",
+			"Xposed Apps Installation",
+			"@default",
+			"xposed-appspage.prop",
+			"Xposed Apps", "", 2,
+			"Install All Xposed Apps", "", 0,
+			"Install App Settings", "", 0,
+			"Install GalaxyXMod", "", 0,
+			"Install GravityBox", "", 1,
+			"Install Lucky Patcher", "", 0,
+			"Install Xposed Torch", "", 1,
+			"Install XTouchWiz", "", 1,
+			"Install YouTube AdAway", "", 1 
+			);
+			if (prop("xposed-appspage.prop","item.1.1")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-all.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.2")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-1.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.3")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-2.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.4")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-3.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.5")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-4.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.6")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-5.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.7")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-6.prop","install=1");
+			endif;
+			if (prop("xposed-appspage.prop","item.1.8")=="1") then
+				writetmpfile("xposed-apps.prop","install=1");
+				writetmpfile("xposed-7.prop","install=1");
+			endif; 
+		endif;
+
 # MODS INSTALL - PAGE 2 (STANDARD MODS)
 # -------------------------------------
-if (prop("magisk.prop","install")=="0") then
-  checkbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select from the following options",
-      "@default",
-      "mods2.prop",
-      "Additional Mods", "", 2,
-      "Install 5way Reboot Menu", "", 0,    
-      "Install 3Minit Battery Mod", "", 0,
-      "Install The Sound Mod", "", 1,
-      "Install IOS Emojis", "", 0
-  );
-  if (prop("mods2.prop","item.1.1")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("5way.prop","install=1");
-  endif;
-  if (prop("mods2.prop","item.1.2")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("3minit.prop","install=1");
-  endif;
-  if (prop("mods2.prop","item.1.3")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=99");
-  endif;
-  if (prop("mods2.prop","item.1.4")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("iosemojis.prop","install=1");
-  endif;
-endif;
+		if (prop("magisk.prop","install")=="0") then
+			checkbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select from the following options",
+			"@default",
+			"mods2.prop",
+			"Additional Mods", "", 2,
+			"Install 5way Reboot Menu", "", 0,
+			"Install 3Minit Battery Mod", "", 0,
+			"Install The Sound Mod", "", 1,
+			"Install IOS Emojis", "", 0
+			);
+			if (prop("mods2.prop","item.1.1")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("5way.prop","install=1");
+			endif;
+			if (prop("mods2.prop","item.1.2")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("3minit.prop","install=1");
+			endif;
+			if (prop("mods2.prop","item.1.3")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=99");
+			endif;
+			if (prop("mods2.prop","item.1.4")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("iosemojis.prop","install=1");
+			endif;
+		endif;
 
 # MODS INSTALL - PAGE 2 (STANDARD / MAGISK MODS)
 # ----------------------------------------------
-if (prop("magisk.prop","install")=="1") then
-  checkbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select from the following options",
-      "@default",
-      "mods3.prop",
-      "Magisk Enabled Mods", "", 2,
-      "Install 5way Reboot Menu", "", 1,    
-      "Install The Sound Mod", "", 1,            
-      "Standard Mods", "", 2,
-      "Install 5way Reboot Menu", "", 0,    
-      "Install The Sound Mod", "", 0,
-      "Install 3Minit Battery Mod", "", 0,
-      "Install IOS Emojis", "", 1
-  );
-  if (prop("mods3.prop","item.1.1")=="1") then
-    writetmpfile("5way.prop","install=0");
-    writetmpfile("5way-magisk.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.1.2")=="1") then
-    writetmpfile("soundmod-magisk.prop","install=1");
-  endif;    
-  if (prop("mods3.prop","item.2.1")=="1") then
-    writetmpfile("modinstall.prop","install=1");
-    writetmpfile("5way.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.2.2")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=99");
-  endif;
-  if (prop("mods3.prop","item.2.3")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("3minit.prop","install=1");
-  endif;
-  if (prop("mods3.prop","item.2.4")=="1") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("iosemojis.prop","install=1");
-  endif;  
-endif;
+		if (prop("magisk.prop","install")=="1") then
+			checkbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select from the following options",
+			"@default",
+			"mods3.prop",
+			"Magisk Enabled Mods", "", 2,
+			"Install 5way Reboot Menu", "", 1,
+			"Install The Sound Mod", "", 1,
+			"Standard Mods", "", 2,
+			"Install 5way Reboot Menu", "", 0,
+			"Install The Sound Mod", "", 0,
+			"Install 3Minit Battery Mod", "", 0,
+			"Install IOS Emojis", "", 1
+			);
+			if (prop("mods3.prop","item.1.1")=="1") then
+				writetmpfile("5way.prop","install=0");
+				writetmpfile("5way-magisk.prop","install=1");
+			endif;
+			if (prop("mods3.prop","item.1.2")=="1") then
+				writetmpfile("soundmod-magisk.prop","install=1");
+			endif;
+			if (prop("mods3.prop","item.2.1")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("5way.prop","install=1");
+			endif;
+			if (prop("mods3.prop","item.2.2")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=99");
+			endif;
+			if (prop("mods3.prop","item.2.3")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("3minit.prop","install=1");
+			endif;
+			if (prop("mods3.prop","item.2.4")=="1") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("iosemojis.prop","install=1");
+			endif;
+		endif;
 
 # THE SOUND MOD PAGE (MAGISK)
 # ---------------------------
-if (prop("soundmod-magisk.prop","install")=="1") then
-    selectbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select the Sound Mod you want",
-      "@default",
-      "soundmod_page.prop",
-      "The Sound Mod Options", "", 2,
-      "Skip", "", 0,
-      "Volume Mod Level 1", "", 0,           
-      "Volume Mod Level 2", "", 0,
-      "Volume Mod Level 3", "", 0,    
-      "Dual Speaker Level 0", "", 0,
-      "Dual Speaker Level 1", "", 0,           
-      "Dual Speaker Level 2", "", 0,
-      "Dual Speaker Level 3", "", 1    
-  );
-  if (prop("soundmod_page.prop","selected.1")=="2") then
-      writetmpfile("soundmod.prop","install=12");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="3") then
-      writetmpfile("soundmod.prop","install=13");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="4") then
-      writetmpfile("soundmod.prop","install=14");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="5") then
-      writetmpfile("soundmod.prop","install=15");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="6") then
-      writetmpfile("soundmod.prop","install=16");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="7") then
-      writetmpfile("soundmod.prop","install=17");
-  endif;
-  if (prop("soundmod_page.prop","selected.1")=="8") then
-      writetmpfile("soundmod.prop","install=18");
-  endif;
- endif;
- 
- # THE SOUND MOD PAGE (NORMAL)
+		if (prop("soundmod-magisk.prop","install")=="1") then
+			selectbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select the Sound Mod you want",
+			"@default",
+			"soundmod_page.prop",
+			"The Sound Mod Options", "", 2,
+			"Skip", "", 0,
+			"Volume Mod Level 1", "", 0, 
+			"Volume Mod Level 2", "", 0,
+			"Volume Mod Level 3", "", 0,
+			"Dual Speaker Level 0", "", 0,
+			"Dual Speaker Level 1", "", 0, 
+			"Dual Speaker Level 2", "", 0,
+			"Dual Speaker Level 3", "", 1
+			);
+			if (prop("soundmod_page.prop","selected.1")=="2") then
+				writetmpfile("soundmod.prop","install=12");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="3") then
+				writetmpfile("soundmod.prop","install=13");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="4") then
+				writetmpfile("soundmod.prop","install=14");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="5") then
+				writetmpfile("soundmod.prop","install=15");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="6") then
+				writetmpfile("soundmod.prop","install=16");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="7") then
+				writetmpfile("soundmod.prop","install=17");
+			endif;
+			if (prop("soundmod_page.prop","selected.1")=="8") then
+				writetmpfile("soundmod.prop","install=18");
+			endif;
+		 endif;
+
+# THE SOUND MOD PAGE (NORMAL)
 # ---------------------------
-if (prop("soundmod.prop","install")=="99") then
-    selectbox(
-      "THE GALAXY PROJECT G93xx",
-      "Please select the Sound Mod you want",
-      "@default",
-      "soundmod_page2.prop",
-      "The Sound Mod Options", "", 2,
-      "Stock Sound Settings", "", 0,
-      "Volume Mod Level 1", "", 0,           
-      "Volume Mod Level 2", "", 0,
-      "Volume Mod Level 3", "", 0,    
-      "Dual Speaker Level 0", "", 0,
-      "Dual Speaker Level 1", "", 0,           
-      "Dual Speaker Level 2", "", 0,
-      "Dual Speaker Level 3", "", 1    
-  );
-  if (prop("soundmod_page2.prop","selected.1")=="1") then
-      writetmpfile("soundmod.prop","install=1");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="2") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=2");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="3") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=3");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="4") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=4");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="5") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=5");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="6") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=6");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="7") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=7");
-  endif;
-  if (prop("soundmod_page2.prop","selected.1")=="8") then
-      writetmpfile("modinstall.prop","install=1");
-      writetmpfile("soundmod.prop","install=8");
-  endif;
- endif;
-           
+		if (prop("soundmod.prop","install")=="99") then
+			selectbox(
+			"THE GALAXY PROJECT G93xx",
+			"Please select the Sound Mod you want",
+			"@default",
+			"soundmod_page2.prop",
+			"The Sound Mod Options", "", 2,
+			"Stock Sound Settings", "", 0,
+			"Volume Mod Level 1", "", 0, 
+			"Volume Mod Level 2", "", 0,
+			"Volume Mod Level 3", "", 0,
+			"Dual Speaker Level 0", "", 0,
+			"Dual Speaker Level 1", "", 0, 
+			"Dual Speaker Level 2", "", 0,
+			"Dual Speaker Level 3", "", 1
+			);
+			if (prop("soundmod_page2.prop","selected.1")=="1") then
+				writetmpfile("soundmod.prop","install=1");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="2") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=2");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="3") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=3");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="4") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=4");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="5") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=5");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="6") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=6");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="7") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=7");
+			endif;
+			if (prop("soundmod_page2.prop","selected.1")=="8") then
+				writetmpfile("modinstall.prop","install=1");
+				writetmpfile("soundmod.prop","install=8");
+			endif;
+		 endif;
+
 # EXTRA / GOOGLE APPS PAGE
 # ------------------------
-checkbox(
-    "THE GALAXY PROJECT G93xx",
-    "Extra / Google Apps Installation",
-    "@default",
-    "extra-apps.prop",
-    "Install All Extra / Google Apps", "", 2,
-    "Install All Extra Apps", "", 0,
-    "Install All Google Apps", "", 0,
-    "Install Extra Apps", "", 2,
-    "Phone INFO", "", 0,
-    "Titanium Backup", "", 1,
-    "Total Commander", "", 0,
-    "Install Google Apps", "", 2,    
-    "Chrome", "", 1,
-    "Drive", "", 1,
-    "GMail", "", 0,
-    "Maps", "", 1,
-    "YouTube", "", 1
-);
-if (prop("extra-apps.prop","item.1.1")=="1") then
-  writetmpfile("extra-all.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.1.2")=="1") then
-  writetmpfile("google-all.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.2.1")=="1") then
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-1.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.2.2")=="1") then
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-2.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.2.3")=="1") then
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-3.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.3.1")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-1.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.3.2")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-2.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.3.3")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-3.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.3.4")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-4.prop","install=1");
-endif;
-if (prop("extra-apps.prop","item.3.5")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-5.prop","install=1");
-endif;
+		checkbox(
+		"THE GALAXY PROJECT G93xx",
+		"Extra / Google Apps Installation",
+		"@default",
+		"extra-apps.prop",
+		"Install All Extra / Google Apps", "", 2,
+		"Install All Extra Apps", "", 0,
+		"Install All Google Apps", "", 0,
+		"Install Extra Apps", "", 2,
+		"Phone INFO", "", 0,
+		"Titanium Backup", "", 1,
+		"Total Commander", "", 0,
+		"Install Google Apps", "", 2,
+		"Chrome", "", 1,
+		"Drive", "", 1,
+		"GMail", "", 0,
+		"Maps", "", 1,
+		"YouTube", "", 1
+		);
+		if (prop("extra-apps.prop","item.1.1")=="1") then
+			writetmpfile("extra-all.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.1.2")=="1") then
+			writetmpfile("google-all.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.2.1")=="1") then
+			writetmpfile("extra.prop","install=1");
+			writetmpfile("extra-1.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.2.2")=="1") then
+			writetmpfile("extra.prop","install=1");
+			writetmpfile("extra-2.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.2.3")=="1") then
+			writetmpfile("extra.prop","install=1");
+			writetmpfile("extra-3.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.3.1")=="1") then
+			writetmpfile("google.prop","install=1");
+			writetmpfile("google-1.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.3.2")=="1") then
+			writetmpfile("google.prop","install=1");
+			writetmpfile("google-2.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.3.3")=="1") then
+			writetmpfile("google.prop","install=1");
+			writetmpfile("google-3.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.3.4")=="1") then
+			writetmpfile("google.prop","install=1");
+			writetmpfile("google-4.prop","install=1");
+		endif;
+		if (prop("extra-apps.prop","item.3.5")=="1") then
+			writetmpfile("google.prop","install=1");
+			writetmpfile("google-5.prop","install=1");
+		endif;
 
 # SAMSUNG APPS PAGE
 # -----------------
-checkbox(
-    "THE GALAXY PROJECT G93xx",
-    "Samsung Apps Installation",
-    "@default",
-    "extra-samsung.prop",
-    "Install Samsung Apps", "", 2,
-    "Install All Samsung Apps", "", 0,
-    "Car Mode", "", 0,
-    "Email", "", 0,
-    "KIES", "", 0,
-    "Samsung Cloud", "", 0,    
-    "Samsung Gear", "", 0,
-    "Samsung Members", "", 0,
-    "Samsung Music", "", 1,
-    "Samsung Video", "", 1,    
-    "S Health", "", 0,
-    "Smart Switch", "", 0,
-    "S Memo", "", 0,
-    "S Voice", "", 0,               
-    "Text-To-Speech", "", 0
-);
-if (prop("extra-samsung.prop","item.1.1")=="1") then
-  writetmpfile("samsung-all.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.2")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-1.prop","install=1");
-  writetmpfile("samsung-12.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.3")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-2.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.4")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-3.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.5")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-4.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.6")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-5.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.7")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-6.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.8")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-7.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.9")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-8.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.10")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-9.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.11")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-10.prop","install=1");
-  writetmpfile("samsung-3.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.12")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-11.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.13")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-12.prop","install=1");
-endif;
-if (prop("extra-samsung.prop","item.1.14")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-13.prop","install=1");
-endif;
+		checkbox(
+		"THE GALAXY PROJECT G93xx",
+		"Samsung Apps Installation",
+		"@default",
+		"extra-samsung.prop",
+		"Install Samsung Apps", "", 2,
+		"Install All Samsung Apps", "", 0,
+		"Car Mode", "", 0,
+		"Email", "", 0,
+		"KIES", "", 0,
+		"Samsung Cloud", "", 0,
+		"Samsung Gear", "", 0,
+		"Samsung Members", "", 0,
+		"Samsung Music", "", 1,
+		"Samsung Video", "", 1,
+		"S Health", "", 0,
+		"Smart Switch", "", 0,
+		"S Memo", "", 0,
+		"S Voice", "", 0, 
+		"Text-To-Speech", "", 0
+		);
+		if (prop("extra-samsung.prop","item.1.1")=="1") then
+			writetmpfile("samsung-all.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.2")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-1.prop","install=1");
+			writetmpfile("samsung-12.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.3")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-2.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.4")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-3.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.5")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-4.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.6")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-5.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.7")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-6.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.8")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-7.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.9")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-8.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.10")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-9.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.11")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-10.prop","install=1");
+			writetmpfile("samsung-3.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.12")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-11.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.13")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-12.prop","install=1");
+		endif;
+		if (prop("extra-samsung.prop","item.1.14")=="1") then
+			writetmpfile("samsung.prop","install=1");
+			writetmpfile("samsung-13.prop","install=1");
+		endif;
 
 # KERNEL INSTALL PAGE
 # -------------------
-selectbox(
-    "THE GALAXY PROJECT G93xx",
-    "Please select a Kernel to install",
-    "@default",
-    "kernelpage.prop",
-    "Kernel Selection", "", 2,
-    "Skip", "", 1,
-    "TGPKernel", "", 0,
-    "SuperKernel", "", 0
-);
-if (prop("kernelpage.prop","selected.1")=="2") then
-    writetmpfile("kernel.prop","install=1");
-endif;
-if (prop("kernelpage.prop","selected.1")=="3") then
-    writetmpfile("kernel.prop","install=2");
-endif;
+		selectbox(
+		"THE GALAXY PROJECT G93xx",
+		"Please select a Kernel to install",
+		"@default",
+		"kernelpage.prop",
+		"Kernel Selection", "", 2,
+		"Skip", "", 1,
+		"TGPKernel", "", 0,
+		"SuperKernel", "", 0
+		);
+		if (prop("kernelpage.prop","selected.1")=="2") then
+			writetmpfile("kernel.prop","install=1");
+		endif;
+		if (prop("kernelpage.prop","selected.1")=="3") then
+			writetmpfile("kernel.prop","install=2");
+		endif;
 
 # CSC
 # ---
-selectbox(
-  "THE GALAXY PROJECT G93xx",
-  "Please select a CSC to install",
-  "@default",
-  "csc-g93xx.prop",
-  "Skip", "", 1,
-  "ATO", "Austria Open unbranded", 0,
-  "ATT", "USA AT&T branded", 0,
-  "AUT", "Switzerland unbranded", 0,
-  "BOG", "France Bouygues branded", 0,
-  "BRI", "Taiwan unbranded", 0,
-  "BTU", "United Kingdom unbranded", 0,
-  "COS", "Greeze Cosmote branded", 0,
-  "CTI", "Argentina Multi-CSC contains: CDR, CHL, COM, CPA, CRC, CTI, CTP, CTU, ECO, PCT, PET, PGU", 0,
-  "DBT", "Germany unbranded", 0,
-  "DDE", "Germany Multi-CSC contains: DCO, DDE, DTM", 0,
-  "ETL", "Czech Republic unbranded", 0,
-  "EUR", "Greece unbranded", 0,
-  "EVR", "United Kingdom T-Mobile branded", 0,
-  "FTM", "France Orange branded", 0,
-  "GBL", "Bulgaria unbranded", 0,
-  "HTS", "Sweden Mitt3 branded", 0,
-  "ILO", "Israel Multi-CSC contains: CEL, ILO, PCL, PTR", 0,
-  "INS", "Indian Multi-CSC (FD variant) contains: BNG, INS, INU, NPL, SLI, SKL", 0,
-  "ITV", "Italian unbranded", 0,
-  "IUS", "Mexican unbranded", 0,
-  "KTC", "Republic of Korea unbranded", 0,
-  "LUX", "Luxembourg unbranded", 0,
-  "MEO", "Portugal unbranded", 0,
-  "MOT", "Slovenia unbranded", 0,
-  "NEE", "Nordic Countries unbranded", 0,
-  "NZC", "New Zealand unbranded", 0,
-  "OPS", "Australia Optus branded", 0,
-  "ORO", "Romania Orange branded", 0,
-  "PHE", "Spain unbranded", 0,
-  "PHN", "Netherlands unbranded", 0,
-  "SER", "Russian Multi-CSC contains: CAC, CAU, SEK, SER, SKZ", 0,
-  "SFR", "France SFR branded", 0,
-  "SKC", "Korea unbranded", 0,
-  "TCE", "Mexican Telcel branded", 0,
-  "TEL", "Telstra branded", 0,
-  "TEN", "Norway Telenor branded", 0,
-  "TGY", "HongKong unbranded", 0,
-  "THL", "Thailand Multi-CSC contains: CAM, GLB, MM1, MYM, SIN, SMA, STH, THL, XME, XSP, XTC, XTE, XXV", 0,
-  "TMB", "USA T-Mobile Branded", 0,
-  "TMS", "Slovak unbranded", 0,
-  "TMZ", "Czech T-Mobile branded", 0,
-  "TPA", "Panama Multi-CSC contains: ALE, ARO, BVO, CHO, COO, EON, PCW, TPA, TTT, UPO, UYO", 0,
-  "TSI", "Ireland unbranded", 0,
-  "TUR", "Turkey Multi-CSC contains: ACR, AFR, ECT, KSA, TUR, XFA", 0,
-  "VAU", "Australia Vodafone branded", 0,
-  "VD2", "Vodafone Multi-CSC contains: ATL, AVF, CNX, CYV, MOB, MTL, OMN, PRO, SIM, SWC, TCL, VD2, VDC, VDF, VDH, VDI, VGR, VIP, VOD, XFV", 0,
-  "VDS", "Sweden unbranded", 0,
-  "VIA", "Germany Multi-CSC contains: O2U, VIA, XEC", 0,
-  "VVT", "Bulgaria unbranded", 0,
-  "VZW", "USA Verizon branded", 0,
-  "XAC", "Canada Multi-CSC (W8) contains: BMC, BWA, ESK, FMC, GLW, KDO, MTA, RWC, TLS, VMC, VTR, XAC", 0,
-  "XAS", "USA Sprint Multi-CSC branded, contains: BST, SPR, VMU, XAS", 0,
-  "XEF", "France Multi-CSC contains: BTU, CPW, DBT, ITV, KOR, NEE, XEF, XEO", 0,
-  "XEO", "Poland Multi-CSC contains: BGL, CYO, MET, ORX, ROM, SEB, SEE, SIO, TOP, TWO, VIM, XEH, XEO", 0,
-  "XID", "Indonesia unbranded", 0,
-  "XSA", "Australia unbranded", 0,
-  "XSG", "Arabic Emirate Multi-CSC contains: ACR, AFG, AFR, BTC, DKR, DRC, ECT, EGY, KSA, LYS, MAT, MID, MRT, MRU, MTZ, MWD, PAK, SMG, THR, TMC, TUN, TUR, WTL, XFA, XFE, XFM, XFU, XSG", 0,
-  "ZTO", "Brazil unbranded", 0        
-);
-if (prop("csc-g93xx.prop","selected.0")=="2") then
-  writetmpfile("csc.prop","install=101");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="3") then
-  writetmpfile("csc.prop","install=102");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="4") then
-  writetmpfile("csc.prop","install=103");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="5") then
-  writetmpfile("csc.prop","install=104");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="6") then
-  writetmpfile("csc.prop","install=105");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="7") then
-  writetmpfile("csc.prop","install=106");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="8") then
-  writetmpfile("csc.prop","install=107");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="9") then
-  writetmpfile("csc.prop","install=108");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="10") then
-  writetmpfile("csc.prop","install=109");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="11") then
-  writetmpfile("csc.prop","install=110");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="12") then
-  writetmpfile("csc.prop","install=111");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="13") then
-  writetmpfile("csc.prop","install=112");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="14") then
-  writetmpfile("csc.prop","install=113");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="15") then
-  writetmpfile("csc.prop","install=114");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="16") then
-  writetmpfile("csc.prop","install=115");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="17") then
-  writetmpfile("csc.prop","install=116");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="18") then
-  writetmpfile("csc.prop","install=117");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="19") then
-  writetmpfile("csc.prop","install=118");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="20") then
-  writetmpfile("csc.prop","install=119");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="21") then
-  writetmpfile("csc.prop","install=120");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="22") then
-  writetmpfile("csc.prop","install=121");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="23") then
-  writetmpfile("csc.prop","install=122");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="24") then
-  writetmpfile("csc.prop","install=123");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="25") then
-  writetmpfile("csc.prop","install=124");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="26") then
-  writetmpfile("csc.prop","install=125");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="27") then
-  writetmpfile("csc.prop","install=126");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="28") then
-  writetmpfile("csc.prop","install=127");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="29") then
-  writetmpfile("csc.prop","install=128");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="30") then
-  writetmpfile("csc.prop","install=129");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="31") then
-  writetmpfile("csc.prop","install=130");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="32") then
-  writetmpfile("csc.prop","install=131");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="33") then
-  writetmpfile("csc.prop","install=132");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="34") then
-  writetmpfile("csc.prop","install=133");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="35") then
-  writetmpfile("csc.prop","install=134");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="36") then
-  writetmpfile("csc.prop","install=135");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="37") then
-  writetmpfile("csc.prop","install=136");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="38") then
-  writetmpfile("csc.prop","install=137");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="39") then
-  writetmpfile("csc.prop","install=138");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="40") then
-  writetmpfile("csc.prop","install=139");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="41") then
-  writetmpfile("csc.prop","install=140");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="42") then
-  writetmpfile("csc.prop","install=141");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="43") then
-  writetmpfile("csc.prop","install=142");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="44") then
-  writetmpfile("csc.prop","install=143");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="45") then
-  writetmpfile("csc.prop","install=144");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="46") then
-  writetmpfile("csc.prop","install=145");
-endif;  
-if (prop("csc-g93xx.prop","selected.0")=="47") then
-  writetmpfile("csc.prop","install=146");
-endif;                                              
-if (prop("csc-g93xx.prop","selected.0")=="48") then
-  writetmpfile("csc.prop","install=147");
-endif;
-if (prop("csc-g93xx.prop","selected.0")=="49") then
-  writetmpfile("csc.prop","install=148");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="50") then
-  writetmpfile("csc.prop","install=149");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="51") then
-  writetmpfile("csc.prop","install=150");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="52") then
-  writetmpfile("csc.prop","install=151");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="53") then
-  writetmpfile("csc.prop","install=152");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="54") then
-  writetmpfile("csc.prop","install=153");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="55") then
-  writetmpfile("csc.prop","install=154");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="56") then
-  writetmpfile("csc.prop","install=155");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="57") then
-  writetmpfile("csc.prop","install=156");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="58") then
-  writetmpfile("csc.prop","install=157");
-endif;    
-if (prop("csc-g93xx.prop","selected.0")=="59") then
-  writetmpfile("csc.prop","install=158");
-endif;    
-
-endif;
-
+		selectbox(
+		"THE GALAXY PROJECT G93xx",
+		"Please select a CSC to install",
+		"@default",
+		"csc-g93xx.prop",
+		"Skip", "", 1,
+		"ATO", "Austria Open unbranded", 0,
+		"ATT", "USA AT&T branded", 0,
+		"AUT", "Switzerland unbranded", 0,
+		"BOG", "France Bouygues branded", 0,
+		"BRI", "Taiwan unbranded", 0,
+		"BTU", "United Kingdom unbranded", 0,
+		"COS", "Greeze Cosmote branded", 0,
+		"CTI", "Argentina Multi-CSC contains: CDR, CHL, COM, CPA, CRC, CTI, CTP, CTU, ECO, PCT, PET, PGU", 0,
+		"DBT", "Germany unbranded", 0,
+		"DDE", "Germany Multi-CSC contains: DCO, DDE, DTM", 0,
+		"ETL", "Czech Republic unbranded", 0,
+		"EUR", "Greece unbranded", 0,
+		"EVR", "United Kingdom T-Mobile branded", 0,
+		"FTM", "France Orange branded", 0,
+		"GBL", "Bulgaria unbranded", 0,
+		"HTS", "Sweden Mitt3 branded", 0,
+		"ILO", "Israel Multi-CSC contains: CEL, ILO, PCL, PTR", 0,
+		"INS", "Indian Multi-CSC (FD variant) contains: BNG, INS, INU, NPL, SLI, SKL", 0,
+		"ITV", "Italian unbranded", 0,
+		"IUS", "Mexican unbranded", 0,
+		"KTC", "Republic of Korea unbranded", 0,
+		"LUX", "Luxembourg unbranded", 0,
+		"MEO", "Portugal unbranded", 0,
+		"MOT", "Slovenia unbranded", 0,
+		"NEE", "Nordic Countries unbranded", 0,
+		"NZC", "New Zealand unbranded", 0,
+		"OPS", "Australia Optus branded", 0,
+		"ORO", "Romania Orange branded", 0,
+		"PHE", "Spain unbranded", 0,
+		"PHN", "Netherlands unbranded", 0,
+		"SER", "Russian Multi-CSC contains: CAC, CAU, SEK, SER, SKZ", 0,
+		"SFR", "France SFR branded", 0,
+		"SKC", "Korea unbranded", 0,
+		"TCE", "Mexican Telcel branded", 0,
+		"TEL", "Telstra branded", 0,
+		"TEN", "Norway Telenor branded", 0,
+		"TGY", "HongKong unbranded", 0,
+		"THL", "Thailand Multi-CSC contains: CAM, GLB, MM1, MYM, SIN, SMA, STH, THL, XME, XSP, XTC, XTE, XXV", 0,
+		"TMB", "USA T-Mobile Branded", 0,
+		"TMS", "Slovak unbranded", 0,
+		"TMZ", "Czech T-Mobile branded", 0,
+		"TPA", "Panama Multi-CSC contains: ALE, ARO, BVO, CHO, COO, EON, PCW, TPA, TTT, UPO, UYO", 0,
+		"TSI", "Ireland unbranded", 0,
+		"TUR", "Turkey Multi-CSC contains: ACR, AFR, ECT, KSA, TUR, XFA", 0,
+		"VAU", "Australia Vodafone branded", 0,
+		"VD2", "Vodafone Multi-CSC contains: ATL, AVF, CNX, CYV, MOB, MTL, OMN, PRO, SIM, SWC, TCL, VD2, VDC, VDF, VDH, VDI, VGR, VIP, VOD, XFV", 0,
+		"VDS", "Sweden unbranded", 0,
+		"VIA", "Germany Multi-CSC contains: O2U, VIA, XEC", 0,
+		"VVT", "Bulgaria unbranded", 0,
+		"VZW", "USA Verizon branded", 0,
+		"XAC", "Canada Multi-CSC (W8) contains: BMC, BWA, ESK, FMC, GLW, KDO, MTA, RWC, TLS, VMC, VTR, XAC", 0,
+		"XAS", "USA Sprint Multi-CSC branded, contains: BST, SPR, VMU, XAS", 0,
+		"XEF", "France Multi-CSC contains: BTU, CPW, DBT, ITV, KOR, NEE, XEF, XEO", 0,
+		"XEO", "Poland Multi-CSC contains: BGL, CYO, MET, ORX, ROM, SEB, SEE, SIO, TOP, TWO, VIM, XEH, XEO", 0,
+		"XID", "Indonesia unbranded", 0,
+		"XSA", "Australia unbranded", 0,
+		"XSG", "Arabic Emirate Multi-CSC contains: ACR, AFG, AFR, BTC, DKR, DRC, ECT, EGY, KSA, LYS, MAT, MID, MRT, MRU, MTZ, MWD, PAK, SMG, THR, TMC, TUN, TUR, WTL, XFA, XFE, XFM, XFU, XSG", 0,
+		"ZTO", "Brazil unbranded", 0
+		);
+		if (prop("csc-g93xx.prop","selected.0")=="2") then
+			writetmpfile("csc.prop","install=101");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="3") then
+			writetmpfile("csc.prop","install=102");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="4") then
+			writetmpfile("csc.prop","install=103");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="5") then
+			writetmpfile("csc.prop","install=104");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="6") then
+			writetmpfile("csc.prop","install=105");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="7") then
+			writetmpfile("csc.prop","install=106");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="8") then
+			writetmpfile("csc.prop","install=107");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="9") then
+			writetmpfile("csc.prop","install=108");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="10") then
+			writetmpfile("csc.prop","install=109");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="11") then
+			writetmpfile("csc.prop","install=110");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="12") then
+			writetmpfile("csc.prop","install=111");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="13") then
+			writetmpfile("csc.prop","install=112");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="14") then
+			writetmpfile("csc.prop","install=113");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="15") then
+			writetmpfile("csc.prop","install=114");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="16") then
+			writetmpfile("csc.prop","install=115");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="17") then
+			writetmpfile("csc.prop","install=116");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="18") then
+			writetmpfile("csc.prop","install=117");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="19") then
+			writetmpfile("csc.prop","install=118");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="20") then
+			writetmpfile("csc.prop","install=119");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="21") then
+			writetmpfile("csc.prop","install=120");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="22") then
+			writetmpfile("csc.prop","install=121");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="23") then
+			writetmpfile("csc.prop","install=122");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="24") then
+			writetmpfile("csc.prop","install=123");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="25") then
+			writetmpfile("csc.prop","install=124");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="26") then
+			writetmpfile("csc.prop","install=125");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="27") then
+			writetmpfile("csc.prop","install=126");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="28") then
+			writetmpfile("csc.prop","install=127");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="29") then
+			writetmpfile("csc.prop","install=128");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="30") then
+			writetmpfile("csc.prop","install=129");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="31") then
+			writetmpfile("csc.prop","install=130");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="32") then
+			writetmpfile("csc.prop","install=131");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="33") then
+			writetmpfile("csc.prop","install=132");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="34") then
+			writetmpfile("csc.prop","install=133");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="35") then
+			writetmpfile("csc.prop","install=134");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="36") then
+			writetmpfile("csc.prop","install=135");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="37") then
+			writetmpfile("csc.prop","install=136");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="38") then
+			writetmpfile("csc.prop","install=137");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="39") then
+			writetmpfile("csc.prop","install=138");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="40") then
+			writetmpfile("csc.prop","install=139");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="41") then
+			writetmpfile("csc.prop","install=140");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="42") then
+			writetmpfile("csc.prop","install=141");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="43") then
+			writetmpfile("csc.prop","install=142");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="44") then
+			writetmpfile("csc.prop","install=143");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="45") then
+			writetmpfile("csc.prop","install=144");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="46") then
+			writetmpfile("csc.prop","install=145");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="47") then
+			writetmpfile("csc.prop","install=146");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="48") then
+			writetmpfile("csc.prop","install=147");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="49") then
+			writetmpfile("csc.prop","install=148");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="50") then
+			writetmpfile("csc.prop","install=149");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="51") then
+			writetmpfile("csc.prop","install=150");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="52") then
+			writetmpfile("csc.prop","install=151");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="53") then
+			writetmpfile("csc.prop","install=152");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="54") then
+			writetmpfile("csc.prop","install=153");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="55") then
+			writetmpfile("csc.prop","install=154");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="56") then
+			writetmpfile("csc.prop","install=155");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="57") then
+			writetmpfile("csc.prop","install=156");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="58") then
+			writetmpfile("csc.prop","install=157");
+		endif;
+		if (prop("csc-g93xx.prop","selected.0")=="59") then
+			writetmpfile("csc.prop","install=158");
+		endif;
+	endif;
 endif;
 
 # SETUP EXTRA APPS
 # ----------------
 if (prop("extra-all.prop","install")=="1") then
-  writetmpfile("extra.prop","install=1");
-  writetmpfile("extra-1.prop","install=1");
-  writetmpfile("extra-2.prop","install=1");
-  writetmpfile("extra-3.prop","install=1");
+writetmpfile("extra.prop","install=1");
+writetmpfile("extra-1.prop","install=1");
+writetmpfile("extra-2.prop","install=1");
+writetmpfile("extra-3.prop","install=1");
 endif;
 if (prop("google-all.prop","install")=="1") then
-  writetmpfile("google.prop","install=1");
-  writetmpfile("google-1.prop","install=1");
-  writetmpfile("google-2.prop","install=1");
-  writetmpfile("google-3.prop","install=1");
-  writetmpfile("google-4.prop","install=1");
-  writetmpfile("google-5.prop","install=1");
+writetmpfile("google.prop","install=1");
+writetmpfile("google-1.prop","install=1");
+writetmpfile("google-2.prop","install=1");
+writetmpfile("google-3.prop","install=1");
+writetmpfile("google-4.prop","install=1");
+writetmpfile("google-5.prop","install=1");
 endif;
 if (prop("samsung-all.prop","install")=="1") then
-  writetmpfile("samsung.prop","install=1");
-  writetmpfile("samsung-1.prop","install=1");
-  writetmpfile("samsung-2.prop","install=1");
-  writetmpfile("samsung-3.prop","install=1");
-  writetmpfile("samsung-4.prop","install=1");
-  writetmpfile("samsung-5.prop","install=1");
-  writetmpfile("samsung-6.prop","install=1");
-  writetmpfile("samsung-7.prop","install=1");
-  writetmpfile("samsung-8.prop","install=1");
-  writetmpfile("samsung-9.prop","install=1");
-  writetmpfile("samsung-10.prop","install=1");
-  writetmpfile("samsung-11.prop","install=1");
-  writetmpfile("samsung-12.prop","install=1");
-  writetmpfile("samsung-13.prop","install=1");
+writetmpfile("samsung.prop","install=1");
+writetmpfile("samsung-1.prop","install=1");
+writetmpfile("samsung-2.prop","install=1");
+writetmpfile("samsung-3.prop","install=1");
+writetmpfile("samsung-4.prop","install=1");
+writetmpfile("samsung-5.prop","install=1");
+writetmpfile("samsung-6.prop","install=1");
+writetmpfile("samsung-7.prop","install=1");
+writetmpfile("samsung-8.prop","install=1");
+writetmpfile("samsung-9.prop","install=1");
+writetmpfile("samsung-10.prop","install=1");
+writetmpfile("samsung-11.prop","install=1");
+writetmpfile("samsung-12.prop","install=1");
+writetmpfile("samsung-13.prop","install=1");
 endif;
 if (prop("xposed-all.prop","install")=="1") then
-  writetmpfile("xposed-apps.prop","install=1");
-  writetmpfile("xposed-1.prop","install=1");
-  writetmpfile("xposed-2.prop","install=1");
-  writetmpfile("xposed-3.prop","install=1");
-  writetmpfile("xposed-4.prop","install=1");
-  writetmpfile("xposed-5.prop","install=1");
-  writetmpfile("xposed-6.prop","install=1");
-  writetmpfile("xposed-7.prop","install=1");  
+writetmpfile("xposed-apps.prop","install=1");
+writetmpfile("xposed-1.prop","install=1");
+writetmpfile("xposed-2.prop","install=1");
+writetmpfile("xposed-3.prop","install=1");
+writetmpfile("xposed-4.prop","install=1");
+writetmpfile("xposed-5.prop","install=1");
+writetmpfile("xposed-6.prop","install=1");
+writetmpfile("xposed-7.prop","install=1");
 endif;
 
 # INSTALL PROCESS
 # --------------
 setvar("retstatus",
-  install(
-      "THE GALAXY PROJECT G93xx",
-	  "<b>"+ini_get("rom_name")+"</b> are being installed.\n"+
-      "This may take some time, please be patient...",
-      "@default",
-      "The installation wizard has successfully finished. Press Next to continue."
-  )
+install(
+"THE GALAXY PROJECT G93xx",
+	"<b>"+ini_get("rom_name")+"</b> are being installed.\n"+
+"This may take some time, please be patient...",
+"@default",
+"The installation wizard has successfully finished. Press Next to continue."
+)
 );
 ini_set("text_next", "Finish");
 ini_set("icon_next", "@finish");
@@ -1077,16 +1075,17 @@ ini_set("icon_next", "@finish");
 # FINISH PAGE
 # -----------
 checkviewbox(
-    "THE GALAXY PROJECT G93xx",
-    "<#selectbg_g><b>Installation is now complete...</b></#>\n\n"+
-    "<b>"+ini_get("rom_name")+"</b> has been installed.\n\n",
-    "@default",
-    "Reboot your device now.",
-    "0",
-    "reboot_it"
+"THE GALAXY PROJECT G93xx",
+"<#selectbg_g><b>Installation is now complete...</b></#>\n\n"+
+"<b>"+ini_get("rom_name")+"</b> has been installed.\n\n",
+"@default",
+"Reboot your device now.",
+"0",
+"reboot_it"
 );
 if
-  getvar("reboot_it")=="1"
+getvar("reboot_it")=="1"
 then
-  reboot("onfinish");
+reboot("onfinish");
 endif;
+
